@@ -1,0 +1,203 @@
+# accepts ptx_model_data which contains the data used for propensity score 
+# matching in match.Rmd. If you want the post-matching data, use 
+# `filter()` or `semi_join()` first to restrict to the rows included in the 
+# matched data
+describe_cohort <- function(ptx_model_data) {
+  demo_table <- ptx_model_data %>%
+    mutate(start_year = as.numeric(as.character(start_year))) %>%
+    select(drug, age, start_year) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  age ~ "Age at Index Date",
+                  start_year ~ "Medication Index Date"
+                )
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3),
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  rates_table <- ptx_model_data %>%
+    select(drug, in_rate, out_rate, mean_ndx, out_dx_rate) %>%
+    mutate(mean_ndx_out_rate = mean_ndx * out_rate) %>%
+    tbl_summary(
+      by = "drug",
+      label = list(
+        in_rate ~ "Inpatient Events Per Year",
+        out_rate ~ "Outpatient Events Per Year",
+        mean_ndx ~ "Mean Number of DX Codes Per Outpatient Event",
+        out_dx_rate ~ "Outpatient DX Code Incidence Per Year"
+      )
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+               estimate_fun = list(
+                all_continuous() ~ function(x) style_number(x, digits = 3), 
+                all_categorical() ~ function(x) style_number(x, digits = 3)
+               )
+             )
+
+  elix_table <- ptx_model_data %>%
+    select(drug,
+      cm_elix_Alcohol, cm_elix_Anemia, cm_elix_BloodLoss,
+      cm_elix_CHF, cm_elix_Coagulopathy, cm_elix_Depression,
+      cm_elix_DM, cm_elix_DMcx, cm_elix_Drugs,
+      cm_elix_FluidsLytes, cm_elix_HIV, cm_elix_HTN, cm_elix_HTNcx,
+      cm_elix_Hypothyroid, cm_elix_Liver,
+      cm_elix_Lymphoma, cm_elix_Mets, cm_elix_NeuroOther, 
+      cm_elix_Obesity, cm_elix_Paralysis, cm_elix_PHTN,
+      cm_elix_Psychoses, cm_elix_PUD, cm_elix_Pulmonary,
+      cm_elix_PVD, cm_elix_Renal, cm_elix_Rheumatic,
+      cm_elix_Tumor, cm_elix_Valvular, cm_elix_WeightLoss
+    ) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  cm_elix_Alcohol ~ "Alcohol Abuse",
+                  cm_elix_Anemia ~ "Anemia",
+                  cm_elix_BloodLoss ~ "Blood Loss",
+                  cm_elix_CHF ~ "Heart Failure",
+                  cm_elix_Coagulopathy ~ "Coagulopathy",
+                  cm_elix_Depression ~ "Depression",
+                  cm_elix_DM ~ "Diabetes Without Complications",
+                  cm_elix_DMcx ~ "Diabetes With Complications",
+                  cm_elix_Drugs ~ "Drug Abuse",
+                  cm_elix_FluidsLytes ~ "Fluid or Electrolyte Disorders",
+                  cm_elix_HIV ~ "HIV",
+                  cm_elix_HTN ~ "HTN Without Complications",
+                  cm_elix_HTNcx ~ "HTN With Complications",
+                  cm_elix_Hypothyroid ~ "Hypothyroidism",
+                  cm_elix_Liver ~ "Liver Disease",
+                  cm_elix_Lymphoma ~ "Lymphoma",
+                  cm_elix_Mets ~ "Metastatic Cancer",
+                  cm_elix_NeuroOther ~ "Other Neurologic Disorders",
+                  cm_elix_Obesity ~ "Obesity",
+                  cm_elix_Paralysis ~ "Paralysis",
+                  cm_elix_PHTN ~ "Pulmonary Hypertension",
+                  cm_elix_Psychoses ~ "Psychoses",
+                  cm_elix_PUD ~ "Peptic Ulcer Disease",
+                  cm_elix_Pulmonary ~ "COPD",
+                  cm_elix_PVD ~ "Peripheral Vascular Disease",
+                  cm_elix_Renal ~ "Renal Failure",
+                  cm_elix_Rheumatic ~ "Rheumatoid Arthritis",
+                  cm_elix_Tumor ~ "Solid Tumor",
+                  cm_elix_Valvular ~ "Valvular Disease",
+                  cm_elix_WeightLoss ~ "Weight Loss"
+              ),
+              statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+              digits = list(all_dichotomous() ~ c(0, 1))
+
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  hypothension_table <- ptx_model_data %>%
+    select(drug,
+      cm_orthostatic, cm_other_hypo
+    ) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  cm_orthostatic ~ "Orthostatic Hypotension",
+                  cm_other_hypo ~ "Other Hypotension"
+                ),
+                statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+                digits = list(all_dichotomous() ~ c(0, 1))
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  psa_table <- ptx_model_data %>%
+    mutate(psa_measured = as.numeric(psa_measured),
+           cm_abnormal_psa = as.numeric(cm_abnormal_psa)
+           ) %>%
+    select(drug,
+      psa_measured, cm_abnormal_psa
+    ) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  psa_measured ~ "PSA Measurement Taken",
+                  cm_abnormal_psa ~ "Diagnosis of Abnormal PSA"
+                ),
+                statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+                digits = list(all_dichotomous() ~ c(0, 1))
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  luts_table <- ptx_model_data %>%
+    mutate(cm_slow_stream = as.numeric(cm_slow_stream), 
+           uroflow = as.numeric(uroflow), 
+           cystometrogram = as.numeric(cystometrogram)) %>%
+    select(drug,
+      cm_slow_stream, uroflow, cystometrogram, cm_bph
+    ) %>%
+    tbl_summary(by = "drug",
+                label = list( # nolint
+                  cm_slow_stream ~ "Slow Urinary Stream Diagnosis",
+                  uroflow ~ "Uroflow Study Performed",
+                  cystometrogram ~ "Cystometrogram Performed",
+                  cm_bph ~ "Diagnosis of BPH"
+                ),
+                statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+                digits = list(all_dichotomous() ~ c(0, 1))
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  final_table <- tbl_stack(
+      list(
+        demo_table, 
+        rates_table,
+        elix_table,
+        hypothension_table,
+        psa_table,
+        luts_table), 
+      group_header = c(
+        "Age and Medication Start Time",
+        "Rates of Inpatient and Outpatient Encounters",
+        "Elixhauser/AHRQ Comorbidity Flags",
+        "Hypotension",
+        "Prostate Specific Antigen",
+        "Bladder Function and Urinary Flow"
+      )
+  ) %>%
+    modify_footnote(all_stat_cols() ~ NA) %>%
+    as_flex_table()
+
+  return(final_table)
+}
+
+# load the data and generate the model data set
+if (Sys.info()["sysname"] == "Darwin") {
+  root_dir <- "/Volumes/lss_jsimmeri_backup/data/tz-5ari-final"
+} else {
+  root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
+}
+treated <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
+# if survival time was greater then 10 * 365 days, set outcome to censored and
+# censor at 10 * 365 days
+model_data <- treated %>%
+  mutate(
+    st_10 = ifelse(survival_time > 365 * 10, 365 * 10, survival_time),
+    pd_10 = ifelse(develops_pd, survival_time <= 365 * 10, FALSE)
+  ) %>%
+  select(-survival_time, -develops_pd) %>%
+  rename(
+    develops_pd = pd_10, survival_time = st_10
+  )
