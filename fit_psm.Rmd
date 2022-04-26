@@ -48,7 +48,8 @@ ps_full <- treatment ~ s(age) +
   cm_elix_Valvular + cm_elix_WeightLoss +
   cm_bph + cm_slow_stream + cm_abnormal_psa +
   psa_measured + uroflow + cystometrogram +
-  cm_orthostatic + cm_other_hypo
+  cm_orthostatic + cm_other_hypo +
+  cm_anxiety + cm_ed
 ```
 
 ## Load Data and Make Data Sets for Model Estimation
