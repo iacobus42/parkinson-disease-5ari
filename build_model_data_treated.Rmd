@@ -680,15 +680,6 @@ model_data <- model_data %>%
   mutate(start_year = as.factor(year(as_date(index_date))))
 ```
 
-Next, we want to add the CCI score. Not everyone has a defined CCI index (if
-you had zero DX during lookback, you don't have a CCI index), so we use a
-`left_join()` and a `replace_na()` to fix the implicit `FALSE` values.
-
-```{r add-cci-index}
-model_data <- left_join(model_data, cci, by = "enrolid") %>%
-  mutate(cci = replace_na(cci, 0))
-```
-
 Then we want to add our Elixhauser CM flags. The same process of `left_join()`
 and `replace_na()` applies but we pair it with `across()` to do all 29 CM flags
 at once.
