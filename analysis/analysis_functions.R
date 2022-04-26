@@ -184,6 +184,7 @@ describe_cohort <- function(ptx_model_data) {
 }
 
 # load the data and generate the model data set
+# no longer limit to 10 years
 if (Sys.info()["sysname"] == "Darwin") {
   root_dir <- "/Volumes/lss_jsimmeri_backup/data/tz-5ari-final"
 } else {
