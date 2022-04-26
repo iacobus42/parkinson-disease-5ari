@@ -476,54 +476,6 @@ lookback_dx10 <- lookback_dx %>%
   filter(icd_version == 10)
 ```
 
-#### Charlson Comorbidity Index
-First, we need to compute the flags for the Charlson index:
-
-```{r compute-charlson-flags}
-charlson_flags_9 <- comorbid(
-  lookback_dx9,
-  icd9_map_charlson,
-  visit_name = "enrolid",
-  icd_name = "dx",
-  return_df = TRUE
-)
-
-charlson_flags_10 <- comorbid(
-  lookback_dx10,
-  icd10_map_charlson,
-  visit_name = "enrolid",
-  icd_name = "dx",
-  return_df = TRUE
-)
-```
-
-Which we then need to stack together:
-
-```{r stack-charlson}
-charlson_flags <- bind_rows(charlson_flags_9, charlson_flags_10) %>%
-  gather(flag, value, -enrolid) %>%
-  filter(value == TRUE) %>%
-  distinct() %>%
-  spread(flag, value) %>%
-  mutate(across(everything(), function(x) replace_na(x, FALSE)))
-```
-
-And then use to calculate the weighted index - using Quan 2011 weights:
-
-```{r compute-charlson-index}
-cci_vector <- charlson_from_comorbid(
-  charlson_flags,
-  visit_name = "enrolid",
-  scoring_system = "quan", 
-  hierarchy = TRUE
-)
-
-cci <- tibble(
-  enrolid = as.numeric(charlson_flags$enrolid),
-  cci = cci_vector
-)
-```
-
 #### Elixhauser Flags
 And now use the mapping `icd9_map_ahrq` and `icd10_map_ahrq`to compute the 
 values. Unlike with CCI, we are leaving these as flags and just need to stack,
