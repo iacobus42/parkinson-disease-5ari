@@ -1,0 +1,141 @@
+---
+title: "Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction"
+description: |
+author:
+  - name: Jacob Simmering, PhD 
+    url: https://jacobsimmering.com
+    affiliation: University of Iowa
+    affiliation_url: https://uiowa.edu
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkg-load}
+library(tidyverse)
+library(patchwork)
+library(survival)
+```
+
+```{r gen-outcomes}
+if (Sys.info()["sysname"] == "Darwin") {
+  root_dir <- "/Volumes/lss_jsimmeri_backup/data/tz-5ari-final"
+} else {
+  root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
+}
+model_data <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
+
+outcomes <- model_data %>%
+  select(enrolid, drug, develops_pd, survival_time)
+```
+
+```{r load-matches}
+tz_tam_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam.rds") %>%
+  mutate(enrolid = as.numeric(enrolid))
+tz_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari.rds") %>%
+  mutate(enrolid = as.numeric(enrolid))
+tam_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari.rds") %>%
+  mutate(enrolid = as.numeric(enrolid))
+```
+
+```{r make-paired-outcomes}
+outcomes_tz_tam <- inner_join(outcomes, tz_tam_matches, by = c("enrolid"))
+outcomes_tz_5ari <- inner_join(outcomes, tz_5ari_matches, by = c("enrolid"))
+outcomes_tam_5ari <- inner_join(outcomes, tam_5ari_matches, by = c("enrolid"))
+```
+
+```{r}
+cph_tz_tam <- coxph(Surv(survival_time, develops_pd) ~ drug, 
+      data = outcomes_tz_tam, 
+      cluster = pair_id,
+      robust = TRUE)
+cph_tz_5ari <- coxph(Surv(survival_time, develops_pd) ~ drug, 
+      data = outcomes_tz_5ari, 
+      cluster = pair_id,
+      robust = TRUE)
+cph_tam_5ari <- coxph(Surv(survival_time, develops_pd) ~ drug, 
+      data = outcomes_tam_5ari, 
+      cluster = pair_id,
+      robust = TRUE)
+```
+
+
+```{r}
+tv_tz_tam <- tibble(
+  x = cox.zph(cph_tz_tam)[1]$time,
+  y = as.numeric(cox.zph(cph_tz_tam)[1]$y)
+) %>%
+  ggplot(aes(x = x / 365, y = exp(y))) + 
+  geom_smooth(method = "loess") + 
+  geom_hline(
+    yintercept = 1
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.25801), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.25801 + 1.96 * 0.04283), linetype = 3
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.25801 - 1.96 * 0.04283), linetype = 3
+  ) +
+  scale_y_log10() + 
+  labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
+  theme_bw()
+
+tv_tz_5ari <- tibble(
+  x = cox.zph(cph_tz_5ari)[1]$time,
+  y = as.numeric(cox.zph(cph_tz_5ari)[1]$y)
+) %>%
+  ggplot(aes(x = x / 365, y = exp(y))) + 
+  geom_smooth(method = "loess") + 
+  geom_hline(
+    yintercept = 1
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.14212), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.14212 + 1.96 * 0.06162), linetype = 3
+  ) + 
+  geom_hline(
+    yintercept = exp(-0.14212 - 1.96 * 0.06162), linetype = 3
+  ) +
+  scale_y_log10() + 
+  labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
+  theme_bw()
+
+tv_tam_5ari <- tibble(
+  x = cox.zph(cph_tam_5ari)[1]$time,
+  y = as.numeric(cox.zph(cph_tam_5ari)[1]$y)
+) %>%
+  ggplot(aes(x = x / 365, y = exp(y))) + 
+  geom_smooth(method = "loess") + 
+  geom_hline(
+    yintercept = 1
+  ) + 
+  geom_hline(
+    yintercept = exp(0.11429), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(0.11429 + 1.96 * 0.05029), linetype = 3
+  ) + 
+  geom_hline(
+    yintercept = exp(0.11429 - 1.96 * 0.05029), linetype = 3
+  ) +
+  scale_y_log10() + 
+  labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
+  theme_bw()
+```
+
+```{r}
+tv_tz_tam / tv_tz_5ari / tv_tam_5ari + 
+  plot_annotation(tag_levels = 'A')
+ggsave("~/fig.png", width = 4, height = 8)
+```
