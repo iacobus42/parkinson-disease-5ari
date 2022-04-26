@@ -582,6 +582,8 @@ list will be:
 3. Other non-orthostatic hypotension
 4. Abnormal PSA value
 5. Slow urinary stream
+6. Anxiety
+7. Erectile dysfunction
 
 ```{r def-ad-hoc}
 adhoc_9 <- list(
@@ -590,7 +592,9 @@ adhoc_9 <- list(
   "cm_orthostatic" = c("4580"),
   "cm_other_hypo" = c("4581", "45821", "45829", "4588", "4589"),
   "cm_abnormal_psa" = c("79093"),
-  "cm_slow_stream" = c("78862")
+  "cm_slow_stream" = c("78862"),
+  "cm_anxiety" = c("30000", "30001", "30002", "30009"),
+  "cm_ed" = c("60784")
 )
 
 adhoc_10 <- list(
@@ -598,7 +602,9 @@ adhoc_10 <- list(
   "cm_orthostatic" = c("I951"),
   "cm_other_hypo" = c("I950", "I952", "I953"),
   "cm_abnormal_psa" = c("R972", "R9720", "R9721"),
-  "cm_slow_stream" = c("R3912")
+  "cm_slow_stream" = c("R3912"),
+  "cm_anxiety" = c("F410", "F411", "F413", "F418", "F419"),
+  "cm_ed" = c("N5201", "N5202", "N5203", "N521", "N528", "N529")
 )
 ```
 
