@@ -144,11 +144,30 @@ describe_cohort <- function(ptx_model_data) {
       cm_slow_stream, uroflow, cystometrogram, cm_bph
     ) %>%
     tbl_summary(by = "drug",
-                label = list( # nolint
+                label = list(
                   cm_slow_stream ~ "Slow Urinary Stream Diagnosis",
                   uroflow ~ "Uroflow Study Performed",
                   cystometrogram ~ "Cystometrogram Performed",
                   cm_bph ~ "Diagnosis of BPH"
+                ),
+                statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+                digits = list(all_dichotomous() ~ c(0, 1))
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
+  other_table <- ptx_model_data %>%
+    mutate(cm_anxiety = as.numeric(cm_anxiety),
+           cm_ed = as.numeric(cm_ed)) %>%
+    select(drug, cm_anxiety, cm_ed) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  cm_anxiety ~ "Diagnosis of Anxiety",
+                  cm_ed ~ "Diagnosis of Erectile Dysfunction"
                 ),
                 statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
                 digits = list(all_dichotomous() ~ c(0, 1))
@@ -167,14 +186,16 @@ describe_cohort <- function(ptx_model_data) {
         elix_table,
         hypothension_table,
         psa_table,
-        luts_table), 
+        luts_table,
+        other_table), 
       group_header = c(
         "Age and Medication Start Time",
         "Rates of Inpatient and Outpatient Encounters",
         "Elixhauser/AHRQ Comorbidity Flags",
         "Hypotension",
         "Prostate Specific Antigen",
-        "Bladder Function and Urinary Flow"
+        "Bladder Function and Urinary Flow",
+        "Other Comorbidities"
       )
   ) %>%
     modify_footnote(all_stat_cols() ~ NA) %>%

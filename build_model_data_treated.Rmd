@@ -476,54 +476,6 @@ lookback_dx10 <- lookback_dx %>%
   filter(icd_version == 10)
 ```
 
-#### Charlson Comorbidity Index
-First, we need to compute the flags for the Charlson index:
-
-```{r compute-charlson-flags}
-charlson_flags_9 <- comorbid(
-  lookback_dx9,
-  icd9_map_charlson,
-  visit_name = "enrolid",
-  icd_name = "dx",
-  return_df = TRUE
-)
-
-charlson_flags_10 <- comorbid(
-  lookback_dx10,
-  icd10_map_charlson,
-  visit_name = "enrolid",
-  icd_name = "dx",
-  return_df = TRUE
-)
-```
-
-Which we then need to stack together:
-
-```{r stack-charlson}
-charlson_flags <- bind_rows(charlson_flags_9, charlson_flags_10) %>%
-  gather(flag, value, -enrolid) %>%
-  filter(value == TRUE) %>%
-  distinct() %>%
-  spread(flag, value) %>%
-  mutate(across(everything(), function(x) replace_na(x, FALSE)))
-```
-
-And then use to calculate the weighted index - using Quan 2011 weights:
-
-```{r compute-charlson-index}
-cci_vector <- charlson_from_comorbid(
-  charlson_flags,
-  visit_name = "enrolid",
-  scoring_system = "quan", 
-  hierarchy = TRUE
-)
-
-cci <- tibble(
-  enrolid = as.numeric(charlson_flags$enrolid),
-  cci = cci_vector
-)
-```
-
 #### Elixhauser Flags
 And now use the mapping `icd9_map_ahrq` and `icd10_map_ahrq`to compute the 
 values. Unlike with CCI, we are leaving these as flags and just need to stack,
@@ -582,6 +534,8 @@ list will be:
 3. Other non-orthostatic hypotension
 4. Abnormal PSA value
 5. Slow urinary stream
+6. Anxiety
+7. Erectile dysfunction
 
 ```{r def-ad-hoc}
 adhoc_9 <- list(
@@ -590,7 +544,9 @@ adhoc_9 <- list(
   "cm_orthostatic" = c("4580"),
   "cm_other_hypo" = c("4581", "45821", "45829", "4588", "4589"),
   "cm_abnormal_psa" = c("79093"),
-  "cm_slow_stream" = c("78862")
+  "cm_slow_stream" = c("78862"),
+  "cm_anxiety" = c("30000", "30001", "30002", "30009"),
+  "cm_ed" = c("60784")
 )
 
 adhoc_10 <- list(
@@ -598,7 +554,9 @@ adhoc_10 <- list(
   "cm_orthostatic" = c("I951"),
   "cm_other_hypo" = c("I950", "I952", "I953"),
   "cm_abnormal_psa" = c("R972", "R9720", "R9721"),
-  "cm_slow_stream" = c("R3912")
+  "cm_slow_stream" = c("R3912"),
+  "cm_anxiety" = c("F410", "F411", "F413", "F418", "F419"),
+  "cm_ed" = c("N5201", "N5202", "N5203", "N521", "N528", "N529")
 )
 ```
 
@@ -720,15 +678,6 @@ diagnosis rates.
 ```{r cast-year-as-fct}
 model_data <- model_data %>%
   mutate(start_year = as.factor(year(as_date(index_date))))
-```
-
-Next, we want to add the CCI score. Not everyone has a defined CCI index (if
-you had zero DX during lookback, you don't have a CCI index), so we use a
-`left_join()` and a `replace_na()` to fix the implicit `FALSE` values.
-
-```{r add-cci-index}
-model_data <- left_join(model_data, cci, by = "enrolid") %>%
-  mutate(cci = replace_na(cci, 0))
 ```
 
 Then we want to add our Elixhauser CM flags. The same process of `left_join()`
