@@ -29,16 +29,16 @@ if (Sys.info()["sysname"] == "Darwin") {
 } else {
   root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
 }
-model_data <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
+model_data <- read_rds(glue::glue("{root_dir}/treated_model_data_dx_only.rds"))
 
 outcomes <- model_data %>%
   select(enrolid, drug, develops_pd, survival_time)
 ```
 
 ```{r load-matches}
-tz_tam_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_iss1.rds")
-tz_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_iss1.rds")
-tam_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_iss1.rds")
+tz_tam_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_dx_only.rds")
+tz_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_dx_only.rds")
+tam_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_dx_only.rds")
 ```
 
 ```{r make-paired-outcomes}
