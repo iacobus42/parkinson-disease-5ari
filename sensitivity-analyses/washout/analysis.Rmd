@@ -59,6 +59,42 @@ cox_model <- function(outcomes, treatment, control, i) {
 
   return(results)
 }
+
+time_varying_cox_model <- function(outcomes, treatment, control, i) {
+  matches <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}_{i}.rds"))
+
+  matched_data <- inner_join(outcomes, matches, by = "enrolid")
+
+  model <- coxph(Surv(survival_time, develops_pd) ~ treatment,
+                 data = matched_data,
+                 cluster = pair_id,
+                 robust = TRUE)
+
+  tv_model <- cox.zph(model)
+
+  point <- model$coef[1]
+  ci <- confint(model)
+  lb <- ci[1]
+  ub <- ci[2]
+
+  p <- round(tv_model$table[1, 3], 4)
+
+  print(glue::glue("{treatment} | {control} | {i} | SR cor = {p}"))
+  tvp <- tibble(
+      x = tv_model[1]$time,
+      y = as.numeric(tv_model[1]$y)
+    ) %>%
+    ggplot(aes(x = x / 365, y = exp(y))) +
+    geom_smooth(method = "loess") + 
+    geom_hline(yintercept = 1) + 
+    geom_hline(yintercept = exp(point), linetype = 2) + 
+    geom_hline(yintercept = exp(ub), linetype = 3) + 
+    geom_hline(yintercept = exp(lb), linetype = 3) +
+    scale_y_log10() + 
+    labs(x = "Years of Follow-Up", y = "Hazard Ratio")
+
+  return(tvp)
+}
 ```
 
 ```{r}
@@ -82,6 +118,25 @@ bind_rows(
   cox_model(outcomes, "tam", "5ari", 4),
   cox_model(outcomes, "tam", "5ari", 5)
 )
+```
 
-.Last.value %>% mutate(hr = round(hr, 2), lb = round(lb, 2), ub = round(ub, 2)) %>% knitr::kable()
+```{r}
+time_varying_cox_model(outcomes, "tz", "tam", 0)
+time_varying_cox_model(outcomes, "tz", "tam", 1)
+time_varying_cox_model(outcomes, "tz", "tam", 2)
+time_varying_cox_model(outcomes, "tz", "tam", 3)
+time_varying_cox_model(outcomes, "tz", "tam", 4)
+time_varying_cox_model(outcomes, "tz", "tam", 5)
+time_varying_cox_model(outcomes, "tz", "5ari", 0)
+time_varying_cox_model(outcomes, "tz", "5ari", 1)
+time_varying_cox_model(outcomes, "tz", "5ari", 2)
+time_varying_cox_model(outcomes, "tz", "5ari", 3)
+time_varying_cox_model(outcomes, "tz", "5ari", 4)
+time_varying_cox_model(outcomes, "tz", "5ari", 5)
+time_varying_cox_model(outcomes, "tam", "5ari", 0)
+time_varying_cox_model(outcomes, "tam", "5ari", 1)
+time_varying_cox_model(outcomes, "tam", "5ari", 2)
+time_varying_cox_model(outcomes, "tam", "5ari", 3)
+time_varying_cox_model(outcomes, "tam", "5ari", 4)
+time_varying_cox_model(outcomes, "tam", "5ari", 5)
 ```
