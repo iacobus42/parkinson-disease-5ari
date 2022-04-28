@@ -1489,7 +1489,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
   <span class="va">root_dir</span> <span class="op">&lt;-</span> <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final&quot;</span>
 <span class="op">}</span>
-<span class="va">model_data</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{root_dir}/treated_model_data.rds&quot;</span><span class="op">)</span><span class="op">)</span>
+<span class="va">model_data</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{root_dir}/treated_model_data_dx_only.rds&quot;</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="va">model_data</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">drug</span>, <span class="va">develops_pd</span>, <span class="va">survival_time</span><span class="op">)</span>
@@ -1498,9 +1498,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_iss1.rds&quot;</span><span class="op">)</span>
-<span class="va">tz_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_iss1.rds&quot;</span><span class="op">)</span>
-<span class="va">tam_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_iss1.rds&quot;</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_dx_only.rds&quot;</span><span class="op">)</span>
+<span class="va">tz_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_dx_only.rds&quot;</span><span class="op">)</span>
+<span class="va">tam_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_dx_only.rds&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
@@ -1525,20 +1525,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_tam, 
     robust = TRUE, cluster = pair_id)
 
-  n= 88046, number of events= 793 
+  n= 241006, number of events= 1986 
 
-                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
-drugtz/dz/az -0.17628   0.83838  0.07129   0.07126 -2.474   0.0134 *
+                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)
+drugtz/dz/az -0.40124   0.66949  0.04577   0.04581 -8.758   &lt;2e-16
+                
+drugtz/dz/az ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
              exp(coef) exp(-coef) lower .95 upper .95
-drugtz/dz/az    0.8384      1.193    0.7291    0.9641
+drugtz/dz/az    0.6695      1.494     0.612    0.7324
 
-Concordance= 0.523  (se = 0.01 )
-Likelihood ratio test= 6.14  on 1 df,   p=0.01
-Wald test            = 6.12  on 1 df,   p=0.01
-Score (logrank) test = 6.13  on 1 df,   p=0.01,   Robust = 6.13  p=0.01
+Concordance= 0.545  (se = 0.006 )
+Likelihood ratio test= 78.39  on 1 df,   p=&lt;2e-16
+Wald test            = 76.7  on 1 df,   p=&lt;2e-16
+Score (logrank) test = 77.89  on 1 df,   p=&lt;2e-16,   Robust = 77.65  p=&lt;2e-16
 
   (Note: the likelihood ratio and score tests assume independence of
      observations within a cluster, the Wald and robust score tests do not).</code></pre>
@@ -1554,20 +1556,20 @@ Score (logrank) test = 6.13  on 1 df,   p=0.01,   Robust = 6.13  p=0.01
 coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_5ari, 
     robust = TRUE, cluster = pair_id)
 
-  n= 56570, number of events= 578 
+  n= 129604, number of events= 970 
 
-                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
-drugtz/dz/az -0.19444   0.82330  0.08358   0.08351 -2.328   0.0199 *
+                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)   
+drugtz/dz/az -0.21027   0.81037  0.06457   0.06458 -3.256  0.00113 **
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
              exp(coef) exp(-coef) lower .95 upper .95
-drugtz/dz/az    0.8233      1.215     0.699    0.9697
+drugtz/dz/az    0.8104      1.234     0.714    0.9197
 
-Concordance= 0.536  (se = 0.012 )
-Likelihood ratio test= 5.44  on 1 df,   p=0.02
-Wald test            = 5.42  on 1 df,   p=0.02
-Score (logrank) test = 5.43  on 1 df,   p=0.02,   Robust = 5.44  p=0.02
+Concordance= 0.524  (se = 0.009 )
+Likelihood ratio test= 10.66  on 1 df,   p=0.001
+Wald test            = 10.6  on 1 df,   p=0.001
+Score (logrank) test = 10.64  on 1 df,   p=0.001,   Robust = 10.64  p=0.001
 
   (Note: the likelihood ratio and score tests assume independence of
      observations within a cluster, the Wald and robust score tests do not).</code></pre>
@@ -1583,20 +1585,20 @@ Score (logrank) test = 5.43  on 1 df,   p=0.02,   Robust = 5.44  p=0.02
 coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tam_5ari, 
     robust = TRUE, cluster = pair_id)
 
-  n= 73036, number of events= 829 
+  n= 158026, number of events= 1410 
 
-                    coef exp(coef)  se(coef) robust se      z
-drugtamsulosin -0.006754  0.993268  0.069464  0.069521 -0.097
-               Pr(&gt;|z|)
-drugtamsulosin    0.923
+                  coef exp(coef) se(coef) robust se     z Pr(&gt;|z|)   
+drugtamsulosin 0.14446   1.15542  0.05340   0.05348 2.701   0.0069 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
                exp(coef) exp(-coef) lower .95 upper .95
-drugtamsulosin    0.9933      1.007    0.8667     1.138
+drugtamsulosin     1.155     0.8655      1.04     1.283
 
-Concordance= 0.507  (se = 0.01 )
-Likelihood ratio test= 0.01  on 1 df,   p=0.9
-Wald test            = 0.01  on 1 df,   p=0.9
-Score (logrank) test = 0.01  on 1 df,   p=0.9,   Robust = 0.01  p=0.9
+Concordance= 0.511  (se = 0.008 )
+Likelihood ratio test= 7.34  on 1 df,   p=0.007
+Wald test            = 7.3  on 1 df,   p=0.007
+Score (logrank) test = 7.33  on 1 df,   p=0.007,   Robust = 7.31  p=0.007
 
   (Note: the likelihood ratio and score tests assume independence of
      observations within a cluster, the Wald and robust score tests do not).</code></pre>

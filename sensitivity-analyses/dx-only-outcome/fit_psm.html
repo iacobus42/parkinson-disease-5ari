@@ -85,8 +85,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction</title>
+  <title>Develop Propensity Score Models</title>
 
+  <meta property="description" itemprop="description" content="Estimate the propensity score model, export propensity scores for matching" />
 
 
   <!--  https://schema.org/Article -->
@@ -95,19 +96,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Jacob Simmering, PhD" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction" />
+  <meta property="og:title" content="Develop Propensity Score Models" />
   <meta property="og:type" content="article" />
+  <meta property="og:description" content="Estimate the propensity score model, export propensity scores for matching" />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction" />
+  <meta property="twitter:title" content="Develop Propensity Score Models" />
+  <meta property="twitter:description" content="Estimate the propensity score model, export propensity scores for matching" />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Develop Propensity Score Models"]},{"type":"character","attributes":{},"value":["Estimate the propensity score model, export propensity scores for matching\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1451,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
+{"title":"Develop Propensity Score Models","description":"Estimate the propensity score model, export propensity scores for matching","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1461,10 +1464,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction</h1>
+<h1>Develop Propensity Score Models</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>Estimate the propensity score model, export propensity scores for matching</p></p>
 </div>
 
 <div class="d-byline">
@@ -1474,134 +1477,224 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#define-models">Define Models</a></li>
+<li><a href="#load-data-and-make-data-sets-for-model-estimation">Load Data and Make Data Sets for Model Estimation</a></li>
+<li><a href="#functions-to-fit-propensity-score-models">Functions to Fit Propensity Score Models</a></li>
+<li><a href="#fit-propensity-scores">Fit Propensity Scores</a>
+<ul>
+<li><a href="#tzdzaz-vs">TZ/DZ/AZ vs…</a></li>
+<li><a href="#tamsulosin-vs">Tamsulosin vs…</a></li>
+</ul></li>
+<li><a href="#save-data-for-matching">Save Data for Matching</a></li>
+<li><a href="#session-info">Session Info</a></li>
+</ul>
+</nav>
+</div>
+<p>This file was compiled on 2022-04-27 18:17:38 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mgcv</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
+<h2 id="define-models">Define Models</h2>
+<p>We are using a GAM to estimate the propensity scores. Our full model specification is below:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.info.html">Sys.info</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="st">&quot;sysname&quot;</span><span class="op">]</span> <span class="op">==</span> <span class="st">&quot;Darwin&quot;</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">root_dir</span> <span class="op">&lt;-</span> <span class="st">&quot;/Volumes/lss_jsimmeri_backup/data/tz-5ari-final&quot;</span>
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="va">root_dir</span> <span class="op">&lt;-</span> <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ps_full</span> <span class="op">&lt;-</span> <span class="va">treatment</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">in_rate</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">out_rate</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">mean_ndx</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">out_dx_rate</span><span class="op">)</span> <span class="op">+</span>
+  <span class="va">start_year</span> <span class="op">+</span>
+  <span class="va">cm_elix_Alcohol</span> <span class="op">+</span> <span class="va">cm_elix_Anemia</span> <span class="op">+</span> <span class="va">cm_elix_BloodLoss</span> <span class="op">+</span>
+  <span class="va">cm_elix_CHF</span> <span class="op">+</span> <span class="va">cm_elix_Coagulopathy</span> <span class="op">+</span> <span class="va">cm_elix_Depression</span> <span class="op">+</span>
+  <span class="va">cm_elix_DM</span> <span class="op">+</span> <span class="va">cm_elix_DMcx</span> <span class="op">+</span> <span class="va">cm_elix_Drugs</span> <span class="op">+</span>
+  <span class="va">cm_elix_FluidsLytes</span> <span class="op">+</span> <span class="va">cm_elix_HIV</span> <span class="op">+</span> <span class="va">cm_elix_HTN</span> <span class="op">+</span> <span class="va">cm_elix_HTNcx</span> <span class="op">+</span>
+  <span class="va">cm_elix_Hypothyroid</span> <span class="op">+</span> <span class="va">cm_elix_Liver</span> <span class="op">+</span> <span class="va">cm_elix_Lymphoma</span> <span class="op">+</span>
+  <span class="va">cm_elix_Mets</span> <span class="op">+</span> <span class="va">cm_elix_NeuroOther</span> <span class="op">+</span> <span class="va">cm_elix_Obesity</span> <span class="op">+</span>
+  <span class="va">cm_elix_Paralysis</span> <span class="op">+</span> <span class="va">cm_elix_PHTN</span> <span class="op">+</span> <span class="va">cm_elix_Psychoses</span> <span class="op">+</span>
+  <span class="va">cm_elix_PUD</span> <span class="op">+</span> <span class="va">cm_elix_Pulmonary</span> <span class="op">+</span> <span class="va">cm_elix_PVD</span> <span class="op">+</span>
+  <span class="va">cm_elix_Renal</span> <span class="op">+</span> <span class="va">cm_elix_Rheumatic</span> <span class="op">+</span> <span class="va">cm_elix_Tumor</span> <span class="op">+</span>
+  <span class="va">cm_elix_Valvular</span> <span class="op">+</span> <span class="va">cm_elix_WeightLoss</span> <span class="op">+</span>
+  <span class="va">cm_bph</span> <span class="op">+</span> <span class="va">cm_slow_stream</span> <span class="op">+</span> <span class="va">cm_abnormal_psa</span> <span class="op">+</span>
+  <span class="va">psa_measured</span> <span class="op">+</span> <span class="va">uroflow</span> <span class="op">+</span> <span class="va">cystometrogram</span> <span class="op">+</span>
+  <span class="va">cm_orthostatic</span> <span class="op">+</span> <span class="va">cm_other_hypo</span> <span class="op">+</span> 
+  <span class="va">cm_ed</span> <span class="op">+</span> <span class="va">cm_anxiety</span>
+</code></pre>
+</div>
+</div>
+<h2 id="load-data-and-make-data-sets-for-model-estimation">Load Data and Make Data Sets for Model Estimation</h2>
+<p>Next, we need to load the data that was intended to be used to estimate the PSMs.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">treated</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_model_data_dx_only.rds&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>And build the comparison data sets:</p>
+<ul>
+<li>TZ/DZ/AZ vs tamsulosin</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam</span> <span class="op">&lt;-</span> <span class="va">treated</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">drug</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;tz/dz/az&quot;</span>, <span class="st">&quot;tamsulosin&quot;</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="va">drug</span> <span class="op">==</span> <span class="st">&quot;tz/dz/az&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<ul>
+<li>TZ/DZ/AZ vs 5ARI</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_5ari</span> <span class="op">&lt;-</span> <span class="va">treated</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">drug</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;tz/dz/az&quot;</span>, <span class="st">&quot;5ari&quot;</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="va">drug</span> <span class="op">==</span> <span class="st">&quot;tz/dz/az&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<ul>
+<li>Tamsulosin versus 5ARI</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tam_5ari</span> <span class="op">&lt;-</span> <span class="va">treated</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">drug</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;5ari&quot;</span>, <span class="st">&quot;tamsulosin&quot;</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="va">drug</span> <span class="op">==</span> <span class="st">&quot;tamsulosin&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="functions-to-fit-propensity-score-models">Functions to Fit Propensity Score Models</h2>
+<p>For ease, using a function to wrap around <code>bam()</code> to provide detail on the PS model fitting process:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">fit_gam_model</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">ps_formula</span>, <span class="va">k</span> <span class="op">=</span> <span class="fl">28</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">obs_tx</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">drug</span><span class="op">[</span><span class="va">data</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
+  <span class="va">obs_ref</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">drug</span><span class="op">[</span><span class="va">data</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
+  <span class="va">n_tx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">treatment</span><span class="op">)</span>
+  <span class="va">n_con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>
+
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Treatment = {obs_tx} [{n_tx}] | Ref = {obs_ref} [{n_con}]&quot;</span><span class="op">)</span><span class="op">)</span>
+
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Starting model fitting&quot;</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>
+  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/bam.html">bam</a></span><span class="op">(</span>
+    <span class="va">ps_formula</span>,
+    data <span class="op">=</span> <span class="va">data</span>,
+    family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span><span class="op">)</span>,
+    nthreads <span class="op">=</span> <span class="fl">28</span>,
+    cluster <span class="op">=</span> <span class="va">cluster</span>
+  <span class="op">)</span>
+  <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">stopCluster</a></span><span class="op">(</span><span class="va">cluster</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Finished model fitting&quot;</span><span class="op">)</span><span class="op">)</span>
+  
+  <span class="va">fitted_values</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+    <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">treatment</span>, <span class="va">follow_up_time</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>
+      ptx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model</span>, type <span class="op">=</span> <span class="st">&quot;response&quot;</span><span class="op">)</span>
+    <span class="op">)</span>
+
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">fitted_values</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="va">model_data</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{root_dir}/treated_model_data.rds&quot;</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="va">model_data</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">drug</span>, <span class="va">develops_pd</span>, <span class="va">survival_time</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="fit-propensity-scores">Fit Propensity Scores</h2>
+<p>Then generate all the data needed for matching:</p>
+<h3 id="tzdzaz-vs">TZ/DZ/AZ vs…</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam_full</span> <span class="op">&lt;-</span> <span class="fu">fit_gam_model</span><span class="op">(</span><span class="va">tz_tam</span>, <span class="va">ps_full</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_iss1.rds&quot;</span><span class="op">)</span>
-<span class="va">tz_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_iss1.rds&quot;</span><span class="op">)</span>
-<span class="va">tam_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_iss1.rds&quot;</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_5ari_full</span> <span class="op">&lt;-</span> <span class="fu">fit_gam_model</span><span class="op">(</span><span class="va">tz_5ari</span>, <span class="va">ps_full</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
+<h3 id="tamsulosin-vs">Tamsulosin vs…</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">outcomes_tz_tam</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tz_tam_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
-<span class="va">outcomes_tz_5ari</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tz_5ari_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
-<span class="va">outcomes_tam_5ari</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tam_5ari_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tam_5ari_full</span> <span class="op">&lt;-</span> <span class="fu">fit_gam_model</span><span class="op">(</span><span class="va">tam_5ari</span>, <span class="va">ps_full</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
+<h2 id="save-data-for-matching">Save Data for Matching</h2>
+<p>And save the results for use in the matching script:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
-      data <span class="op">=</span> <span class="va">outcomes_tz_tam</span>, 
-      cluster <span class="op">=</span> <span class="va">pair_id</span>,
-      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu">write_rds</span><span class="op">(</span>
+  <span class="va">tz_tam_full</span>,
+  <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_tam_dx_only.rds&quot;</span><span class="op">)</span>
+<span class="fu">write_rds</span><span class="op">(</span>
+  <span class="va">tz_5ari_full</span>,
+  <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_5ari_dx_only.rds&quot;</span><span class="op">)</span>
+<span class="fu">write_rds</span><span class="op">(</span>
+  <span class="va">tam_5ari_full</span>,
+  <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tam_5ari_dx_only.rds&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>Call:
-coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_tam, 
-    robust = TRUE, cluster = pair_id)
-
-  n= 88046, number of events= 793 
-
-                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
-drugtz/dz/az -0.17628   0.83838  0.07129   0.07126 -2.474   0.0134 *
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-             exp(coef) exp(-coef) lower .95 upper .95
-drugtz/dz/az    0.8384      1.193    0.7291    0.9641
-
-Concordance= 0.523  (se = 0.01 )
-Likelihood ratio test= 6.14  on 1 df,   p=0.01
-Wald test            = 6.12  on 1 df,   p=0.01
-Score (logrank) test = 6.13  on 1 df,   p=0.01,   Robust = 6.13  p=0.01
-
-  (Note: the likelihood ratio and score tests assume independence of
-     observations within a cluster, the Wald and robust score tests do not).</code></pre>
+</div>
+<h2 id="session-info">Session Info</h2>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
-      data <span class="op">=</span> <span class="va">outcomes_tz_5ari</span>, 
-      cluster <span class="op">=</span> <span class="va">pair_id</span>,
-      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>Call:
-coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_5ari, 
-    robust = TRUE, cluster = pair_id)
+<pre><code>R version 4.0.4 (2021-02-15)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.04 LTS
 
-  n= 56570, number of events= 578 
+Matrix products: default
+BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so
 
-                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
-drugtz/dz/az -0.19444   0.82330  0.08358   0.08351 -2.328   0.0199 *
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
-             exp(coef) exp(-coef) lower .95 upper .95
-drugtz/dz/az    0.8233      1.215     0.699    0.9697
+attached base packages:
+[1] parallel  stats     graphics  grDevices utils     datasets 
+[7] methods   base     
 
-Concordance= 0.536  (se = 0.012 )
-Likelihood ratio test= 5.44  on 1 df,   p=0.02
-Wald test            = 5.42  on 1 df,   p=0.02
-Score (logrank) test = 5.43  on 1 df,   p=0.02,   Robust = 5.44  p=0.02
+other attached packages:
+ [1] mgcv_1.8-33     nlme_3.1-152    forcats_0.5.1   stringr_1.4.0  
+ [5] dplyr_1.0.4     purrr_0.3.4     readr_1.4.0     tidyr_1.1.2    
+ [9] tibble_3.0.6    ggplot2_3.3.3   tidyverse_1.3.0
 
-  (Note: the likelihood ratio and score tests assume independence of
-     observations within a cluster, the Wald and robust score tests do not).</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
-      data <span class="op">=</span> <span class="va">outcomes_tam_5ari</span>, 
-      cluster <span class="op">=</span> <span class="va">pair_id</span>,
-      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
-</code></pre>
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.1.0  xfun_0.21         splines_4.0.4    
+ [4] lattice_0.20-41   haven_2.3.1       colorspace_2.0-0 
+ [7] vctrs_0.3.6       generics_0.1.0    htmltools_0.5.1.1
+[10] yaml_2.2.1        rlang_0.4.10      pillar_1.4.7     
+[13] withr_2.4.1       glue_1.4.2        DBI_1.1.1        
+[16] dbplyr_2.1.0      modelr_0.1.8      readxl_1.3.1     
+[19] lifecycle_1.0.0   munsell_0.5.0     gtable_0.3.0     
+[22] cellranger_1.1.0  rvest_0.3.6       evaluate_0.14    
+[25] knitr_1.31        ps_1.5.0          fansi_0.4.2      
+[28] broom_0.7.4       Rcpp_1.0.6        backports_1.2.1  
+[31] scales_1.1.1      jsonlite_1.7.2    fs_1.5.0         
+[34] distill_1.2       hms_1.0.0         digest_0.6.27    
+[37] stringi_1.5.3     grid_4.0.4        cli_2.3.0        
+[40] tools_4.0.4       magrittr_2.0.1    crayon_1.4.1     
+[43] pkgconfig_2.0.3   downlit_0.2.1     Matrix_1.3-2     
+[46] ellipsis_0.3.1    xml2_1.3.2        reprex_1.0.0     
+[49] lubridate_1.7.9.2 assertthat_0.2.1  rmarkdown_2.6    
+[52] httr_1.4.2        rstudioapi_0.13   R6_2.5.0         
+[55] compiler_4.0.4   </code></pre>
 </div>
-<pre><code>Call:
-coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tam_5ari, 
-    robust = TRUE, cluster = pair_id)
-
-  n= 73036, number of events= 829 
-
-                    coef exp(coef)  se(coef) robust se      z
-drugtamsulosin -0.006754  0.993268  0.069464  0.069521 -0.097
-               Pr(&gt;|z|)
-drugtamsulosin    0.923
-
-               exp(coef) exp(-coef) lower .95 upper .95
-drugtamsulosin    0.9933      1.007    0.8667     1.138
-
-Concordance= 0.507  (se = 0.01 )
-Likelihood ratio test= 0.01  on 1 df,   p=0.9
-Wald test            = 0.01  on 1 df,   p=0.9
-Score (logrank) test = 0.01  on 1 df,   p=0.9,   Robust = 0.01  p=0.9
-
-  (Note: the likelihood ratio and score tests assume independence of
-     observations within a cluster, the Wald and robust score tests do not).</code></pre>
-</div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-03-29" />
-  <meta property="article:created" itemprop="dateCreated" content="2022-03-29" />
+  <meta property="article:published" itemprop="datePublished" content="2022-04-26" />
+  <meta property="article:created" itemprop="dateCreated" content="2022-04-26" />
   <meta name="article:author" content="Jacob Simmering, PhD" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Develop Propensity Score Models"]},{"type":"character","attributes":{},"value":["Estimate the propensity score model, export propensity scores for matching\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-03-30"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Develop Propensity Score Models"]},{"type":"character","attributes":{},"value":["Estimate the propensity score model, export propensity scores for matching\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Develop Propensity Score Models","description":"Estimate the propensity score model, export propensity scores for matching","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-03-29T00:00:00.000-05:00","citationText":"PhD, 2022"}
+{"title":"Develop Propensity Score Models","description":"Estimate the propensity score model, export propensity scores for matching","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1473,7 +1473,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-byline">
   Jacob Simmering, PhD <a href="https://jacobsimmering.com" class="uri">https://jacobsimmering.com</a> (University of Iowa)<a href="https://uiowa.edu" class="uri">https://uiowa.edu</a>
   
-<br />2022-03-30
+<br />2022-04-27
 </div>
 
 <div class="d-article">
@@ -1494,7 +1494,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 </nav>
 </div>
-<p>This file was compiled on 2022-03-30 21:08:31 by <code>jsimmeri</code> on argon-lc-f14-25.hpc.</p>
+<p>This file was compiled on 2022-04-27 17:22:01 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
@@ -1523,7 +1523,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <span class="va">cm_elix_Valvular</span> <span class="op">+</span> <span class="va">cm_elix_WeightLoss</span> <span class="op">+</span>
   <span class="va">cm_bph</span> <span class="op">+</span> <span class="va">cm_slow_stream</span> <span class="op">+</span> <span class="va">cm_abnormal_psa</span> <span class="op">+</span>
   <span class="va">psa_measured</span> <span class="op">+</span> <span class="va">uroflow</span> <span class="op">+</span> <span class="va">cystometrogram</span> <span class="op">+</span>
-  <span class="va">cm_orthostatic</span> <span class="op">+</span> <span class="va">cm_other_hypo</span>
+  <span class="va">cm_orthostatic</span> <span class="op">+</span> <span class="va">cm_other_hypo</span> <span class="op">+</span>
+  <span class="va">cm_anxiety</span> <span class="op">+</span> <span class="va">cm_ed</span>
 </code></pre>
 </div>
 </div>
