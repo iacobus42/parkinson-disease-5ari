@@ -211,15 +211,4 @@ if (Sys.info()["sysname"] == "Darwin") {
 } else {
   root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
 }
-treated <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
-# if survival time was greater then 10 * 365 days, set outcome to censored and
-# censor at 10 * 365 days
-model_data <- treated %>%
-  mutate(
-    st_10 = ifelse(survival_time > 365 * 10, 365 * 10, survival_time),
-    pd_10 = ifelse(develops_pd, survival_time <= 365 * 10, FALSE)
-  ) %>%
-  select(-survival_time, -develops_pd) %>%
-  rename(
-    develops_pd = pd_10, survival_time = st_10
-  )
+model_data <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
