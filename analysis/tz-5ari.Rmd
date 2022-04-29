@@ -164,8 +164,8 @@ Further adjustment yields similar results:
 survfit(Surv(survival_time, develops_pd) ~ drug, 
         data = matched_model_data) %>%
   broom::tidy() %>%
-  mutate(treatment = ifelse(strata == "drug=tamsulosin", 
-    "Tamsulosin", "5ARI")) %>%
+  mutate(treatment = ifelse(strata == "drug=5ari", 
+    "5ARI", "TZ/DZ/AZ")) %>%
   ggplot(
     aes(
       x = time / 365, 
@@ -188,13 +188,12 @@ The population size at risk by year is given in the table below:
 survfit(Surv(survival_time, develops_pd) ~ drug, 
         data = matched_model_data) %>%
   broom::tidy() %>%
-  select(strata, time, n.risk) %>%
-  complete(strata, time = 1:(10*365)) %>%
+  select(strata, time, n.event, n.risk) %>%
+  complete(strata, time = 1:(15*365)) %>%
   fill(n.risk, .direction = "down") %>%
   mutate(drug = ifelse(strata == "drug=5ari", "5ARI", "TZ/DZ/AZ")) %>%
-  select(time, drug, n.risk) %>%
-  spread(drug, n.risk) %>%
-  filter(time %in% c(0:10 * 365 + 1, 10 * 365)) %>%
+  select(time, drug, n.event, n.risk) %>%
+  filter(time %in% c(0:15 * 365 + 1)) %>%
   mutate(year = round(time / 365)) %>%
   select(year, `TZ/DZ/AZ`, `5ARI`) %>%
   knitr::kable()
@@ -205,6 +204,17 @@ A log rank test confirms that the curves remain different.
 ```{r}
 survdiff(Surv(survival_time, develops_pd) ~ treatment, 
          data = matched_model_data)
+```
+
+Survival times
+
+```{r}
+tbl_survfit(
+  survfit(
+    Surv(survival_time, develops_pd) ~ drug, data = matched_model_data
+  ),
+  probs = seq(0.5, 2, by = 0.5) / 100
+)
 ```
 
 We fit a Cox regression model to estimate the differences in hazard:
