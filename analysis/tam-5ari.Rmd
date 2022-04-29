@@ -196,7 +196,6 @@ survfit(Surv(survival_time, develops_pd) ~ drug,
   select(time, drug, n.event, n.risk) %>%
   filter(time %in% c(0:15 * 365 + 1)) %>%
   mutate(year = round(time / 365)) %>%
-  select(year, Tamsulosin, `5ARI`) %>%
   knitr::kable()
 ```
 
