@@ -180,7 +180,7 @@ cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ .,
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
 
-cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
+cph_step_tam_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tam_5ari,
           cut = 1:10 * 365,
           episode = "tgroup") %>%
@@ -193,7 +193,7 @@ The estimated time-varying HR:
 ```{r}
 tbl_regression(cph_step_tz_tam, exponentiate = TRUE)
 tbl_regression(cph_step_tz_5ari, exponentiate = TRUE)
-tbl_regression(cph_step_tz_5ari, exponentiate = TRUE)
+tbl_regression(cph_step_tam_5ari, exponentiate = TRUE)
 ```
 
 The same data graphically but overlaid with the main model estimates:
@@ -249,7 +249,7 @@ cph_step_tz_5ari %>%
   labs(x = "Years of Follow-Up", y = "Estimated HR by Year") +
   theme_bw()
 
-cph_step_tz_5ari %>%
+cph_step_tam_5ari %>%
   broom::tidy() %>%
   mutate(
     period = stringr::str_extract(term, "=[0-9]*"),
