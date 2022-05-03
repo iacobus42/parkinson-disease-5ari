@@ -1,5 +1,5 @@
 ---
-title: "Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction"
+title: "Time Varying Effect"
 description: |
 author:
   - name: Jacob Simmering, PhD 
@@ -21,7 +21,12 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(patchwork)
 library(survival)
+library(gtsummary)
 ```
+
+## Data Load and Processing
+Load the data from the network drive using the correct path for argon vs. local
+work. 
 
 ```{r gen-outcomes}
 if (Sys.info()["sysname"] == "Darwin") {
@@ -30,25 +35,38 @@ if (Sys.info()["sysname"] == "Darwin") {
   root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
 }
 model_data <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
+```
 
+Reduce to outcomes:
+
+```{r}
 outcomes <- model_data %>%
   select(enrolid, drug, develops_pd, survival_time)
 ```
 
+And load the matching data:
+
 ```{r load-matches}
-tz_tam_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam.rds") %>%
+tz_tam_matches <- read_rds(glue::glue("{root_dir}/matches/tz_tam.rds")) %>%
   mutate(enrolid = as.numeric(enrolid))
-tz_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari.rds") %>%
+tz_5ari_matches <- read_rds(glue::glue("{root_dir}/matches/tz_5ari.rds")) %>%
   mutate(enrolid = as.numeric(enrolid))
-tam_5ari_matches <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari.rds") %>%
+tam_5ari_matches <- read_rds(glue::glue("{root_dir}/matches/tam_5ari.rds")) %>%
   mutate(enrolid = as.numeric(enrolid))
 ```
+
+With the matches and `outcomes`, build the matched outcome files:
 
 ```{r make-paired-outcomes}
 outcomes_tz_tam <- inner_join(outcomes, tz_tam_matches, by = c("enrolid"))
 outcomes_tz_5ari <- inner_join(outcomes, tz_5ari_matches, by = c("enrolid"))
 outcomes_tam_5ari <- inner_join(outcomes, tam_5ari_matches, by = c("enrolid"))
 ```
+
+## Base Model and Schoenfeld Residuals
+
+Fit the base model, same as fit in the main analysis, and use the Schoenfeld 
+residuals to get an estimate of the time-varying hazard ratio:
 
 ```{r}
 cph_tz_tam <- coxph(Surv(survival_time, develops_pd) ~ drug, 
@@ -65,9 +83,10 @@ cph_tam_5ari <- coxph(Surv(survival_time, develops_pd) ~ drug,
       robust = TRUE)
 ```
 
+For TZ/DZ/AZ vs tamsulosin:
 
 ```{r}
-tv_tz_tam <- tibble(
+tibble(
   x = cox.zph(cph_tz_tam)[1]$time,
   y = as.numeric(cox.zph(cph_tz_tam)[1]$y)
 ) %>%
@@ -77,19 +96,23 @@ tv_tz_tam <- tibble(
     yintercept = 1
   ) + 
   geom_hline(
-    yintercept = exp(-0.25801), linetype = 2
+    yintercept = exp(coef(cph_tz_tam)[1]), linetype = 2
   ) + 
   geom_hline(
-    yintercept = exp(-0.25801 + 1.96 * 0.04283), linetype = 3
-  ) + 
-  geom_hline(
-    yintercept = exp(-0.25801 - 1.96 * 0.04283), linetype = 3
+    yintercept = exp(confint(cph_tz_tam)[1]), linetype = 3
   ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tz_tam)[2]), linetype = 3
+  ) + 
   scale_y_log10() + 
   labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
   theme_bw()
+```
 
-tv_tz_5ari <- tibble(
+For TZ/DZ/AZ vs 5ARI:
+
+```{r}
+tibble(
   x = cox.zph(cph_tz_5ari)[1]$time,
   y = as.numeric(cox.zph(cph_tz_5ari)[1]$y)
 ) %>%
@@ -99,19 +122,23 @@ tv_tz_5ari <- tibble(
     yintercept = 1
   ) + 
   geom_hline(
-    yintercept = exp(-0.14212), linetype = 2
+    yintercept = exp(coef(cph_tz_5ari)[1]), linetype = 2
   ) + 
   geom_hline(
-    yintercept = exp(-0.14212 + 1.96 * 0.06162), linetype = 3
-  ) + 
-  geom_hline(
-    yintercept = exp(-0.14212 - 1.96 * 0.06162), linetype = 3
+    yintercept = exp(confint(cph_tz_5ari)[1]), linetype = 3
   ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tz_5ari)[2]), linetype = 3
+  ) + 
   scale_y_log10() + 
   labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
   theme_bw()
+```
 
-tv_tam_5ari <- tibble(
+And tamsulosin vs 5ARI:
+
+```{r}
+tibble(
   x = cox.zph(cph_tam_5ari)[1]$time,
   y = as.numeric(cox.zph(cph_tam_5ari)[1]$y)
 ) %>%
@@ -121,21 +148,129 @@ tv_tam_5ari <- tibble(
     yintercept = 1
   ) + 
   geom_hline(
-    yintercept = exp(0.11429), linetype = 2
+    yintercept = exp(coef(cph_tam_5ari)[1]), linetype = 2
   ) + 
   geom_hline(
-    yintercept = exp(0.11429 + 1.96 * 0.05029), linetype = 3
-  ) + 
-  geom_hline(
-    yintercept = exp(0.11429 - 1.96 * 0.05029), linetype = 3
+    yintercept = exp(confint(cph_tam_5ari)[1]), linetype = 3
   ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tam_5ari)[2]), linetype = 3
+  ) + 
   scale_y_log10() + 
   labs(x = "Years of Follow-Up", y = "Hazard Ratio") +
   theme_bw()
 ```
 
+## Step Function
+Fit with a time-varying effect but use a step function for each year of 
+follow-up (first year, second year, and so on to 10th or later year).
+
 ```{r}
-tv_tz_tam / tv_tz_5ari / tv_tam_5ari + 
-  plot_annotation(tag_levels = 'A')
-ggsave("~/fig.png", width = 4, height = 8)
+cph_step_tz_tam <- survSplit(Surv(survival_time, develops_pd) ~ ., 
+          data = outcomes_tz_tam,
+          cut = 1:10 * 365,
+          episode = "tgroup") %>%
+  coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
+        data = ., cluster = pair_id, robust = TRUE)
+
+cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
+          data = outcomes_tz_5ari,
+          cut = 1:10 * 365,
+          episode = "tgroup") %>%
+  coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
+        data = ., cluster = pair_id, robust = TRUE)
+
+cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
+          data = outcomes_tam_5ari,
+          cut = 1:10 * 365,
+          episode = "tgroup") %>%
+  coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
+        data = ., cluster = pair_id, robust = TRUE)
+```
+
+The estimated time-varying HR:
+
+```{r}
+tbl_regression(cph_step_tz_tam, exponentiate = TRUE)
+tbl_regression(cph_step_tz_5ari, exponentiate = TRUE)
+tbl_regression(cph_step_tz_5ari, exponentiate = TRUE)
+```
+
+The same data graphically but overlaid with the main model estimates:
+
+```{r}
+cph_step_tz_tam %>%
+  broom::tidy() %>%
+  mutate(
+    period = stringr::str_extract(term, "=[0-9]*"),
+    period = as.numeric(stringr::str_replace(period, "=", "")),
+    period = period - 0.5
+  ) %>%
+  ggplot(aes(x = period, y = exp(estimate),
+             ymin = exp(estimate - 1.96 * robust.se),
+             ymax = exp(estimate + 1.96 * robust.se))) +
+  geom_point() + 
+  geom_linerange() +
+  geom_hline(
+    yintercept = exp(coef(cph_tz_tam)[1]), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(confint(cph_tz_tam)[1]), linetype = 3
+  ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tz_tam)[2]), linetype = 3
+  ) + 
+  scale_y_log10() +
+  labs(x = "Years of Follow-Up", y = "Estimated HR by Year") +
+  theme_bw()
+
+cph_step_tz_5ari %>%
+  broom::tidy() %>%
+  mutate(
+    period = stringr::str_extract(term, "=[0-9]*"),
+    period = as.numeric(stringr::str_replace(period, "=", "")),
+    period = period - 0.5
+  ) %>%
+  ggplot(aes(x = period, y = exp(estimate),
+             ymin = exp(estimate - 1.96 * robust.se),
+             ymax = exp(estimate + 1.96 * robust.se))) +
+  geom_point() + 
+  geom_linerange() +
+  geom_hline(
+    yintercept = exp(coef(cph_tz_5ari)[1]), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(confint(cph_tz_5ari)[1]), linetype = 3
+  ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tz_5ari)[2]), linetype = 3
+  ) + 
+  scale_y_log10() +
+  labs(x = "Years of Follow-Up", y = "Estimated HR by Year") +
+  theme_bw()
+
+cph_step_tz_5ari %>%
+  broom::tidy() %>%
+  mutate(
+    period = stringr::str_extract(term, "=[0-9]*"),
+    period = as.numeric(stringr::str_replace(period, "=", "")),
+    period = period - 0.5
+  ) %>%
+  ggplot(aes(x = period, y = exp(estimate),
+             ymin = exp(estimate - 1.96 * robust.se),
+             ymax = exp(estimate + 1.96 * robust.se))) +
+  geom_point() + 
+  geom_linerange() +
+  geom_hline(
+    yintercept = exp(coef(cph_tam_5ari)[1]), linetype = 2
+  ) + 
+  geom_hline(
+    yintercept = exp(confint(cph_tam_5ari)[1]), linetype = 3
+  ) +
+  geom_hline(
+    yintercept = exp(confint(cph_tam_5ari)[2]), linetype = 3
+  ) + 
+  scale_y_log10() +
+  labs(x = "Years of Follow-Up", y = "Estimated HR by Year") +
+  theme_bw()
 ```
