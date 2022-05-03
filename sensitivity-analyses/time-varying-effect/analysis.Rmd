@@ -168,21 +168,21 @@ follow-up (first year, second year, and so on to 10th or later year).
 ```{r}
 cph_step_tz_tam <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tz_tam,
-          cut = 1:10 * 365,
+          cut = seq(1, 10, 2) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
 
 cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tz_5ari,
-          cut = 1:10 * 365,
+          cut = seq(1, 10, 2) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
 
 cph_step_tam_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tam_5ari,
-          cut = 1:10 * 365,
+          cut = seq(1, 10, 2) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
@@ -204,7 +204,7 @@ cph_step_tz_tam %>%
   mutate(
     period = stringr::str_extract(term, "=[0-9]*"),
     period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period - 0.5
+    period = period - 1
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
@@ -229,7 +229,7 @@ cph_step_tz_5ari %>%
   mutate(
     period = stringr::str_extract(term, "=[0-9]*"),
     period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period - 0.5
+    period = period - 1
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
@@ -254,7 +254,7 @@ cph_step_tam_5ari %>%
   mutate(
     period = stringr::str_extract(term, "=[0-9]*"),
     period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period - 0.5
+    period = period - 1
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
