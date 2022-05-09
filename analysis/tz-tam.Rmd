@@ -159,7 +159,22 @@ However, this estimate is not trustworthy as we know the groups could be
 better balanced.
 
 ### With Propensity Score Matching
-Further adjustment yields similar results:
+Further adjustment yields similar results. 
+
+We observe the following overall incidence: 
+
+```{r}
+matched_model_data %>%
+  group_by(drug) %>%
+  summarize(
+    cases = sum(develops_pd),
+    time = sum(survival_time / 365),
+    incidence = cases / time * 10000
+  ) %>%
+  knitr::kable()
+```
+
+With a Kaplan Meier curve:
 
 ```{r}
 survfit(Surv(survival_time, develops_pd) ~ drug, 
