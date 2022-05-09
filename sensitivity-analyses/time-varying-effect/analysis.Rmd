@@ -323,7 +323,7 @@ fig_tz_5ari <- ggplot() +
     data = cph_step_tz_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, y = exp(estimate))
   ) + 
@@ -331,7 +331,7 @@ fig_tz_5ari <- ggplot() +
     data = cph_step_tz_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, ymin = exp(estimate - 1.96 * robust.se),
         ymax = exp(estimate + 1.96 * robust.se))
