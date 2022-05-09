@@ -168,21 +168,21 @@ follow-up (first year, second year, and so on to 10th or later year).
 ```{r}
 cph_step_tz_tam <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tz_tam,
-          cut = seq(1, 10, 2) * 365,
+          cut = c(1, 2, 3, 4, 5, 7.5, 10) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
 
 cph_step_tz_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tz_5ari,
-          cut = seq(1, 10, 2) * 365,
+          cut = c(1, 2, 3, 4, 5, 7.5, 10) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
 
 cph_step_tam_5ari <- survSplit(Surv(survival_time, develops_pd) ~ ., 
           data = outcomes_tam_5ari,
-          cut = seq(1, 10, 2) * 365,
+          cut = c(1, 2, 3, 4, 5, 7.5, 10) * 365,
           episode = "tgroup") %>%
   coxph(Surv(tstart, survival_time, develops_pd) ~ treatment:strata(tgroup),
         data = ., cluster = pair_id, robust = TRUE)
@@ -202,9 +202,7 @@ The same data graphically but overlaid with the main model estimates:
 cph_step_tz_tam %>%
   broom::tidy() %>%
   mutate(
-    period = stringr::str_extract(term, "=[0-9]*"),
-    period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period * 2 - 1
+    period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
@@ -227,9 +225,7 @@ cph_step_tz_tam %>%
 cph_step_tz_5ari %>%
   broom::tidy() %>%
   mutate(
-    period = stringr::str_extract(term, "=[0-9]*"),
-    period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period * 2 - 1
+    period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
@@ -252,9 +248,7 @@ cph_step_tz_5ari %>%
 cph_step_tam_5ari %>%
   broom::tidy() %>%
   mutate(
-    period = stringr::str_extract(term, "=[0-9]*"),
-    period = as.numeric(stringr::str_replace(period, "=", "")),
-    period = period * 2 - 1
+    period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
   ) %>%
   ggplot(aes(x = period, y = exp(estimate),
              ymin = exp(estimate - 1.96 * robust.se),
@@ -289,9 +283,7 @@ fig_tz_tam <- ggplot() +
     data = cph_step_tz_tam %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, y = exp(estimate))
   ) + 
@@ -299,9 +291,7 @@ fig_tz_tam <- ggplot() +
     data = cph_step_tz_tam %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, ymin = exp(estimate - 1.96 * robust.se),
         ymax = exp(estimate + 1.96 * robust.se))
@@ -333,9 +323,7 @@ fig_tz_5ari <- ggplot() +
     data = cph_step_tz_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, y = exp(estimate))
   ) + 
@@ -343,9 +331,7 @@ fig_tz_5ari <- ggplot() +
     data = cph_step_tz_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, ymin = exp(estimate - 1.96 * robust.se),
         ymax = exp(estimate + 1.96 * robust.se))
@@ -377,9 +363,7 @@ fig_tam_5ari <- ggplot() +
     data = cph_step_tam_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, y = exp(estimate))
   ) + 
@@ -387,9 +371,7 @@ fig_tam_5ari <- ggplot() +
     data = cph_step_tam_5ari %>%
       broom::tidy() %>%
       mutate(
-        period = stringr::str_extract(term, "=[0-9]*"),
-        period = as.numeric(stringr::str_replace(period, "=", "")),
-        period = period * 2 - 1
+        period = c(0.5, 1.5, 2.5, 3.5, 4.5, 6.25, 8.25, 12)
       ),
     aes(x = period, ymin = exp(estimate - 1.96 * robust.se),
         ymax = exp(estimate + 1.96 * robust.se))
