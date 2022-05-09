@@ -392,6 +392,8 @@ fig_tam_5ari <- ggplot() +
   labs(x = "Years of Follow-Up", y = "") +
   theme_bw()
 
-fig_tz_tam / fig_tz_5ari / fig_tam_5ari
+fig_tz_tam + fig_tz_5ari + fig_tam_5ari + 
+  plot_layout(nrow = 2) + 
+  plot_annotation(tag_levels = "A")
 ggsave("~/projects/pd-preprint/figure_TimeVaryingEffect.png", width = 4, height = 6)
 ```
