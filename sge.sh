@@ -40,34 +40,40 @@ echo Job: $JOB_NAME "/" ID: $JOB_ID  "/" Date: `date` "/" Disease: $disease "/" 
 
 #INPUT JOB HERE
 cd ~/projects/pd-preprint/
-# find RX dispensing events
-# singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_treated.Rmd')"
-# find demographics and enrollment periods
-# singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_treated_demographics_enrollments.Rmd')"
-# find PD diagnosis or leveodopa first event dates
-# singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_pd_dates.Rmd')"
-# find candidate enrollments
-# singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('reduce_treated_enrollments.Rmd')"
-# find LUTS-related procedures
-# singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_luts_procs.Rmd')"
-# build model data for PS model estimation
+
+################################################################################
+# Data Extraction ##############################################################
+################################################################################
+singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_treated.Rmd')"
+singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_treated_demographics_enrollments.Rmd')"
+singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_pd_dates.Rmd')"
+singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('reduce_treated_enrollments.Rmd')"
+singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('find_luts_procs.Rmd')"
+
+################################################################################
+# Data Processing and Matching #################################################
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('build_model_data_treated.Rmd')"
-# fit propensity score models
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('fit_psm.Rmd')"
-# generate propensity score matches
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('match.Rmd')"
-# generate analysis output
+
+################################################################################
+# Main Analysis ################################################################
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('analysis/tz-tam.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('analysis/tz-5ari.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('analysis/tam-5ari.Rmd')"
 
-# Sensitivity analyses
-## BPH restriction
+################################################################################
+# Sensitivity Analysis: Must Have BPH ##########################################
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/bph-restricted/fit_psm.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/bph-restricted/match.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/bph-restricted/analysis.Rmd')"
 
-## DX Only Outcome
+################################################################################
+# Sensitivity Analysis: Outcome is DX Only #####################################
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/dx-only-outcome/find_pd_dates.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/dx-only-outcome/reduce_treated_enrollments.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/dx-only-outcome/build_model_data_treated.Rmd')"
@@ -75,10 +81,14 @@ singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/dx-only-outcome/match.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/dx-only-outcome/analysis.Rmd')"
 
-## Time Varying Effect
+################################################################################
+# Sensitivity Analysis: Time-Varying Coefficients ##############################
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/time-varying-effect/analysis.Rmd')"
 
-## Burn-in time (with time varying effect)
+################################################################################
+# Sensitivity Analysis: Variable Lead-In +/- Time-Varying Coefficients #########
+################################################################################
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/washout/fit_psm.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/washout/match.Rmd')"
 singularity exec ~/r_404.sif Rscript -e "rmarkdown::render('sensitivity-analyses/washout/analysis.Rmd')"
