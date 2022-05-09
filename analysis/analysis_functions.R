@@ -19,6 +19,27 @@ describe_cohort <- function(ptx_model_data) {
                    )
                  )
 
+  duration_table <- ptx_model_data %>%
+    mutate(lookback_time = index_date - start_date) %>%
+    select(drug, lookback_time, follow_up_time) %>%
+    mutate(
+      lookback_time = lookback_time / 365,
+      follow_up_time = follow_up_time / 365
+    ) %>%
+    tbl_summary(
+      by = "drug",
+      label = list(
+        lookback_time ~ "Lookback Time (Years)",
+        follow_up_time ~ "Follow Up Time (Years)"
+      )
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+               estimate_fun = list(
+                all_continuous() ~ function(x) style_number(x, digits = 3), 
+                all_categorical() ~ function(x) style_number(x, digits = 3)
+               )
+             )
+
   rates_table <- ptx_model_data %>%
     select(drug, in_rate, out_rate, mean_ndx, out_dx_rate) %>%
     mutate(mean_ndx_out_rate = mean_ndx * out_rate) %>%
@@ -182,6 +203,7 @@ describe_cohort <- function(ptx_model_data) {
   final_table <- tbl_stack(
       list(
         demo_table, 
+        duration_table,
         rates_table,
         elix_table,
         hypothension_table,
