@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(gtsummary)
 library(survival)
+library(patchwork)
 ```
 
 ```{r gen-outcomes}
@@ -96,11 +97,17 @@ time_varying_cox_model <- function(outcomes, treatment, control, i) {
   p <- round(tv_model$table[1, 3], 4)
 
   print(glue::glue("{treatment} | {control} | {i} | SR cor = {p}"))
-  tibble(
+  d <- tibble(
       x = tv_model[1]$time,
-      y = as.numeric(tv_model[1]$y)
-    ) %>%
-    ggplot(aes(x = x / 365, y = exp(y))) +
+      y = as.numeric(tv_model[1]$y),
+      treatment = treatment,
+      control = control, 
+      i = i
+    )
+
+  write_rds(d, glue::glue("{root_dir}/fig_data/tbl_{treatment}_{control}_{i}.rds"))
+
+  fig <- ggplot(d, aes(x = x / 365, y = exp(y))) +
     geom_smooth(method = "loess") + 
     geom_point(data = step_model,
                aes(x = period, y = exp(estimate))) + 
@@ -116,6 +123,7 @@ time_varying_cox_model <- function(outcomes, treatment, control, i) {
     theme_bw() + 
     scale_y_log10() + 
     labs(x = "Years of Follow-Up", y = "Hazard Ratio")
+  write_rds(fig, glue::glue("{root_dir}/fig_data/{treatment}_{control}_{i}.rds"))
 
   return(tbl_regression(step_fit, exponentiate = TRUE))
 }
@@ -147,11 +155,10 @@ bind_rows(
 ```{r}
 time_varying_cox_model(outcomes, "tz", "tam", 0)
 time_varying_cox_model(outcomes, "tz", "tam", 1)
-time_varying_cox_model(outcomes, "tz", "tam", 2) 
-time_varying_cox_model(outcomes, "tz", "tam", 3) 
+time_varying_cox_model(outcomes, "tz", "tam", 2)
+time_varying_cox_model(outcomes, "tz", "tam", 3)
 time_varying_cox_model(outcomes, "tz", "tam", 4)
 time_varying_cox_model(outcomes, "tz", "tam", 5)
-
 time_varying_cox_model(outcomes, "tz", "5ari", 0)
 time_varying_cox_model(outcomes, "tz", "5ari", 1)
 time_varying_cox_model(outcomes, "tz", "5ari", 2)
@@ -164,4 +171,127 @@ time_varying_cox_model(outcomes, "tam", "5ari", 2)
 time_varying_cox_model(outcomes, "tam", "5ari", 3)
 time_varying_cox_model(outcomes, "tam", "5ari", 4)
 time_varying_cox_model(outcomes, "tam", "5ari", 5)
+```
+
+```{r}
+tz_tam_fig <- read_rds(glue::glue("{root_dir}/fig_data/tz_tam_0.rds"))
+tz_5ari_fig <- read_rds(glue::glue("{root_dir}/fig_data/tz_5ari_0.rds"))
+tam_5ari_fig <- read_rds(glue::glue("{root_dir}/fig_data/tam_5ari_0.rds"))
+
+bind_rows(
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_0.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_0.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_0.rds")),
+
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_1.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_1.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_1.rds")),
+
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_2.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_2.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_2.rds")),
+
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_3.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_3.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_3.rds")),
+
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_4.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_4.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_4.rds")),
+
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_tam_5.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tz_5ari_5.rds")),
+  read_rds(glue::glue("{root_dir}/fig_data/tbl_tam_5ari_5.rds")),
+) %>%
+  mutate(treatment = ifelse(treatment == "tz", "TZ/DZ/AZ", 
+                            ifelse(treatment == "tam", "Tamsulosin", "5ARI")),
+         control = ifelse(control == "tam", "Tamsulosin", "5ARI")) %>%
+  mutate(comparison = paste(treatment, " vs ", control, sep = "")) %>%
+  mutate(comparison = forcats::fct_relevel(comparison, "TZ/DZ/AZ vs Tamsulosin", "TZ/DZ/AZ vs 5ARI")) %>%
+  mutate(i = glue::glue("Lead-In Duration\nof {i} Years")) %>%
+  ggplot(aes(x = x / 365, y = y)) + 
+  geom_smooth(method = "loess") + 
+  facet_grid(rows = vars(i), cols = vars(comparison)) + 
+  geom_hline(yintercept = 0) + 
+  theme_bw() + 
+  labs(x = "Years Since Medication Start", y = "Log Hazard Ratio")
+
+ggsave("~/projects/pd-preprint/figure_sr-small-muliples.png", width = 8, height = 9.5)
+```
+
+As a way to summarize this, use GAMs to estimate the "improvement" over a null
+model that assumes the HR is time invariant. 
+
+```{r}
+gam_test <- function(treatment, control, i) {
+  d <- read_rds(glue::glue("{root_dir}/fig_data/tbl_{treatment}_{control}_{i}.rds"))
+  m_null <- gam(y ~ 1, method = "ML", data = d)
+  m_varying <- gam(y ~ s(x), method = "ML", data = d)
+
+  results <- bind_rows(
+    m_null %>% 
+    broom::glance() %>%
+    mutate(model = "null"),
+    m_varying %>%
+    broom::glance() %>%
+    mutate(model = "gam")
+  ) %>%
+  select(model, AIC, BIC) %>%
+  mutate(d_AIC = AIC - AIC[1],
+         d_BIC = BIC - BIC[1]) %>%
+  filter(model == "gam") %>%
+  bind_cols(
+    m_varying %>%
+      broom::tidy() %>%
+      select(statistic, p.value)
+  ) %>%
+  mutate(treatment = treatment,
+         control = control, 
+         i = i) %>%
+  select(treatment, control, i, d_AIC, d_BIC, statistic, p.value)
+
+  return(results)
+}
+
+bind_rows(
+  gam_test("tz", "tam", 0),
+  gam_test("tz", "5ari", 0),
+  gam_test("tam", "5ari", 0),
+
+  gam_test("tz", "tam", 1),
+  gam_test("tz", "5ari", 1),
+  gam_test("tam", "5ari", 1),
+
+  gam_test("tz", "tam", 2),
+  gam_test("tz", "5ari", 2),
+  gam_test("tam", "5ari", 2),
+
+  gam_test("tz", "tam", 3),
+  gam_test("tz", "5ari", 3),
+  gam_test("tam", "5ari", 3),
+
+  gam_test("tz", "tam", 4),
+  gam_test("tz", "5ari", 4),
+  gam_test("tam", "5ari", 4),
+
+  gam_test("tz", "tam", 5),
+  gam_test("tz", "5ari", 5),
+  gam_test("tam", "5ari", 5)
+) %>%
+  mutate(treatment = ifelse(treatment == "tz", "TZ/DZ/AZ", 
+                            ifelse(treatment == "tam", "Tamsulosin", "5ARI")),
+         control = ifelse(control == "tam", "Tamsulosin", "5ARI")) %>%
+  mutate(comparison = paste(treatment, "\nvs\n", control, sep = "")) %>%
+  mutate(comparison = forcats::fct_relevel(comparison, "TZ/DZ/AZ\nvs\nTamsulosin", "TZ/DZ/AZ\nvs\n5ARI")) %>%
+  ggplot(aes(x = i, y = p.value)) + 
+  geom_point() +
+  geom_hline(yintercept = 0.10, linetype = 3) +
+  geom_hline(yintercept = 0.05, linetype = 1) +
+  geom_hline(yintercept = 0.01, linetype = 2) + 
+  facet_grid(rows = vars(comparison)) + 
+  scale_y_log10() + 
+  labs(x = "Lead-In Duration", y = "GAM p-value") + 
+  theme_bw()
+
+ggsave("~/projects/pd-preprint/figure_SR-gam.png", width = 8, height = 6)
 ```
