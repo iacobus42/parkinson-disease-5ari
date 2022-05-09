@@ -242,8 +242,6 @@ full_cox <- coxph(Surv(survival_time, develops_pd) ~ as.numeric(treatment),
 tbl_regression(full_cox, exponentiate = TRUE)
 ```
 
-The Cox regression yields a HR of 0.71 (0.66, 0.78; p < 0.001). 
-
 ## Fit Summaries
 ```{r}
 tbl_merge(
@@ -271,8 +269,3 @@ tibble(
   labs(x = "Follow Up Time in Years", y = "Schoenfeld Residual") + 
   theme_minimal()
 ```
-
-There is statistically significant correlation with the Schoenfeld residuals;
-however, we are likely over-powered to detect a deviation. Looking at the 
-estimated correlation (-0.059), we think it is unlikely that this has a 
-meaningful impact on our estimated hazard ratio. 

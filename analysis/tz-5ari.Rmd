@@ -241,8 +241,6 @@ full_cox <- coxph(Surv(survival_time, develops_pd) ~ as.numeric(treatment),
 tbl_regression(full_cox, exponentiate = TRUE)
 ```
 
-The Cox regression yields a HR of 0.81 (0.72, 0.92; p < 0.0001). 
-
 ## Fit Summaries
 ```{r}
 tbl_merge(
