@@ -212,6 +212,7 @@ describe_cohort <- function(ptx_model_data) {
         other_table), 
       group_header = c(
         "Age and Medication Start Time",
+        "Duration of Enrollment Time",
         "Rates of Inpatient and Outpatient Encounters",
         "Elixhauser/AHRQ Comorbidity Flags",
         "Hypotension",
