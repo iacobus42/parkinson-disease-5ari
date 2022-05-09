@@ -22,7 +22,6 @@ library(tidyverse)
 library(gtsummary)
 library(survival)
 library(patchwork)
-library(mgcv)
 ```
 
 ```{r gen-outcomes}
@@ -224,75 +223,58 @@ As a way to summarize this, use GAMs to estimate the "improvement" over a null
 model that assumes the HR is time invariant. 
 
 ```{r}
-gam_test <- function(treatment, control, i) {
+sr_test <- function(treatment, control, i) {
   d <- read_rds(glue::glue("{root_dir}/fig_data/tbl_{treatment}_{control}_{i}.rds"))
-  m_null <- gam(y ~ 1, method = "ML", data = d)
-  m_varying <- gam(y ~ s(x), method = "ML", data = d)
 
-  results <- bind_rows(
-    m_null %>% 
-    broom::glance() %>%
-    mutate(model = "null"),
-    m_varying %>%
-    broom::glance() %>%
-    mutate(model = "gam")
-  ) %>%
-  select(model, AIC, BIC) %>%
-  mutate(d_AIC = AIC - AIC[1],
-         d_BIC = BIC - BIC[1]) %>%
-  filter(model == "gam") %>%
-  bind_cols(
-    m_varying %>%
-      broom::tidy() %>%
-      select(statistic, p.value)
-  ) %>%
-  mutate(treatment = treatment,
-         control = control, 
-         i = i) %>%
-  select(treatment, control, i, d_AIC, d_BIC, statistic, p.value)
+  results <- cor.test(d$x, d$y) %>%
+    broom::tidy() %>%
+    mutate(
+      treatment = treatment,
+      control = control, 
+      i = i
+    ) %>%
+    select(treatment, control, i, estimate, conf.low, conf.high)
 
   return(results)
 }
 
 bind_rows(
-  gam_test("tz", "tam", 0),
-  gam_test("tz", "5ari", 0),
-  gam_test("tam", "5ari", 0),
+  sr_test("tz", "tam", 0),
+  sr_test("tz", "5ari", 0),
+  sr_test("tam", "5ari", 0),
 
-  gam_test("tz", "tam", 1),
-  gam_test("tz", "5ari", 1),
-  gam_test("tam", "5ari", 1),
+  sr_test("tz", "tam", 1),
+  sr_test("tz", "5ari", 1),
+  sr_test("tam", "5ari", 1),
 
-  gam_test("tz", "tam", 2),
-  gam_test("tz", "5ari", 2),
-  gam_test("tam", "5ari", 2),
+  sr_test("tz", "tam", 2),
+  sr_test("tz", "5ari", 2),
+  sr_test("tam", "5ari", 2),
 
-  gam_test("tz", "tam", 3),
-  gam_test("tz", "5ari", 3),
-  gam_test("tam", "5ari", 3),
+  sr_test("tz", "tam", 3),
+  sr_test("tz", "5ari", 3),
+  sr_test("tam", "5ari", 3),
 
-  gam_test("tz", "tam", 4),
-  gam_test("tz", "5ari", 4),
-  gam_test("tam", "5ari", 4),
+  sr_test("tz", "tam", 4),
+  sr_test("tz", "5ari", 4),
+  sr_test("tam", "5ari", 4),
 
-  gam_test("tz", "tam", 5),
-  gam_test("tz", "5ari", 5),
-  gam_test("tam", "5ari", 5)
+  sr_test("tz", "tam", 5),
+  sr_test("tz", "5ari", 5),
+  sr_test("tam", "5ari", 5)
 ) %>%
   mutate(treatment = ifelse(treatment == "tz", "TZ/DZ/AZ", 
                             ifelse(treatment == "tam", "Tamsulosin", "5ARI")),
          control = ifelse(control == "tam", "Tamsulosin", "5ARI")) %>%
   mutate(comparison = paste(treatment, "\nvs\n", control, sep = "")) %>%
   mutate(comparison = forcats::fct_relevel(comparison, "TZ/DZ/AZ\nvs\nTamsulosin", "TZ/DZ/AZ\nvs\n5ARI")) %>%
-  ggplot(aes(x = i, y = p.value)) + 
+  ggplot(aes(x = i, y = estimate, ymin = conf.low, ymax = conf.high)) + 
   geom_point() +
-  geom_hline(yintercept = 0.10, linetype = 3) +
-  geom_hline(yintercept = 0.05, linetype = 1) +
-  geom_hline(yintercept = 0.01, linetype = 2) + 
+  geom_linerange() +
+  geom_hline(yintercept = 0, linetype = 3) +
   facet_grid(rows = vars(comparison)) + 
-  scale_y_log10() + 
-  labs(x = "Lead-In Duration", y = "GAM p-value") + 
+  labs(x = "Lead-In Duration", y = "Pearson's Correlation Coefficient") + 
   theme_bw()
 
-ggsave("~/projects/pd-preprint/figure_SR-gam.png", width = 8, height = 6)
+ggsave("~/projects/pd-preprint/figure_SR-pr.png", width = 4, height = 4)
 ```
