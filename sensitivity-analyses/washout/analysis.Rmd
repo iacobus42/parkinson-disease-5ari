@@ -53,9 +53,11 @@ cox_model <- function(outcomes, treatment, control, i) {
            treatment = treatment,
            control = control, 
            burnin = i, 
-           n = nobs(model),
+           n_cases = nobs(model),
+           n_people = nrow(matched_data),
+           n_pairs = NROW(unique(matched_data$pair_id)),
            p.value = round(p.value, 4)) %>%
-    select(treatment, control, burnin, n, hr, lb, ub, p.value)
+    select(treatment, control, burnin, n_cases, n_people, n_pairs, hr, lb, ub, p.value)
 
   return(results)
 }
