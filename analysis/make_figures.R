@@ -93,3 +93,59 @@ tz_tam_km + tz_5ari_km + tam_5ari_km +
   plot_layout(nrow = 3) + 
   plot_annotation(tag_levels = "A")
 ggsave("~/projects/pd-preprint/km-plot.png", width = 4.5, height = 8)
+
+# figure S2
+cph_tz_tam <- coxph(Surv(survival_time, develops_pd) ~ treatment, data = outcomes_tz_tam)
+zph_tz_tam <- cox.zph(cph_tz_tam)
+
+cph_tz_5ari <- coxph(Surv(survival_time, develops_pd) ~ treatment, data = outcomes_tz_5ari)
+zph_tz_5ari <- cox.zph(cph_tz_5ari)
+
+cph_tam_5ari <- coxph(Surv(survival_time, develops_pd) ~ treatment, data = outcomes_tam_5ari)
+zph_tam_5ari <- cox.zph(cph_tam_5ari)
+
+tibble(
+  x = c(
+    zph_tz_tam$time,
+    zph_tz_5ari$time,
+    zph_tam_5ari$time
+  ),
+  y = c(
+    zph_tz_tam$y[, 1],
+    zph_tz_5ari$y[, 1],
+    zph_tam_5ari$y[, 1]
+  ),
+  true = c(
+    rep(coef(cph_tz_tam), NROW(zph_tz_tam$x)),
+    rep(coef(cph_tz_5ari), NROW(zph_tz_5ari$x)),
+    rep(coef(cph_tam_5ari), NROW(zph_tam_5ari$x))
+  ),
+  lb = c(
+    rep(confint(cph_tz_tam)[1], NROW(zph_tz_tam$x)),
+    rep(confint(cph_tz_5ari)[1], NROW(zph_tz_5ari$x)),
+    rep(confint(cph_tam_5ari)[1], NROW(zph_tam_5ari$x))
+  ),
+  ub = c(
+    rep(confint(cph_tz_tam)[2], NROW(zph_tz_tam$x)),
+    rep(confint(cph_tz_5ari)[2], NROW(zph_tz_5ari$x)),
+    rep(confint(cph_tam_5ari)[2], NROW(zph_tam_5ari$x))
+  ),
+  label = c(
+    rep("TZ/DZ/AZ vs Tamsulosin", NROW(zph_tz_tam$x)),
+    rep("TZ/DZ/AZ vs 5ARI", NROW(zph_tz_5ari$x)),
+    rep("Tamsulosin vs 5ARI", NROW(zph_tam_5ari$x))
+  )
+) %>%
+  mutate(
+    label = forcats::fct_relevel(label, "TZ/DZ/AZ vs Tamsulosin", "TZ/DZ/AZ vs 5ARI")
+  ) %>%
+  ggplot(aes(x = x, y = y)) + 
+  geom_smooth(method = "loess") + 
+  geom_point(alpha = 0.25) + 
+  geom_line(aes(y = true), linetype = 2) +
+  geom_line(aes(y = lb), linetype = 3) +
+  geom_line(aes(y = ub), linetype = 3) +
+  facet_grid(cols = vars(label)) +
+  theme_bw() +
+  labs(x = "Years Since Medication Start", y = "Beta(t)")
+ggsave("~/projects/pd-preprint/scf_residuals.png", width = 6, height = 4)
