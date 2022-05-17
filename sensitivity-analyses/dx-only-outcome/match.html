@@ -1495,7 +1495,7 @@ matches for the cohort of interest." />
 </ul>
 </nav>
 </div>
-<p>This file was compiled on 2022-04-27 17:24:06 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
+<p>This file was compiled on 2022-04-27 18:19:45 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
@@ -1536,7 +1536,7 @@ matches for the cohort of interest." />
     sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
   <span class="op">)</span>
 
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}.rds&quot;</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}_dx_only.rds&quot;</span><span class="op">)</span><span class="op">)</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
   <span class="co"># shuffle since we will take the lowest index row in the event of a tie</span>
@@ -1608,7 +1608,7 @@ matches for the cohort of interest." />
   
   <span class="fu">write_rds</span><span class="op">(</span>
     <span class="va">matches</span>,
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}.rds&quot;</span><span class="op">)</span>
+    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}_dx_only.rds&quot;</span><span class="op">)</span>
   <span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
     <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Complete \n&quot;</span><span class="op">)</span>, 
@@ -1639,7 +1639,8 @@ matches for the cohort of interest." />
 <p>And the list we want to iterate over</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">3</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">984779</span><span class="op">)</span>
+<span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">3</span><span class="op">)</span>
 
 <span class="va">args_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
@@ -1734,7 +1735,7 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[1]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpP6Hq28/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5824d5a4e5&quot;
+[1] &quot;/localscratch/8196067.1.UI/RtmpeaadNr/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_1ddd025cb130&quot;
 
 
 [[2]]
@@ -1748,7 +1749,7 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[2]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmppDu3ag/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e592e1b27f2&quot;
+[1] &quot;/localscratch/8196067.1.UI/RtmpxIHvex/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_1ddd178f0618f&quot;
 
 
 [[3]]
@@ -1762,7 +1763,7 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[3]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpDio1al/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5a427aeaee&quot;</code></pre>
+[1] &quot;/localscratch/8196067.1.UI/Rtmp8yOLRB/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_1ddd21fcbe8aa&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterExport</a></span><span class="op">(</span><span class="va">cl</span>, <span class="st">&quot;ps_match&quot;</span><span class="op">)</span>
 </code></pre>

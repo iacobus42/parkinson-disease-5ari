@@ -1,0 +1,1542 @@
+Running on host: argon-itf-bx47-28.hpc.
+In directory: /Users/jsimmeri/projects/pd-preprint
+Starting on: Wed Apr 27 16:49:49 CDT 2022
+  |                                                                              |                                                                      |   0%  |                                                                              |.                                                                     |   1%
+   inline R code fragments
+
+  |                                                                              |..                                                                    |   3%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |...                                                                   |   4%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   5%
+label: pkg-load
+  |                                                                              |.....                                                                 |   7%
+  ordinary text without R code
+
+  |                                                                              |......                                                                |   8%
+label: data-load
+  |                                                                              |.......                                                               |   9%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  11%
+label: def-outpatient
+  |                                                                              |.........                                                             |  12%
+  ordinary text without R code
+
+  |                                                                              |.........                                                             |  14%
+label: def-inpatient
+  |                                                                              |..........                                                            |  15%
+  ordinary text without R code
+
+  |                                                                              |...........                                                           |  16%
+label: def-reduce-dx
+  |                                                                              |............                                                          |  18%
+  ordinary text without R code
+
+  |                                                                              |.............                                                         |  19%
+label: def-args-list
+  |                                                                              |..............                                                        |  20%
+  ordinary text without R code
+
+  |                                                                              |...............                                                       |  22%
+label: start-cluster
+  |                                                                              |................                                                      |  23%
+  ordinary text without R code
+
+  |                                                                              |.................                                                     |  24%
+label: parLapply-find-dx
+  |                                                                              |..................                                                    |  26%
+  ordinary text without R code
+
+  |                                                                              |...................                                                   |  27%
+label: stop-cluster
+  |                                                                              |....................                                                  |  28%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: load-utilization-data
+  |                                                                              |......................                                                |  31%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: normalize-inpatient-volume
+  |                                                                              |........................                                              |  34%
+  ordinary text without R code
+
+  |                                                                              |.........................                                             |  35%
+label: normalize-outpatient-volume
+  |                                                                              |..........................                                            |  36%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: normalize-outpatient-ndx
+  |                                                                              |...........................                                           |  39%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  41%
+label: normalize-outpatient-dx
+  |                                                                              |.............................                                         |  42%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: restrict-dx-to-lookback
+  |                                                                              |...............................                                       |  45%
+  ordinary text without R code
+
+  |                                                                              |................................                                      |  46%
+label: split-dx-by-icd
+  |                                                                              |.................................                                     |  47%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  49%
+label: elix-compute
+  |                                                                              |...................................                                   |  50%
+  ordinary text without R code
+
+  |                                                                              |....................................                                  |  51%
+label: elix-stack
+  |                                                                              |.....................................                                 |  53%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: elix-rotate
+  |                                                                              |.......................................                               |  55%
+  ordinary text without R code
+
+  |                                                                              |........................................                              |  57%
+label: def-ad-hoc
+  |                                                                              |.........................................                             |  58%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  59%
+label: compute-adhoc-flags
+  |                                                                              |...........................................                           |  61%
+  ordinary text without R code
+
+  |                                                                              |............................................                          |  62%
+label: adhoc-stack-and-rotate
+  |                                                                              |............................................                          |  64%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: process-psa
+  |                                                                              |..............................................                        |  66%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  68%
+label: process-uroflow
+  |                                                                              |................................................                      |  69%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: process-cystometrograms
+  |                                                                              |..................................................                    |  72%
+  ordinary text without R code
+
+  |                                                                              |...................................................                   |  73%
+label: init-model-data
+  |                                                                              |....................................................                  |  74%
+  ordinary text without R code
+
+  |                                                                              |.....................................................                 |  76%
+label: add-age
+  |                                                                              |......................................................                |  77%
+  ordinary text without R code
+
+  |                                                                              |.......................................................               |  78%
+label: cast-year-as-fct
+  |                                                                              |........................................................              |  80%
+  ordinary text without R code
+
+  |                                                                              |.........................................................             |  81%
+label: add-elix
+  |                                                                              |..........................................................            |  82%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  84%
+label: add-adhoc
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  86%
+label: add-procs
+  |                                                                              |.............................................................         |  88%
+  ordinary text without R code
+
+  |                                                                              |..............................................................        |  89%
+label: add-volume
+  |                                                                              |...............................................................       |  91%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: add-pd-dates
+  |                                                                              |.................................................................     |  93%
+  ordinary text without R code
+
+  |                                                                              |..................................................................    |  95%
+label: crude-summary
+  |                                                                              |...................................................................   |  96%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-1
+  |                                                                              |..................................................................... |  99%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-2
+
+/usr/local/bin/pandoc +RTS -K512m -RTS build_model_data_treated.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output build_model_data_treated.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f54708f39html --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f12390424html --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f50cc79f8html --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f3b94fbd5html --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f1d65a139html --include-before-body /localscratch/8196067.1.UI/RtmpghecHT/file4542f5dd16ed6html --include-before-body /localscratch/8196067.1.UI/RtmpghecHT/file4542f1fa53ce5html --include-before-body /localscratch/8196067.1.UI/RtmpghecHT/file4542f736e5d6ehtml --include-after-body /localscratch/8196067.1.UI/RtmpghecHT/file4542f3782505dhtml --include-after-body /localscratch/8196067.1.UI/RtmpghecHT/file4542ff67f08fhtml --include-after-body /localscratch/8196067.1.UI/RtmpghecHT/file4542f79b310aahtml --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/rmarkdown-str4542f7e3d8a03.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpghecHT/file4542f135bbb74html 
+  |                                                                              |                                                                      |   0%  |                                                                              |...                                                                   |   4%
+   inline R code fragments
+
+  |                                                                              |.....                                                                 |   8%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |........                                                              |  12%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  15%
+label: pkg-load
+  |                                                                              |.............                                                         |  19%
+  ordinary text without R code
+
+  |                                                                              |................                                                      |  23%
+label: def-models-full
+  |                                                                              |...................                                                   |  27%
+  ordinary text without R code
+
+  |                                                                              |......................                                                |  31%
+label: load-model-data
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |...........................                                           |  38%
+label: tz-tam
+  |                                                                              |..............................                                        |  42%
+  ordinary text without R code
+
+  |                                                                              |................................                                      |  46%
+label: tz-5ari
+  |                                                                              |...................................                                   |  50%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: tam-5ari
+  |                                                                              |........................................                              |  58%
+  ordinary text without R code
+
+  |                                                                              |...........................................                           |  62%
+label: def-fit_xgboost_model
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |................................................                      |  69%
+label: reduced-tz-tam
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |......................................................                |  77%
+label: fit-psm-tz-5ari
+  |                                                                              |.........................................................             |  81%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  85%
+label: fit-psm-tam-5ari
+  |                                                                              |..............................................................        |  88%
+  ordinary text without R code
+
+  |                                                                              |.................................................................     |  92%
+label: save-data
+  |                                                                              |...................................................................   |  96%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS fit_psm.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output fit_psm.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc67e3d0acfhtml --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc67c8ac13chtml --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc677f31607html --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc6762c047html --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc674a2d440html --include-before-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc6e1437cbhtml --include-before-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc6563d94c0html --include-before-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc6147b61efhtml --include-after-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc67d2bd387html --include-after-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc6139f545fhtml --include-after-body /localscratch/8196067.1.UI/RtmpncZISV/file47dc64f35e6d5html --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/rmarkdown-str47dc6d7c6289.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpncZISV/file47dc610905db8html 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   5%
+   inline R code fragments
+
+  |                                                                              |.......                                                               |  10%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |..............                                                        |  20%
+label: pkg-load
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: def-match-cpp
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  40%
+label: def-ps-match
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: def-par-match
+  |                                                                              |......................................                                |  55%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  60%
+label: def-args-list
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: init-cluster
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  80%
+label: get-matches
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: stop-cluster
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS match.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output match.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe38b1381dhtml --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe40e02b63html --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe3b69940chtml --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe71430e1chtml --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe27a72d0html --include-before-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe574cd627html --include-before-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe69b5683ehtml --include-before-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe4ce94560html --include-after-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe2da5e605html --include-after-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe47858d29html --include-after-body /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe41c0a42fhtml --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/rmarkdown-str31dfe309dcbb8.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpcbUUel/file31dfe4a120b0fhtml 
+  |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   5%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |......                                                                |   8%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  11%
+label: pkg-load
+  |                                                                              |.........                                                             |  14%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  16%
+label: unnamed-chunk-1
+  |                                                                              |.............                                                         |  19%
+   inline R code fragments
+
+  |                                                                              |...............                                                       |  22%
+label: unnamed-chunk-2
+  |                                                                              |.................                                                     |  24%
+  ordinary text without R code
+
+  |                                                                              |...................                                                   |  27%
+label: unnamed-chunk-3
+  |                                                                              |.....................                                                 |  30%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: unnamed-chunk-4
+  |                                                                              |.........................                                             |  35%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: unnamed-chunk-5
+  |                                                                              |............................                                          |  41%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: unnamed-chunk-6
+  |                                                                              |................................                                      |  46%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  49%
+label: unnamed-chunk-7
+  |                                                                              |....................................                                  |  51%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: unnamed-chunk-8
+  |                                                                              |........................................                              |  57%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  59%
+label: unnamed-chunk-9
+  |                                                                              |............................................                          |  62%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: unnamed-chunk-10
+  |                                                                              |...............................................                       |  68%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: unnamed-chunk-11
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |.....................................................                 |  76%
+label: unnamed-chunk-12
+  |                                                                              |.......................................................               |  78%
+  ordinary text without R code
+
+  |                                                                              |.........................................................             |  81%
+label: unnamed-chunk-13
+  |                                                                              |...........................................................           |  84%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  86%
+label: unnamed-chunk-14
+  |                                                                              |..............................................................        |  89%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: unnamed-chunk-15
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-16
+  |                                                                              |......................................................................| 100%
+  ordinary text without R code
+
+
+/usr/local/bin/pandoc +RTS -K512m -RTS tz-tam.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tz-tam.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce27b5901chtml --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce111a2c4dhtml --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce6d85d8html --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce286cd273html --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce173103ddhtml --include-before-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ceda88f88html --include-before-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce25673ab5html --include-before-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce7cecedc9html --include-after-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329cecb68d8fhtml --include-after-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ced342b30html --include-after-body /localscratch/8196067.1.UI/Rtmp0cJNA1/file329cebc6fa79html --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/rmarkdown-str329cea90f497.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmp0cJNA1/file329ce24cb3de0html 
+  |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   5%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |......                                                                |   8%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  11%
+label: pkg-load
+  |                                                                              |.........                                                             |  14%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  16%
+label: unnamed-chunk-1
+  |                                                                              |.............                                                         |  19%
+   inline R code fragments
+
+  |                                                                              |...............                                                       |  22%
+label: unnamed-chunk-2
+  |                                                                              |.................                                                     |  24%
+  ordinary text without R code
+
+  |                                                                              |...................                                                   |  27%
+label: unnamed-chunk-3
+  |                                                                              |.....................                                                 |  30%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: unnamed-chunk-4
+  |                                                                              |.........................                                             |  35%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: unnamed-chunk-5
+  |                                                                              |............................                                          |  41%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: unnamed-chunk-6
+  |                                                                              |................................                                      |  46%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  49%
+label: unnamed-chunk-7
+  |                                                                              |....................................                                  |  51%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: unnamed-chunk-8
+  |                                                                              |........................................                              |  57%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  59%
+label: unnamed-chunk-9
+  |                                                                              |............................................                          |  62%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: unnamed-chunk-10
+  |                                                                              |...............................................                       |  68%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: unnamed-chunk-11
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |.....................................................                 |  76%
+label: unnamed-chunk-12
+  |                                                                              |.......................................................               |  78%
+  ordinary text without R code
+
+  |                                                                              |.........................................................             |  81%
+label: unnamed-chunk-13
+  |                                                                              |...........................................................           |  84%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  86%
+label: unnamed-chunk-14
+  |                                                                              |..............................................................        |  89%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: unnamed-chunk-15
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-16
+  |                                                                              |......................................................................| 100%
+  ordinary text without R code
+
+
+/usr/local/bin/pandoc +RTS -K512m -RTS tz-5ari.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tz-5ari.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd46ef6f188html --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd46376daf8html --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd470f38d0html --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd44b95a2d3html --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd41df26716html --include-before-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd44149c6f0html --include-before-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd42a652036html --include-before-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd44c49bfdfhtml --include-after-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd421ad2939html --include-after-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd459c19825html --include-after-body /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd46d829eb3html --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/rmarkdown-str32bd47eebda8b.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpv1aJua/file32bd4247a9bd4html 
+  |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   5%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |......                                                                |   8%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  11%
+label: pkg-load
+  |                                                                              |.........                                                             |  14%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  16%
+label: unnamed-chunk-1
+  |                                                                              |.............                                                         |  19%
+   inline R code fragments
+
+  |                                                                              |...............                                                       |  22%
+label: unnamed-chunk-2
+  |                                                                              |.................                                                     |  24%
+  ordinary text without R code
+
+  |                                                                              |...................                                                   |  27%
+label: unnamed-chunk-3
+  |                                                                              |.....................                                                 |  30%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: unnamed-chunk-4
+  |                                                                              |.........................                                             |  35%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: unnamed-chunk-5
+  |                                                                              |............................                                          |  41%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: unnamed-chunk-6
+  |                                                                              |................................                                      |  46%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  49%
+label: unnamed-chunk-7
+  |                                                                              |....................................                                  |  51%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: unnamed-chunk-8
+  |                                                                              |........................................                              |  57%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  59%
+label: unnamed-chunk-9
+  |                                                                              |............................................                          |  62%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: unnamed-chunk-10
+  |                                                                              |...............................................                       |  68%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: unnamed-chunk-11
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |.....................................................                 |  76%
+label: unnamed-chunk-12
+  |                                                                              |.......................................................               |  78%
+  ordinary text without R code
+
+  |                                                                              |.........................................................             |  81%
+label: unnamed-chunk-13
+  |                                                                              |...........................................................           |  84%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  86%
+label: unnamed-chunk-14
+  |                                                                              |..............................................................        |  89%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: unnamed-chunk-15
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-16
+  |                                                                              |......................................................................| 100%
+  ordinary text without R code
+
+
+/usr/local/bin/pandoc +RTS -K512m -RTS tam-5ari.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tam-5ari.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d3671845ehtml --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d76387dbbhtml --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d11813969html --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d6f2cd105html --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d7848d9fahtml --include-before-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d7a8a128dhtml --include-before-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d3755afe6html --include-before-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d73679e48html --include-after-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d31681914html --include-after-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d7515d94chtml --include-after-body /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d10942d42html --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/rmarkdown-str32d3d5032b3d9.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpS52RKr/file32d3d75d9d492html 
+  |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   4%
+   inline R code fragments
+
+  |                                                                              |.....                                                                 |   7%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |........                                                              |  11%
+   inline R code fragments
+
+  |                                                                              |..........                                                            |  14%
+label: pkg-load
+  |                                                                              |............                                                          |  18%
+  ordinary text without R code
+
+  |                                                                              |...............                                                       |  21%
+label: def-models-full
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |....................                                                  |  29%
+label: load-model-data
+  |                                                                              |......................                                                |  32%
+  ordinary text without R code
+
+  |                                                                              |.........................                                             |  36%
+label: impose-bph-urinary-restriction
+  |                                                                              |............................                                          |  39%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: tz-tam
+  |                                                                              |................................                                      |  46%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: tz-5ari
+  |                                                                              |......................................                                |  54%
+  ordinary text without R code
+
+  |                                                                              |........................................                              |  57%
+label: tam-5ari
+  |                                                                              |..........................................                            |  61%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  64%
+label: def-fit_gam_model
+  |                                                                              |................................................                      |  68%
+  ordinary text without R code
+
+  |                                                                              |..................................................                    |  71%
+label: reduced-tz-tam
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |.......................................................               |  79%
+label: fit-psm-tz-5ari
+  |                                                                              |..........................................................            |  82%
+  ordinary text without R code
+
+  |                                                                              |............................................................          |  86%
+label: fit-psm-tam-5ari
+  |                                                                              |..............................................................        |  89%
+  ordinary text without R code
+
+  |                                                                              |.................................................................     |  93%
+label: save-data
+  |                                                                              |....................................................................  |  96%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS fit_psm.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output fit_psm.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee53f20949ehtml --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee55845cabhtml --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee56496d9a5html --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee514607fb7html --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee56da8d36bhtml --include-before-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee55c40a577html --include-before-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee5723af202html --include-before-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee531132ebchtml --include-after-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee56c4a9600html --include-after-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee53068c6b2html --include-after-body /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee55dc7773dhtml --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/rmarkdown-str32ee524f0495e.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpQh1Jlw/file32ee565345331html 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   5%
+   inline R code fragments
+
+  |                                                                              |.......                                                               |  10%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |..............                                                        |  20%
+label: pkg-load
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: def-match-cpp
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  40%
+label: def-ps-match
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: def-par-match
+  |                                                                              |......................................                                |  55%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  60%
+label: def-args-list
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: init-cluster
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  80%
+label: get-matches
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: stop-cluster
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS match.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output match.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file27445b3b5016html --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file27445347fb45bhtml --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file274454e76704dhtml --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file2744577677154html --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file2744535239de1html --include-before-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file27445577be7e2html --include-before-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file27445c4facc2html --include-before-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file2744573ede25chtml --include-after-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file2744560719716html --include-after-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file274453c894519html --include-after-body /localscratch/8196067.1.UI/Rtmpr0RuDV/file27445639bf35ahtml --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/rmarkdown-str274457c326d7a.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpr0RuDV/file274451e121b96html 
+  |                                                                              |                                                                      |   0%  |                                                                              |......                                                                |   8%
+   inline R code fragments
+
+  |                                                                              |............                                                          |  17%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  33%
+label: pkg-load
+  |                                                                              |.............................                                         |  42%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: gen-outcomes
+  |                                                                              |.........................................                             |  58%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  67%
+label: load-matches
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |..........................................................            |  83%
+label: make-paired-outcomes
+  |                                                                              |................................................................      |  92%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-1
+
+/usr/local/bin/pandoc +RTS -K512m -RTS analysis.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output analysis.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file27690178be2c3html --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file2769081d99d4html --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file27690344063d5html --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file276905c2a35dfhtml --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file276901e91dd12html --include-before-body /localscratch/8196067.1.UI/Rtmpdold0j/file27690b5530c7html --include-before-body /localscratch/8196067.1.UI/Rtmpdold0j/file276902c901b5fhtml --include-before-body /localscratch/8196067.1.UI/Rtmpdold0j/file27690105b9e77html --include-after-body /localscratch/8196067.1.UI/Rtmpdold0j/file2769018b3a3dehtml --include-after-body /localscratch/8196067.1.UI/Rtmpdold0j/file276908e7d7e5html --include-after-body /localscratch/8196067.1.UI/Rtmpdold0j/file276904f1560b8html --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/rmarkdown-str276907d402c2c.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpdold0j/file2769028382858html 
+  |                                                                              |                                                                      |   0%  |                                                                              |...                                                                   |   4%
+   inline R code fragments
+
+  |                                                                              |......                                                                |   8%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |.........                                                             |  12%
+   inline R code fragments
+
+  |                                                                              |............                                                          |  17%
+label: pkg-load
+  |                                                                              |...............                                                       |  21%
+  ordinary text without R code
+
+  |                                                                              |..................                                                    |  25%
+label: def-outpatient
+  |                                                                              |....................                                                  |  29%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  33%
+label: def-inpatient
+  |                                                                              |..........................                                            |  38%
+  ordinary text without R code
+
+  |                                                                              |.............................                                         |  42%
+label: def-fun
+  |                                                                              |................................                                      |  46%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: def-args
+  |                                                                              |......................................                                |  54%
+  ordinary text without R code
+
+  |                                                                              |.........................................                             |  58%
+label: cluster-init
+  |                                                                              |............................................                          |  62%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  67%
+label: cluster-apply
+  |                                                                              |..................................................                    |  71%
+  ordinary text without R code
+
+  |                                                                              |....................................................                  |  75%
+label: cluster-stop
+  |                                                                              |.......................................................               |  79%
+  ordinary text without R code
+
+  |                                                                              |..........................................................            |  83%
+label: list-to-tibble
+  |                                                                              |.............................................................         |  88%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: save
+  |                                                                              |...................................................................   |  96%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: session-info
+
+/usr/local/bin/pandoc +RTS -K512m -RTS find_pd_dates.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output find_pd_dates.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb50aebd2dhtml --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb13c34255html --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb1ba95a9dhtml --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb37d0384ahtml --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb345c904ehtml --include-before-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb1c9c9777html --include-before-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276ebdb82525html --include-before-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276ebabfd051html --include-after-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb50e35377html --include-after-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb40db6a3ahtml --include-after-body /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb2798029dhtml --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/rmarkdown-str276eb58f1a59d.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpw9K2Vc/file276eb20512114html 
+  |                                                                              |                                                                      |   0%  |                                                                              |.                                                                     |   2%
+   inline R code fragments
+
+  |                                                                              |..                                                                    |   3%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |...                                                                   |   5%
+   inline R code fragments
+
+  |                                                                              |.....                                                                 |   6%
+label: pkg-load
+  |                                                                              |......                                                                |   8%
+  ordinary text without R code
+
+  |                                                                              |.......                                                               |  10%
+label: data-load
+  |                                                                              |........                                                              |  11%
+   inline R code fragments
+
+  |                                                                              |.........                                                             |  13%
+label: remove-multi-users
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  16%
+label: breakdown-exclusive-users
+  |                                                                              |............                                                          |  18%
+  ordinary text without R code
+
+  |                                                                              |..............                                                        |  19%
+label: reduce-to-male-users
+  |                                                                              |...............                                                       |  21%
+   inline R code fragments
+
+  |                                                                              |................                                                      |  23%
+label: breakdown-male-users
+  |                                                                              |.................                                                     |  24%
+  ordinary text without R code
+
+  |                                                                              |..................                                                    |  26%
+label: remove-young
+  |                                                                              |...................                                                   |  27%
+   inline R code fragments
+
+  |                                                                              |....................                                                  |  29%
+label: breakdown-40p-users
+  |                                                                              |.....................                                                 |  31%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: add-enrollment
+  |                                                                              |........................                                              |  34%
+  ordinary text without R code
+
+  |                                                                              |.........................                                             |  35%
+label: filter-to-enrollment
+  |                                                                              |..........................                                            |  37%
+  ordinary text without R code
+
+  |                                                                              |...........................                                           |  39%
+label: remove-dups
+  |                                                                              |............................                                          |  40%
+   inline R code fragments
+
+  |                                                                              |.............................                                         |  42%
+label: breakdown-enrolled-users
+  |                                                                              |..............................                                        |  44%
+  ordinary text without R code
+
+  |                                                                              |................................                                      |  45%
+label: impose-lookback
+  |                                                                              |.................................                                     |  47%
+   inline R code fragments
+
+  |                                                                              |..................................                                    |  48%
+label: breakdown-with-lookback-users
+  |                                                                              |...................................                                   |  50%
+  ordinary text without R code
+
+  |                                                                              |....................................                                  |  52%
+label: impose-follow-up
+  |                                                                              |.....................................                                 |  53%
+   inline R code fragments
+
+  |                                                                              |......................................                                |  55%
+label: breakdown-with-followup-users
+  |                                                                              |........................................                              |  56%
+  ordinary text without R code
+
+  |                                                                              |.........................................                             |  58%
+label: load-pd-dates
+  |                                                                              |..........................................                            |  60%
+  ordinary text without R code
+
+  |                                                                              |...........................................                           |  61%
+label: add-pd
+  |                                                                              |............................................                          |  63%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: summary-pd-by-drug
+  |                                                                              |..............................................                        |  66%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  68%
+label: unnamed-chunk-1
+  |                                                                              |.................................................                     |  69%
+   inline R code fragments
+
+  |                                                                              |..................................................                    |  71%
+label: breakdown-pd-free-users
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |....................................................                  |  74%
+label: load-rx-events
+  |                                                                              |.....................................................                 |  76%
+  ordinary text without R code
+
+  |                                                                              |......................................................                |  77%
+label: restrict-rx-to-cohort
+  |                                                                              |.......................................................               |  79%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  81%
+label: count-rx
+  |                                                                              |..........................................................            |  82%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  84%
+label: filter-without-pd
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  87%
+label: unnamed-chunk-2
+  |                                                                              |..............................................................        |  89%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: tibble-preview
+  |                                                                              |................................................................      |  92%
+  ordinary text without R code
+
+  |                                                                              |.................................................................     |  94%
+label: tibble-summary
+  |                                                                              |...................................................................   |  95%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: save
+  |                                                                              |..................................................................... |  98%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-3
+
+/usr/local/bin/pandoc +RTS -K512m -RTS reduce_treated_enrollments.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output reduce_treated_enrollments.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804c5a1131e7html --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804c6ec72994html --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804cfe1c94ahtml --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804c53985da6html --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804c2b03bcf2html --include-before-body /localscratch/8196067.1.UI/RtmppET23M/file2804c2944c8ffhtml --include-before-body /localscratch/8196067.1.UI/RtmppET23M/file2804c2be3e8d9html --include-before-body /localscratch/8196067.1.UI/RtmppET23M/file2804c1b447791html --include-after-body /localscratch/8196067.1.UI/RtmppET23M/file2804c679c3880html --include-after-body /localscratch/8196067.1.UI/RtmppET23M/file2804c2ba61094html --include-after-body /localscratch/8196067.1.UI/RtmppET23M/file2804c529c3912html --include-in-header /localscratch/8196067.1.UI/RtmppET23M/rmarkdown-str2804c65bdc0b1.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmppET23M/file2804c5c25a0b2html 
+  |                                                                              |                                                                      |   0%  |                                                                              |.                                                                     |   1%
+   inline R code fragments
+
+  |                                                                              |..                                                                    |   3%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |...                                                                   |   4%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   5%
+label: pkg-load
+  |                                                                              |.....                                                                 |   7%
+  ordinary text without R code
+
+  |                                                                              |......                                                                |   8%
+label: data-load
+  |                                                                              |.......                                                               |   9%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  11%
+label: def-outpatient
+  |                                                                              |.........                                                             |  12%
+  ordinary text without R code
+
+  |                                                                              |.........                                                             |  14%
+label: def-inpatient
+  |                                                                              |..........                                                            |  15%
+  ordinary text without R code
+
+  |                                                                              |...........                                                           |  16%
+label: def-reduce-dx
+  |                                                                              |............                                                          |  18%
+  ordinary text without R code
+
+  |                                                                              |.............                                                         |  19%
+label: def-args-list
+  |                                                                              |..............                                                        |  20%
+  ordinary text without R code
+
+  |                                                                              |...............                                                       |  22%
+label: start-cluster
+  |                                                                              |................                                                      |  23%
+  ordinary text without R code
+
+  |                                                                              |.................                                                     |  24%
+label: parLapply-find-dx
+  |                                                                              |..................                                                    |  26%
+  ordinary text without R code
+
+  |                                                                              |...................                                                   |  27%
+label: stop-cluster
+  |                                                                              |....................                                                  |  28%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: load-utilization-data
+  |                                                                              |......................                                                |  31%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  32%
+label: normalize-inpatient-volume
+  |                                                                              |........................                                              |  34%
+  ordinary text without R code
+
+  |                                                                              |.........................                                             |  35%
+label: normalize-outpatient-volume
+  |                                                                              |..........................                                            |  36%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: normalize-outpatient-ndx
+  |                                                                              |...........................                                           |  39%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  41%
+label: normalize-outpatient-dx
+  |                                                                              |.............................                                         |  42%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  43%
+label: restrict-dx-to-lookback
+  |                                                                              |...............................                                       |  45%
+  ordinary text without R code
+
+  |                                                                              |................................                                      |  46%
+label: split-dx-by-icd
+  |                                                                              |.................................                                     |  47%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  49%
+label: elix-compute
+  |                                                                              |...................................                                   |  50%
+  ordinary text without R code
+
+  |                                                                              |....................................                                  |  51%
+label: elix-stack
+  |                                                                              |.....................................                                 |  53%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: elix-rotate
+  |                                                                              |.......................................                               |  55%
+  ordinary text without R code
+
+  |                                                                              |........................................                              |  57%
+label: def-ad-hoc
+  |                                                                              |.........................................                             |  58%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  59%
+label: compute-adhoc-flags
+  |                                                                              |...........................................                           |  61%
+  ordinary text without R code
+
+  |                                                                              |............................................                          |  62%
+label: adhoc-stack-and-rotate
+  |                                                                              |............................................                          |  64%
+  ordinary text without R code
+
+  |                                                                              |.............................................                         |  65%
+label: process-psa
+  |                                                                              |..............................................                        |  66%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  68%
+label: process-uroflow
+  |                                                                              |................................................                      |  69%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: process-cystometrograms
+  |                                                                              |..................................................                    |  72%
+  ordinary text without R code
+
+  |                                                                              |...................................................                   |  73%
+label: init-model-data
+  |                                                                              |....................................................                  |  74%
+  ordinary text without R code
+
+  |                                                                              |.....................................................                 |  76%
+label: add-age
+  |                                                                              |......................................................                |  77%
+  ordinary text without R code
+
+  |                                                                              |.......................................................               |  78%
+label: cast-year-as-fct
+  |                                                                              |........................................................              |  80%
+  ordinary text without R code
+
+  |                                                                              |.........................................................             |  81%
+label: add-elix
+  |                                                                              |..........................................................            |  82%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  84%
+label: add-adhoc
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  86%
+label: add-procs
+  |                                                                              |.............................................................         |  88%
+  ordinary text without R code
+
+  |                                                                              |..............................................................        |  89%
+label: add-volume
+  |                                                                              |...............................................................       |  91%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  92%
+label: add-pd-dates
+  |                                                                              |.................................................................     |  93%
+  ordinary text without R code
+
+  |                                                                              |..................................................................    |  95%
+label: crude-summary
+  |                                                                              |...................................................................   |  96%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-1
+  |                                                                              |..................................................................... |  99%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-2
+
+/usr/local/bin/pandoc +RTS -K512m -RTS build_model_data_treated.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output build_model_data_treated.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a33f0a0f3html --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a33e8d50b3html --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a3469c47d1html --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a360ea74c2html --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a352f4c7d1html --include-before-body /localscratch/8196067.1.UI/RtmpennirJ/file284a33b455163html --include-before-body /localscratch/8196067.1.UI/RtmpennirJ/file284a3577ab4aahtml --include-before-body /localscratch/8196067.1.UI/RtmpennirJ/file284a37efa205ahtml --include-after-body /localscratch/8196067.1.UI/RtmpennirJ/file284a367ac64afhtml --include-after-body /localscratch/8196067.1.UI/RtmpennirJ/file284a32ccb271html --include-after-body /localscratch/8196067.1.UI/RtmpennirJ/file284a3610fcd7dhtml --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/rmarkdown-str284a310ab41cc.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpennirJ/file284a37e6cf678html 
+  |                                                                              |                                                                      |   0%  |                                                                              |...                                                                   |   4%
+   inline R code fragments
+
+  |                                                                              |.....                                                                 |   8%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |........                                                              |  12%
+   inline R code fragments
+
+  |                                                                              |...........                                                           |  15%
+label: pkg-load
+  |                                                                              |.............                                                         |  19%
+  ordinary text without R code
+
+  |                                                                              |................                                                      |  23%
+label: def-models-full
+  |                                                                              |...................                                                   |  27%
+  ordinary text without R code
+
+  |                                                                              |......................                                                |  31%
+label: load-model-data
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |...........................                                           |  38%
+label: tz-tam
+  |                                                                              |..............................                                        |  42%
+  ordinary text without R code
+
+  |                                                                              |................................                                      |  46%
+label: tz-5ari
+  |                                                                              |...................................                                   |  50%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  54%
+label: tam-5ari
+  |                                                                              |........................................                              |  58%
+  ordinary text without R code
+
+  |                                                                              |...........................................                           |  62%
+label: def-fit_gam_model
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |................................................                      |  69%
+label: reduced-tz-tam
+  |                                                                              |...................................................                   |  73%
+  ordinary text without R code
+
+  |                                                                              |......................................................                |  77%
+label: fit-psm-tz-5ari
+  |                                                                              |.........................................................             |  81%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  85%
+label: fit-psm-tam-5ari
+  |                                                                              |..............................................................        |  88%
+  ordinary text without R code
+
+  |                                                                              |.................................................................     |  92%
+label: save-data
+  |                                                                              |...................................................................   |  96%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS fit_psm.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output fit_psm.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9903858599ahtml --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9904359695html --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a99010a26785html --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9906cc7b76ahtml --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a990219b3c04html --include-before-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9905826806fhtml --include-before-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a990332c52efhtml --include-before-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a990136ddc97html --include-after-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9905283befhtml --include-after-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9901a492dbfhtml --include-after-body /localscratch/8196067.1.UI/RtmpHZHBwy/file2a9908f30f4chtml --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/rmarkdown-str2a99082c7e9c.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpHZHBwy/file2a99062b58408html 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   5%
+   inline R code fragments
+
+  |                                                                              |.......                                                               |  10%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |..............                                                        |  20%
+label: pkg-load
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: def-match-cpp
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  40%
+label: def-ps-match
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: def-par-match
+  |                                                                              |......................................                                |  55%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  60%
+label: def-args-list
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: init-cluster
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  80%
+label: get-matches
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: stop-cluster
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS match.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output match.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e713d7240html --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e5e852fe4html --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e54439d45html --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e37e96e1ahtml --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e124ac9ffhtml --include-before-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e46e562abhtml --include-before-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e622b8e8dhtml --include-before-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e194787a7html --include-after-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e5744e698html --include-after-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e2f216141html --include-after-body /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1e4de7c294html --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/rmarkdown-str1dd1e2560bf1e.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmp0Q3uI2/file1dd1ecde222ehtml 
+  |                                                                              |                                                                      |   0%  |                                                                              |......                                                                |   8%
+   inline R code fragments
+
+  |                                                                              |............                                                          |  17%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  33%
+label: pkg-load
+  |                                                                              |.............................                                         |  42%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: gen-outcomes
+  |                                                                              |.........................................                             |  58%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  67%
+label: load-matches
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |..........................................................            |  83%
+label: make-paired-outcomes
+  |                                                                              |................................................................      |  92%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-1
+
+/usr/local/bin/pandoc +RTS -K512m -RTS analysis.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output analysis.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c2d72561bhtml --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c4d3f1bcahtml --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c129f8658html --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c6bc1049bhtml --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c5439c93dhtml --include-before-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c714b2f7bhtml --include-before-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c1dbf5db9html --include-before-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c46f98827html --include-after-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c1a9a77fchtml --include-after-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c3e9daff0html --include-after-body /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c8f8098html --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/rmarkdown-str1e81c30d5c731.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpw0X6wO/file1e81c65af1d1bhtml 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   6%
+   inline R code fragments
+
+  |                                                                              |.........                                                             |  12%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |.............                                                         |  19%
+  ordinary text without R code
+
+  |                                                                              |..................                                                    |  25%
+label: pkg-load
+  |                                                                              |......................                                                |  31%
+  ordinary text without R code
+
+  |                                                                              |..........................                                            |  38%
+label: gen-outcomes
+  |                                                                              |...............................                                       |  44%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: load-matches
+  |                                                                              |.......................................                               |  56%
+  ordinary text without R code
+
+  |                                                                              |............................................                          |  62%
+label: make-paired-outcomes
+  |                                                                              |................................................                      |  69%
+  ordinary text without R code
+
+  |                                                                              |....................................................                  |  75%
+label: unnamed-chunk-1
+  |                                                                              |.........................................................             |  81%
+  ordinary text without R code
+
+  |                                                                              |.............................................................         |  88%
+label: unnamed-chunk-2
+  |                                                                              |..................................................................    |  94%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-3
+
+/usr/local/bin/pandoc +RTS -K512m -RTS analysis.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output analysis.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e920611de567html --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e92050e6d4fbhtml --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e9201b625e94html --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e92049916a6dhtml --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e920562336cchtml --include-before-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e9205159710dhtml --include-before-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e92031804409html --include-before-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e92039c778c6html --include-after-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e920c294cb9html --include-after-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e92032146b73html --include-after-body /localscratch/8196067.1.UI/RtmprRhCIq/file1e920538a922html --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/rmarkdown-str1e920309d2252.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmprRhCIq/file1e920471d3aachtml 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   5%
+   inline R code fragments
+
+  |                                                                              |.......                                                               |  10%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |..............                                                        |  20%
+label: pkg-load
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: def-models-full
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  40%
+label: load-model-data
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: tz-tam
+  |                                                                              |......................................                                |  55%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  60%
+label: tz-5ari
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: tam-5ari
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  80%
+label: def-fit_gam_model
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: unnamed-chunk-1
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS fit_psm.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output fit_psm.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e990792f9efchtml --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e9907cf8a16bhtml --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99033fe12b4html --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99072d8443html --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99030d9eb05html --include-before-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e9904b547d89html --include-before-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e9905c329011html --include-before-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e9904451a6e8html --include-after-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99013b06dbfhtml --include-after-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99071ee4180html --include-after-body /localscratch/8196067.1.UI/Rtmpc77G6U/file1e99027007d00html --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/rmarkdown-str1e990264ded3f.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpc77G6U/file1e9907405bac6html 
+  |                                                                              |                                                                      |   0%  |                                                                              |....                                                                  |   5%
+   inline R code fragments
+
+  |                                                                              |.......                                                               |  10%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..........                                                            |  15%
+   inline R code fragments
+
+  |                                                                              |..............                                                        |  20%
+label: pkg-load
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: def-match-cpp
+  |                                                                              |........................                                              |  35%
+  ordinary text without R code
+
+  |                                                                              |............................                                          |  40%
+label: def-ps-match
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: def-par-match
+  |                                                                              |......................................                                |  55%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  60%
+label: def-args-list
+  |                                                                              |..............................................                        |  65%
+  ordinary text without R code
+
+  |                                                                              |.................................................                     |  70%
+label: init-cluster
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |........................................................              |  80%
+label: get-matches
+  |                                                                              |............................................................          |  85%
+  ordinary text without R code
+
+  |                                                                              |...............................................................       |  90%
+label: stop-cluster
+  |                                                                              |..................................................................    |  95%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: sysinfo
+
+/usr/local/bin/pandoc +RTS -K512m -RTS match.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output match.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd11417cb9html --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd5c86baa7html --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd58ba404html --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd4d721fchtml --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd34f8c736html --include-before-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd683d7256html --include-before-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd2f17b035html --include-before-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd7e6f5287html --include-after-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fdc4b46afhtml --include-after-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd47608f7bhtml --include-after-body /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd35a4bb42html --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/rmarkdown-str3b1fd4720f3ee.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/RtmpJoDTm9/file3b1fd7b851774html 
+  |                                                                              |                                                                      |   0%  |                                                                              |......                                                                |   8%
+   inline R code fragments
+
+  |                                                                              |............                                                          |  17%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |..................                                                    |  25%
+  ordinary text without R code
+
+  |                                                                              |.......................                                               |  33%
+label: pkg-load
+  |                                                                              |.............................                                         |  42%
+  ordinary text without R code
+
+  |                                                                              |...................................                                   |  50%
+label: gen-outcomes
+  |                                                                              |.........................................                             |  58%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  67%
+label: unnamed-chunk-1
+  |                                                                              |....................................................                  |  75%
+  ordinary text without R code
+
+  |                                                                              |..........................................................            |  83%
+label: unnamed-chunk-2
+  |                                                                              |................................................................      |  92%
+  ordinary text without R code
+
+  |                                                                              |......................................................................| 100%
+label: unnamed-chunk-3
+
+/usr/local/bin/pandoc +RTS -K512m -RTS analysis.utf8.md --to html5 --from markdown+autolink_bare_uris+tex_math_single_backslash --output analysis.html --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /usr/local/lib/R/site-library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --table-of-contents --toc-depth 3 --variable toc-float=1 --highlight-style /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/arrow.theme --template /Users/jsimmeri/R/x86_64-pc-linux-gnu-library/4.0/distill/rmarkdown/templates/distill_article/resources/default.html '--metadata=link-citations:true' --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a23d1bb4dhtml --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a5d0d2abehtml --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a60428db6html --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a28b353cfhtml --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a28bc4f04html --include-before-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a24666c0chtml --include-before-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a7e1b6902html --include-before-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a1ee43410html --include-after-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a7046484html --include-after-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a38f64b8bhtml --include-after-body /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a5a5c62e5html --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/rmarkdown-str3bf4a667db693.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /localscratch/8196067.1.UI/Rtmpoa0QvE/file3bf4a284e0ee8html 

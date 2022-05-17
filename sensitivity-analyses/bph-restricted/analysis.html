@@ -85,10 +85,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Generate Propensity Score Matches</title>
+  <title>Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction</title>
 
-  <meta property="description" itemprop="description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
 
 
   <!--  https://schema.org/Article -->
@@ -97,23 +95,19 @@ matches for the cohort of interest." />
   <meta name="article:author" content="Jacob Simmering, PhD" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Generate Propensity Score Matches" />
+  <meta property="og:title" content="Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Generate Propensity Score Matches" />
-  <meta property="twitter:description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
+  <meta property="twitter:title" content="Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction" />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Generate Propensity Score Matches"]},{"type":"character","attributes":{},"value":["Use the matching candidate data from `fit_psm.Rmd` to find propensity score\nmatches for the cohort of interest.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1457,7 +1451,7 @@ matches for the cohort of interest." />
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Generate Propensity Score Matches","description":"Use the matching candidate data from `fit_psm.Rmd` to find propensity score\nmatches for the cohort of interest.","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
+{"title":"Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1467,10 +1461,10 @@ matches for the cohort of interest." />
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Generate Propensity Score Matches</h1>
+<h1>Effect of Requiring Diagnosis/Procedure of BPH or Urinary Dysfunction</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Use the matching candidate data from <code>fit_psm.Rmd</code> to find propensity score matches for the cohort of interest.</p></p>
+
 </div>
 
 <div class="d-byline">
@@ -1480,363 +1474,134 @@ matches for the cohort of interest." />
 </div>
 
 <div class="d-article">
-<div class="d-contents d-contents-float">
-<nav class="l-text toc figcaption" id="TOC">
-<h3>Contents</h3>
-<ul>
-<li><a href="#overview-of-matching-approach">Overview of Matching Approach</a></li>
-<li><a href="#parallelization">Parallelization</a>
-<ul>
-<li><a href="#wrapper">Wrapper</a></li>
-<li><a href="#define-cluster">Define Cluster</a></li>
-<li><a href="#generate-matches">Generate Matches</a></li>
-</ul></li>
-<li><a href="#session-info">Session Info</a></li>
-</ul>
-</nav>
-</div>
-<p>This file was compiled on 2022-04-27 17:24:06 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rcpp.org">Rcpp</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kforner/rcpp_progress">RcppProgress</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<h2 id="overview-of-matching-approach">Overview of Matching Approach</h2>
-<p>Now that I have estimated propensity scores, I need to generate the matches. I am impatient (recurring theme) and want to use parallel evaluation with <code>parLapply()</code> to speed this up. While each individual matching job is single threaded, there is no reason I cannot run multiple threads at the same time for the different jobs.</p>
-<p>First, I load the function included in <code>match.cpp</code>. This simply loops over the treated candidates and finds the nearest reference candidate with similar duration of follow-up (+/- 90 days). If the difference in the log odds is less than 20% of the standard deviation of the pooled log odds, we keep this pairing. This is done in C++ as opposed to R just because it is way faster.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">sourceCpp</a></span><span class="op">(</span><span class="st">&quot;~/projects/tz-5ari-final/match.cpp&quot;</span><span class="op">)</span>
-</code></pre>
-</div>
-</div>
-<p>I then define an R function <code>ps_match()</code> that does the matching for us. We pass the function values for:</p>
-<ol type="1">
-<li><code>treatment</code> a string indicating the treated cohort (must be one of <code>tz</code>, <code>tam</code> or <code>5ari</code>)</li>
-<li><code>control</code> a string indicating the name of the control cohort (must be one of <code>tam</code>, <code>5ari</code>)</li>
-<li><code>seed</code> the seed to set the PRNG to in the cluster (we shuffle the data to handle tie breaking)</li>
-</ol>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ps_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">log_path</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;~/matching_logs/{treatment}_{control}.txt&quot;</span><span class="op">)</span>
-
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span>
-  <span class="op">}</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Starting matching for {treatment} to {control} using seed = {seed}\n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}.rds&quot;</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
-  <span class="co"># shuffle since we will take the lowest index row in the event of a tie</span>
-  <span class="co"># shuffling the data means that the lowest index row will be = to selecting</span>
-  <span class="co"># at random from all ties (but much faster)</span>
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="va">candidates</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">treatment</span>, <span class="va">follow_up_time</span>, <span class="va">ptx</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">sample_frac</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-
-  <span class="va">cases</span> <span class="op">&lt;-</span> <span class="va">candidates</span><span class="op">[</span><span class="va">candidates</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span>
-  <span class="va">controls</span> <span class="op">&lt;-</span> <span class="va">candidates</span><span class="op">[</span><span class="va">candidates</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="op">]</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Tx = {nrow(cases)} | Ref = {nrow(controls)}\n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  
-  <span class="co"># we want to do our matching on the log odds, so convert from prob tx to</span>
-  <span class="co"># the log odds of tx</span>
-  <span class="va">case_ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">cases</span><span class="op">$</span><span class="va">ptx</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">cases</span><span class="op">$</span><span class="va">ptx</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">case_fu</span> <span class="op">&lt;-</span> <span class="va">cases</span><span class="op">$</span><span class="va">follow_up_time</span>
-  <span class="va">control_ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">controls</span><span class="op">$</span><span class="va">ptx</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">controls</span><span class="op">$</span><span class="va">ptx</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">control_fu</span> <span class="op">&lt;-</span> <span class="va">controls</span><span class="op">$</span><span class="va">follow_up_time</span>
-
-  <span class="va">caliper_std</span> <span class="op">&lt;-</span> <span class="fl">0.2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">case_ps</span>, <span class="va">control_ps</span><span class="op">)</span><span class="op">)</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matching Started \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="va">pairs</span> <span class="op">&lt;-</span> <span class="fu">matchCpp</span><span class="op">(</span><span class="va">case_ps</span>, <span class="va">case_fu</span>, <span class="va">control_ps</span>, <span class="va">control_fu</span>, <span class="va">caliper_std</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matching Complete \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="co"># replace failure to match code (-1) with NA</span>
-  <span class="va">pairs</span><span class="op">[</span><span class="va">pairs</span> <span class="op">==</span> <span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
-  
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>
-    case_id <span class="op">=</span> <span class="va">cases</span><span class="op">$</span><span class="va">enrolid</span>,
-    control_id <span class="op">=</span> <span class="va">controls</span><span class="op">$</span><span class="va">enrolid</span><span class="op">[</span><span class="va">pairs</span><span class="op">]</span>,
-    pair_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-  
-  <span class="co"># remove failure to match</span>
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="va">matches</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">case_id</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">control_id</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">pct_matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">matches</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matched {nrow(matches)} ({pct_matched}%) \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="va">matches</span> <span class="op">%&gt;%</span>
-    <span class="fu">gather</span><span class="op">(</span><span class="va">status</span>, <span class="va">enrolid</span>, <span class="op">-</span><span class="va">pair_id</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">status</span> <span class="op">==</span> <span class="st">&quot;case_id&quot;</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">treatment</span>, <span class="va">pair_id</span><span class="op">)</span>
-  
-  <span class="fu">write_rds</span><span class="op">(</span>
-    <span class="va">matches</span>,
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}.rds&quot;</span><span class="op">)</span>
-  <span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Complete \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.info.html">Sys.info</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="st">&quot;sysname&quot;</span><span class="op">]</span> <span class="op">==</span> <span class="st">&quot;Darwin&quot;</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">root_dir</span> <span class="op">&lt;-</span> <span class="st">&quot;/Volumes/lss_jsimmeri_backup/data/tz-5ari-final&quot;</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="va">root_dir</span> <span class="op">&lt;-</span> <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final&quot;</span>
 <span class="op">}</span>
-</code></pre>
-</div>
-</div>
-<h2 id="parallelization">Parallelization</h2>
-<h3 id="wrapper">Wrapper</h3>
-<p>This function needs a wrapper to embed all the arguments we want to pass to it in a single list:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">par_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">args</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">treatment</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-  <span class="va">control</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
-  <span class="va">seed</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>
-  <span class="fu">ps_match</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre>
-</div>
-</div>
-<p>And the list we want to iterate over</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">model_data</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{root_dir}/treated_model_data.rds&quot;</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">args_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="op">)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="define-cluster">Define Cluster</h3>
-<p>Start the cluster and initalize it with the required functions and packages:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">cl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">args_list</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     
-
-[[2]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     
-
-[[3]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rcpp.org">Rcpp</a></span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     
-
-[[2]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     
-
-[[3]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kforner/rcpp_progress">RcppProgress</a></span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        
-
-[[2]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        
-
-[[3]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">sourceCpp</a></span><span class="op">(</span><span class="st">&quot;~/projects/tz-5ari-final/match.cpp&quot;</span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
-[[1]]$functions
-[1] &quot;matchCpp&quot;
-
-[[1]]$modules
-character(0)
-
-[[1]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[1]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpP6Hq28/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5824d5a4e5&quot;
-
-
-[[2]]
-[[2]]$functions
-[1] &quot;matchCpp&quot;
-
-[[2]]$modules
-character(0)
-
-[[2]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[2]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmppDu3ag/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e592e1b27f2&quot;
-
-
-[[3]]
-[[3]]$functions
-[1] &quot;matchCpp&quot;
-
-[[3]]$modules
-character(0)
-
-[[3]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[3]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpDio1al/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5a427aeaee&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterExport</a></span><span class="op">(</span><span class="va">cl</span>, <span class="st">&quot;ps_match&quot;</span><span class="op">)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="generate-matches">Generate Matches</h3>
-<p>Then do that <code>parLapply()</code> magic:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">parLapply</a></span><span class="op">(</span>
-  <span class="va">cl</span>,
-  <span class="va">args_list</span>,
-  <span class="va">par_match</span>
-<span class="op">)</span>
+<span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="va">model_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">drug</span>, <span class="va">develops_pd</span>, <span class="va">survival_time</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">stopCluster</a></span><span class="op">(</span><span class="va">cl</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">tz_tam_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_tam_iss1.rds&quot;</span><span class="op">)</span>
+<span class="va">tz_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tz_5ari_iss1.rds&quot;</span><span class="op">)</span>
+<span class="va">tam_5ari_matches</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/tam_5ari_iss1.rds&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<h2 id="session-info">Session Info</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">outcomes_tz_tam</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tz_tam_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
+<span class="va">outcomes_tz_5ari</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tz_5ari_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
+<span class="va">outcomes_tam_5ari</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">outcomes</span>, <span class="va">tam_5ari_matches</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;enrolid&quot;</span><span class="op">)</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>R version 4.0.4 (2021-02-15)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.04 LTS
-
-Matrix products: default
-BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so
-
-locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-
-attached base packages:
-[1] parallel  stats     graphics  grDevices utils     datasets 
-[7] methods   base     
-
-other attached packages:
- [1] RcppProgress_0.4.2 Rcpp_1.0.6         forcats_0.5.1     
- [4] stringr_1.4.0      dplyr_1.0.4        purrr_0.3.4       
- [7] readr_1.4.0        tidyr_1.1.2        tibble_3.0.6      
-[10] ggplot2_3.3.3      tidyverse_1.3.0   
-
-loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0  xfun_0.21         haven_2.3.1      
- [4] colorspace_2.0-0  vctrs_0.3.6       generics_0.1.0   
- [7] htmltools_0.5.1.1 yaml_2.2.1        rlang_0.4.10     
-[10] pillar_1.4.7      withr_2.4.1       glue_1.4.2       
-[13] DBI_1.1.1         dbplyr_2.1.0      modelr_0.1.8     
-[16] readxl_1.3.1      lifecycle_1.0.0   munsell_0.5.0    
-[19] gtable_0.3.0      cellranger_1.1.0  rvest_0.3.6      
-[22] evaluate_0.14     knitr_1.31        ps_1.5.0         
-[25] fansi_0.4.2       broom_0.7.4       backports_1.2.1  
-[28] scales_1.1.1      jsonlite_1.7.2    fs_1.5.0         
-[31] distill_1.2       hms_1.0.0         digest_0.6.27    
-[34] stringi_1.5.3     grid_4.0.4        cli_2.3.0        
-[37] tools_4.0.4       magrittr_2.0.1    crayon_1.4.1     
-[40] pkgconfig_2.0.3   downlit_0.2.1     ellipsis_0.3.1   
-[43] xml2_1.3.2        reprex_1.0.0      lubridate_1.7.9.2
-[46] assertthat_0.2.1  rmarkdown_2.6     httr_1.4.2       
-[49] rstudioapi_0.13   R6_2.5.0          compiler_4.0.4   </code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
+      data <span class="op">=</span> <span class="va">outcomes_tz_tam</span>, 
+      cluster <span class="op">=</span> <span class="va">pair_id</span>,
+      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<pre><code>Call:
+coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_tam, 
+    robust = TRUE, cluster = pair_id)
+
+  n= 88046, number of events= 793 
+
+                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
+drugtz/dz/az -0.17628   0.83838  0.07129   0.07126 -2.474   0.0134 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+drugtz/dz/az    0.8384      1.193    0.7291    0.9641
+
+Concordance= 0.523  (se = 0.01 )
+Likelihood ratio test= 6.14  on 1 df,   p=0.01
+Wald test            = 6.12  on 1 df,   p=0.01
+Score (logrank) test = 6.13  on 1 df,   p=0.01,   Robust = 6.13  p=0.01
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
+      data <span class="op">=</span> <span class="va">outcomes_tz_5ari</span>, 
+      cluster <span class="op">=</span> <span class="va">pair_id</span>,
+      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<pre><code>Call:
+coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tz_5ari, 
+    robust = TRUE, cluster = pair_id)
+
+  n= 56570, number of events= 578 
+
+                 coef exp(coef) se(coef) robust se      z Pr(&gt;|z|)  
+drugtz/dz/az -0.19444   0.82330  0.08358   0.08351 -2.328   0.0199 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+drugtz/dz/az    0.8233      1.215     0.699    0.9697
+
+Concordance= 0.536  (se = 0.012 )
+Likelihood ratio test= 5.44  on 1 df,   p=0.02
+Wald test            = 5.42  on 1 df,   p=0.02
+Score (logrank) test = 5.43  on 1 df,   p=0.02,   Robust = 5.44  p=0.02
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">survival_time</span>, <span class="va">develops_pd</span><span class="op">)</span> <span class="op">~</span> <span class="va">drug</span>, 
+      data <span class="op">=</span> <span class="va">outcomes_tam_5ari</span>, 
+      cluster <span class="op">=</span> <span class="va">pair_id</span>,
+      robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<pre><code>Call:
+coxph(formula = Surv(survival_time, develops_pd) ~ drug, data = outcomes_tam_5ari, 
+    robust = TRUE, cluster = pair_id)
+
+  n= 73036, number of events= 829 
+
+                    coef exp(coef)  se(coef) robust se      z
+drugtamsulosin -0.006754  0.993268  0.069464  0.069521 -0.097
+               Pr(&gt;|z|)
+drugtamsulosin    0.923
+
+               exp(coef) exp(-coef) lower .95 upper .95
+drugtamsulosin    0.9933      1.007    0.8667     1.138
+
+Concordance= 0.507  (se = 0.01 )
+Likelihood ratio test= 0.01  on 1 df,   p=0.9
+Wald test            = 0.01  on 1 df,   p=0.9
+Score (logrank) test = 0.01  on 1 df,   p=0.9,   Robust = 0.01  p=0.9
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).</code></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

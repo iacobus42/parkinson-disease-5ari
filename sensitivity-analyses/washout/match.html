@@ -1495,7 +1495,7 @@ matches for the cohort of interest." />
 </ul>
 </nav>
 </div>
-<p>This file was compiled on 2022-04-27 17:24:06 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
+<p>This file was compiled on 2022-04-27 18:32:47 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
@@ -1522,8 +1522,8 @@ matches for the cohort of interest." />
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ps_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">log_path</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;~/matching_logs/{treatment}_{control}.txt&quot;</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ps_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span>, <span class="va">i</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">log_path</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;~/matching_logs/{treatment}_{control}_{i}.txt&quot;</span><span class="op">)</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span>
@@ -1536,7 +1536,7 @@ matches for the cohort of interest." />
     sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
   <span class="op">)</span>
 
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}.rds&quot;</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}_{i}.rds&quot;</span><span class="op">)</span><span class="op">)</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
   <span class="co"># shuffle since we will take the lowest index row in the event of a tie</span>
@@ -1608,7 +1608,7 @@ matches for the cohort of interest." />
   
   <span class="fu">write_rds</span><span class="op">(</span>
     <span class="va">matches</span>,
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}.rds&quot;</span><span class="op">)</span>
+    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}_{i}.rds&quot;</span><span class="op">)</span>
   <span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
     <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Complete \n&quot;</span><span class="op">)</span>, 
@@ -1630,7 +1630,8 @@ matches for the cohort of interest." />
   <span class="va">treatment</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="va">control</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
   <span class="va">seed</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>
-  <span class="fu">ps_match</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span>
+  <span class="va">i</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span>
+  <span class="fu">ps_match</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span>, <span class="va">i</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
 <span class="op">}</span>
 </code></pre>
@@ -1639,12 +1640,28 @@ matches for the cohort of interest." />
 <p>And the list we want to iterate over</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">3</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">9894392</span><span class="op">)</span>
+<span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">18</span><span class="op">)</span>
 
 <span class="va">args_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,  <span class="fl">0</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,  <span class="fl">0</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,  <span class="fl">0</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span>,  <span class="fl">1</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span>,  <span class="fl">1</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span>,  <span class="fl">1</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span>,  <span class="fl">2</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">8</span><span class="op">]</span>,  <span class="fl">2</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">9</span><span class="op">]</span>,  <span class="fl">2</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">11</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">12</span><span class="op">]</span>, <span class="fl">3</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">13</span><span class="op">]</span>, <span class="fl">4</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">14</span><span class="op">]</span>, <span class="fl">4</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">15</span><span class="op">]</span>, <span class="fl">4</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>,   <span class="va">seeds</span><span class="op">[</span><span class="fl">16</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>,  <span class="va">seeds</span><span class="op">[</span><span class="fl">17</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">18</span><span class="op">]</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="op">)</span>
 </code></pre>
 </div>
@@ -1673,6 +1690,96 @@ matches for the cohort of interest." />
  [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
  [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
 [11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[4]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[5]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[6]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[7]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[8]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[9]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[10]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[11]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[12]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[13]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[14]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[15]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[16]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[17]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+[16] &quot;base&quot;     
+
+[[18]]
+ [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+ [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
+[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
 [16] &quot;base&quot;     </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rcpp.org">Rcpp</a></span><span class="op">)</span><span class="op">)</span>
@@ -1691,6 +1798,96 @@ matches for the cohort of interest." />
 [16] &quot;methods&quot;   &quot;base&quot;     
 
 [[3]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[4]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[5]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[6]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[7]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[8]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[9]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[10]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[11]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[12]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[13]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[14]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[15]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[16]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[17]]
+ [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+ [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
+[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+[16] &quot;methods&quot;   &quot;base&quot;     
+
+[[18]]
  [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
  [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
 [11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
@@ -1718,6 +1915,111 @@ matches for the cohort of interest." />
  [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
  [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
 [13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[4]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[5]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[6]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[7]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[8]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[9]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[10]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[11]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[12]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[13]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[14]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[15]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[16]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[17]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+[17] &quot;methods&quot;      &quot;base&quot;        
+
+[[18]]
+ [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
+ [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+ [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
+[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
 [17] &quot;methods&quot;      &quot;base&quot;        </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">sourceCpp</a></span><span class="op">(</span><span class="st">&quot;~/projects/tz-5ari-final/match.cpp&quot;</span><span class="op">)</span><span class="op">)</span>
@@ -1734,7 +2036,7 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[1]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpP6Hq28/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5824d5a4e5&quot;
+[1] &quot;/localscratch/8196067.1.UI/RtmptmaFG6/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b5444a2184&quot;
 
 
 [[2]]
@@ -1748,7 +2050,7 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[2]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmppDu3ag/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e592e1b27f2&quot;
+[1] &quot;/localscratch/8196067.1.UI/RtmpyO1cow/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2ada80836b&quot;
 
 
 [[3]]
@@ -1762,7 +2064,217 @@ character(0)
 [1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
 
 [[3]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpDio1al/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5a427aeaee&quot;</code></pre>
+[1] &quot;/localscratch/8196067.1.UI/RtmpXoRYoX/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b38e37946&quot;
+
+
+[[4]]
+[[4]]$functions
+[1] &quot;matchCpp&quot;
+
+[[4]]$modules
+character(0)
+
+[[4]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[4]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/Rtmpr8fQYX/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2a65fa7752d&quot;
+
+
+[[5]]
+[[5]]$functions
+[1] &quot;matchCpp&quot;
+
+[[5]]$modules
+character(0)
+
+[[5]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[5]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpsAS3bp/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2aca8a2072&quot;
+
+
+[[6]]
+[[6]]$functions
+[1] &quot;matchCpp&quot;
+
+[[6]]$modules
+character(0)
+
+[[6]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[6]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/Rtmpody1z5/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2a81e7c1712&quot;
+
+
+[[7]]
+[[7]]$functions
+[1] &quot;matchCpp&quot;
+
+[[7]]$modules
+character(0)
+
+[[7]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[7]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpegnqG4/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2a72451fc76&quot;
+
+
+[[8]]
+[[8]]$functions
+[1] &quot;matchCpp&quot;
+
+[[8]]$modules
+character(0)
+
+[[8]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[8]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpaGVyOb/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b67f56b0af&quot;
+
+
+[[9]]
+[[9]]$functions
+[1] &quot;matchCpp&quot;
+
+[[9]]$modules
+character(0)
+
+[[9]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[9]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/Rtmp3lSpNc/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2a962adfc87&quot;
+
+
+[[10]]
+[[10]]$functions
+[1] &quot;matchCpp&quot;
+
+[[10]]$modules
+character(0)
+
+[[10]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[10]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpTCbhRK/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b0763ce8f4&quot;
+
+
+[[11]]
+[[11]]$functions
+[1] &quot;matchCpp&quot;
+
+[[11]]$modules
+character(0)
+
+[[11]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[11]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/Rtmp5u1on1/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b45738e1a2&quot;
+
+
+[[12]]
+[[12]]$functions
+[1] &quot;matchCpp&quot;
+
+[[12]]$modules
+character(0)
+
+[[12]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[12]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpNFo1mL/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b1f251176&quot;
+
+
+[[13]]
+[[13]]$functions
+[1] &quot;matchCpp&quot;
+
+[[13]]$modules
+character(0)
+
+[[13]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[13]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpugfoXe/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2aa675aa804&quot;
+
+
+[[14]]
+[[14]]$functions
+[1] &quot;matchCpp&quot;
+
+[[14]]$modules
+character(0)
+
+[[14]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[14]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpLJL3Yx/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2ae4443a5ee&quot;
+
+
+[[15]]
+[[15]]$functions
+[1] &quot;matchCpp&quot;
+
+[[15]]$modules
+character(0)
+
+[[15]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[15]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpklSrij/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2ab37578078&quot;
+
+
+[[16]]
+[[16]]$functions
+[1] &quot;matchCpp&quot;
+
+[[16]]$modules
+character(0)
+
+[[16]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[16]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpuE1BTF/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2af373e0aec&quot;
+
+
+[[17]]
+[[17]]$functions
+[1] &quot;matchCpp&quot;
+
+[[17]]$modules
+character(0)
+
+[[17]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[17]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/RtmpCq9ikh/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b77eeac838&quot;
+
+
+[[18]]
+[[18]]$functions
+[1] &quot;matchCpp&quot;
+
+[[18]]$modules
+character(0)
+
+[[18]]$cppSourcePath
+[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
+
+[[18]]$buildDirectory
+[1] &quot;/localscratch/8196067.1.UI/Rtmppq2PvS/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_3b2b2e7765f5&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterExport</a></span><span class="op">(</span><span class="va">cl</span>, <span class="st">&quot;ps_match&quot;</span><span class="op">)</span>
 </code></pre>

@@ -160,12 +160,27 @@ better balanced.
 ### With Propensity Score Matching
 Further adjustment yields similar results:
 
+We observe the following overall incidence: 
+
+```{r}
+matched_model_data %>%
+  group_by(drug) %>%
+  summarize(
+    cases = sum(develops_pd),
+    time = sum(survival_time / 365),
+    incidence = cases / time * 10000
+  ) %>%
+  knitr::kable()
+```
+
+With a Kaplan Meier curve:
+
 ```{r}
 survfit(Surv(survival_time, develops_pd) ~ drug, 
         data = matched_model_data) %>%
   broom::tidy() %>%
-  mutate(treatment = ifelse(strata == "drug=tamsulosin", 
-    "Tamsulosin", "5ARI")) %>%
+  mutate(treatment = ifelse(strata == "drug=5ari", 
+    "5ARI", "TZ/DZ/AZ")) %>%
   ggplot(
     aes(
       x = time / 365, 
@@ -188,15 +203,14 @@ The population size at risk by year is given in the table below:
 survfit(Surv(survival_time, develops_pd) ~ drug, 
         data = matched_model_data) %>%
   broom::tidy() %>%
-  select(strata, time, n.risk) %>%
-  complete(strata, time = 1:(10*365)) %>%
+  select(strata, time,, n.risk) %>%
+  complete(strata, time = 0:(16*365)) %>%
   fill(n.risk, .direction = "down") %>%
   mutate(drug = ifelse(strata == "drug=5ari", "5ARI", "TZ/DZ/AZ")) %>%
   select(time, drug, n.risk) %>%
-  spread(drug, n.risk) %>%
-  filter(time %in% c(0:10 * 365 + 1, 10 * 365)) %>%
+  filter(time %in% c(1:16 * 365)) %>%
   mutate(year = round(time / 365)) %>%
-  select(year, `TZ/DZ/AZ`, `5ARI`) %>%
+  spread(drug, n.risk) %>%
   knitr::kable()
 ```
 
@@ -207,6 +221,17 @@ survdiff(Surv(survival_time, develops_pd) ~ treatment,
          data = matched_model_data)
 ```
 
+Survival times
+
+```{r}
+tbl_survfit(
+  survfit(
+    Surv(survival_time, develops_pd) ~ drug, data = matched_model_data
+  ),
+  probs = seq(0.5, 2, by = 0.5) / 100
+)
+```
+
 We fit a Cox regression model to estimate the differences in hazard:
 
 ```{r}
@@ -215,8 +240,6 @@ full_cox <- coxph(Surv(survival_time, develops_pd) ~ as.numeric(treatment),
                        robust = TRUE)
 tbl_regression(full_cox, exponentiate = TRUE)
 ```
-
-The Cox regression yields a HR of 0.81 (0.72, 0.92; p < 0.0001). 
 
 ## Fit Summaries
 ```{r}

@@ -36,7 +36,7 @@ We load the enrollments previously computed, demographics, and the PD event
 dates. 
 
 ```{r data-load}
-enrollments <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/candidate_treated.rds")
+enrollments <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/candidate_treated_dx_only.rds")
 demographics <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_demographics.rds")
 ```
 
@@ -157,7 +157,7 @@ reduce_dx <- function(args) {
   year <- args[[2]]
   required_enrolid <- args[[3]]
 
-  log_path <- glue::glue("~/extraction_logs/{source}_{year}.txt")
+  log_path <- glue::glue("~/extraction_logs/{source}_{year}_dx_only.txt")
 
   if (file.exists(log_path)) {
     file.remove(log_path)
@@ -250,11 +250,11 @@ reduce_dx <- function(args) {
     append = TRUE,
     sep = "\n"
   )
-  write_rds(first_dx, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_dx/{source}_{year}.rds"))
-  write_rds(inpatient_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_inpatient.rds"))
-  write_rds(outpatient_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient.rds"))
-  write_rds(outpatient_dx_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx.rds"))
-  write_rds(outpatient_ndx, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_ndx.rds"))
+  write_rds(first_dx, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_dx/{source}_{year}_dx_only.rds"))
+  write_rds(inpatient_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_inpatient_dx_only.rds"))
+  write_rds(outpatient_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx_only.rds"))
+  write_rds(outpatient_dx_volume, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx_dx_only.rds"))
+  write_rds(outpatient_ndx, glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_ndx_dx_only.rds"))
 
   cat(
     glue::glue("{lubridate::now()} | Complete with {source}/{year}\n"), 
@@ -341,11 +341,11 @@ p <- progress::progress_bar$new(
 )
 for (source in c("ccae", "mdcr")) {
   for (year in stringr::str_pad(1:17, width = 2, pad = "0")) {
-    dx_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_dx/{source}_{year}.rds"))
-    inpatient_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_inpatient.rds"))
-    outpatient_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient.rds"))
-    outpatient_dx_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx.rds"))
-    ndx_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_ndx.rds"))
+    dx_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_dx/{source}_{year}_dx_only.rds"))
+    inpatient_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_inpatient_dx_only.rds"))
+    outpatient_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx_only.rds"))
+    outpatient_dx_volume_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_dx_dx_only.rds"))
+    ndx_list[[i]] <- read_rds(glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/volume/{source}_{year}_outpatient_ndx_dx_only.rds"))
     i <- i + 1
     p$tick()
   }
@@ -753,7 +753,7 @@ Finally, we want to add in our outcome and compute the survival time and outcome
 here. Also, compute duration of follow-up.
 
 ```{r add-pd-dates}
-pd_dates <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_pd_date.rds")
+pd_dates <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_pd_date_dx_only.rds")
 model_data <- model_data %>%
   left_join(
     pd_dates %>%
@@ -790,7 +790,7 @@ model_data %>%
 ## Write Out Data
 ```{r}
 write_rds(model_data,
-          "/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_model_data.rds")
+          "/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_model_data_dx_only.rds")
 ```
 
 ## Session Info

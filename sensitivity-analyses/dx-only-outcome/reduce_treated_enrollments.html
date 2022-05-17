@@ -85,10 +85,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Generate Propensity Score Matches</title>
+  <title>Find Medication Start Date, Apply Exclusion Criteria</title>
 
-  <meta property="description" itemprop="description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
+  <meta property="description" itemprop="description" content="We want to find the medication start date and apply some basic exclusion
+rules (365 days of lookback, age over 40, male sex, PD free at medication 
+start) and restrict the enrollment period to the one where the medication 
+start was observed." />
 
 
   <!--  https://schema.org/Article -->
@@ -97,23 +99,27 @@ matches for the cohort of interest." />
   <meta name="article:author" content="Jacob Simmering, PhD" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Generate Propensity Score Matches" />
+  <meta property="og:title" content="Find Medication Start Date, Apply Exclusion Criteria" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
+  <meta property="og:description" content="We want to find the medication start date and apply some basic exclusion
+rules (365 days of lookback, age over 40, male sex, PD free at medication 
+start) and restrict the enrollment period to the one where the medication 
+start was observed." />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Generate Propensity Score Matches" />
-  <meta property="twitter:description" content="Use the matching candidate data from `fit_psm.Rmd` to find propensity score
-matches for the cohort of interest." />
+  <meta property="twitter:title" content="Find Medication Start Date, Apply Exclusion Criteria" />
+  <meta property="twitter:description" content="We want to find the medication start date and apply some basic exclusion
+rules (365 days of lookback, age over 40, male sex, PD free at medication 
+start) and restrict the enrollment period to the one where the medication 
+start was observed." />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Generate Propensity Score Matches"]},{"type":"character","attributes":{},"value":["Use the matching candidate data from `fit_psm.Rmd` to find propensity score\nmatches for the cohort of interest.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Find Medication Start Date, Apply Exclusion Criteria"]},{"type":"character","attributes":{},"value":["We want to find the medication start date and apply some basic exclusion\nrules (365 days of lookback, age over 40, male sex, PD free at medication \nstart) and restrict the enrollment period to the one where the medication \nstart was observed.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jacob Simmering, PhD"]},{"type":"character","attributes":{},"value":["https://jacobsimmering.com"]},{"type":"character","attributes":{},"value":["University of Iowa"]},{"type":"character","attributes":{},"value":["https://uiowa.edu"]}]}]},{"type":"character","attributes":{},"value":["2022-04-27"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1457,7 +1463,7 @@ matches for the cohort of interest." />
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Generate Propensity Score Matches","description":"Use the matching candidate data from `fit_psm.Rmd` to find propensity score\nmatches for the cohort of interest.","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
+{"title":"Find Medication Start Date, Apply Exclusion Criteria","description":"We want to find the medication start date and apply some basic exclusion\nrules (365 days of lookback, age over 40, male sex, PD free at medication \nstart) and restrict the enrollment period to the one where the medication \nstart was observed.","authors":[{"author":"Jacob Simmering, PhD","authorURL":"https://jacobsimmering.com","affiliation":"University of Iowa","affiliationURL":"https://uiowa.edu","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000-05:00","citationText":"PhD, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1467,10 +1473,10 @@ matches for the cohort of interest." />
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Generate Propensity Score Matches</h1>
+<h1>Find Medication Start Date, Apply Exclusion Criteria</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Use the matching candidate data from <code>fit_psm.Rmd</code> to find propensity score matches for the cohort of interest.</p></p>
+<p><p>We want to find the medication start date and apply some basic exclusion rules (365 days of lookback, age over 40, male sex, PD free at medication start) and restrict the enrollment period to the one where the medication start was observed.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1480,309 +1486,729 @@ matches for the cohort of interest." />
 </div>
 
 <div class="d-article">
-<div class="d-contents d-contents-float">
-<nav class="l-text toc figcaption" id="TOC">
-<h3>Contents</h3>
-<ul>
-<li><a href="#overview-of-matching-approach">Overview of Matching Approach</a></li>
-<li><a href="#parallelization">Parallelization</a>
-<ul>
-<li><a href="#wrapper">Wrapper</a></li>
-<li><a href="#define-cluster">Define Cluster</a></li>
-<li><a href="#generate-matches">Generate Matches</a></li>
-</ul></li>
-<li><a href="#session-info">Session Info</a></li>
-</ul>
-</nav>
-</div>
-<p>This file was compiled on 2022-04-27 17:24:06 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
+<p>This file was compiled on 2022-04-27 17:44:04 by <code>jsimmeri</code> on argon-itf-bx47-28.hpc.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rcpp.org">Rcpp</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kforner/rcpp_progress">RcppProgress</a></span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<h2 id="overview-of-matching-approach">Overview of Matching Approach</h2>
-<p>Now that I have estimated propensity scores, I need to generate the matches. I am impatient (recurring theme) and want to use parallel evaluation with <code>parLapply()</code> to speed this up. While each individual matching job is single threaded, there is no reason I cannot run multiple threads at the same time for the different jobs.</p>
-<p>First, I load the function included in <code>match.cpp</code>. This simply loops over the treated candidates and finds the nearest reference candidate with similar duration of follow-up (+/- 90 days). If the difference in the log odds is less than 20% of the standard deviation of the pooled log odds, we keep this pairing. This is done in C++ as opposed to R just because it is way faster.</p>
+<p>We need to find which users of the study drugs are exclusive users of only one of the study drugs. Within the cohort of exclusive users, we need to use the data from <code>treated_demographics.rds</code> to remove anyone under age 40 and any females. We then impose the 1 year lookback and 1 day follow-up requirements using the enrollment identified in <code>treated_enrollments.rds</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">sourceCpp</a></span><span class="op">(</span><span class="st">&quot;~/projects/tz-5ari-final/match.cpp&quot;</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ever_users</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/ever_users.rds&quot;</span><span class="op">)</span>
+<span class="va">demos</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_demographics.rds&quot;</span><span class="op">)</span>
+<span class="va">study_enrollments</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_enrollments.rds&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<p>I then define an R function <code>ps_match()</code> that does the matching for us. We pass the function values for:</p>
-<ol type="1">
-<li><code>treatment</code> a string indicating the treated cohort (must be one of <code>tz</code>, <code>tam</code> or <code>5ari</code>)</li>
-<li><code>control</code> a string indicating the name of the control cohort (must be one of <code>tam</code>, <code>5ari</code>)</li>
-<li><code>seed</code> the seed to set the PRNG to in the cluster (we shuffle the data to handle tie breaking)</li>
-</ol>
+<h2 id="remove-anyone-on-more-than-one-study-drug">Remove Anyone on More than One Study Drug</h2>
+<p>If there is more than 1 row for an <code>enrolid</code> in <code>ever_users</code>, they are a user of more than 1 of the study medication groups (TZ/DZ/AZ, tamsulosin, 5ARI) and we want to remove them.</p>
+<p>Before removing anyone, we have a total of 3717550 on at least one study medication at least once. We want to reduce that to the number of unique users by removing people who use more than 1 study drug:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">ps_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">log_path</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;~/matching_logs/{treatment}_{control}.txt&quot;</span><span class="op">)</span>
-
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="va">log_path</span><span class="op">)</span>
-  <span class="op">}</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Starting matching for {treatment} to {control} using seed = {seed}\n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/{treatment}_{control}.rds&quot;</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
-  <span class="co"># shuffle since we will take the lowest index row in the event of a tie</span>
-  <span class="co"># shuffling the data means that the lowest index row will be = to selecting</span>
-  <span class="co"># at random from all ties (but much faster)</span>
-  <span class="va">candidates</span> <span class="op">&lt;-</span> <span class="va">candidates</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">treatment</span>, <span class="va">follow_up_time</span>, <span class="va">ptx</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">sample_frac</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-
-  <span class="va">cases</span> <span class="op">&lt;-</span> <span class="va">candidates</span><span class="op">[</span><span class="va">candidates</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span>
-  <span class="va">controls</span> <span class="op">&lt;-</span> <span class="va">candidates</span><span class="op">[</span><span class="va">candidates</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="op">]</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Tx = {nrow(cases)} | Ref = {nrow(controls)}\n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  
-  <span class="co"># we want to do our matching on the log odds, so convert from prob tx to</span>
-  <span class="co"># the log odds of tx</span>
-  <span class="va">case_ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">cases</span><span class="op">$</span><span class="va">ptx</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">cases</span><span class="op">$</span><span class="va">ptx</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">case_fu</span> <span class="op">&lt;-</span> <span class="va">cases</span><span class="op">$</span><span class="va">follow_up_time</span>
-  <span class="va">control_ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">controls</span><span class="op">$</span><span class="va">ptx</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">controls</span><span class="op">$</span><span class="va">ptx</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">control_fu</span> <span class="op">&lt;-</span> <span class="va">controls</span><span class="op">$</span><span class="va">follow_up_time</span>
-
-  <span class="va">caliper_std</span> <span class="op">&lt;-</span> <span class="fl">0.2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">case_ps</span>, <span class="va">control_ps</span><span class="op">)</span><span class="op">)</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matching Started \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="va">pairs</span> <span class="op">&lt;-</span> <span class="fu">matchCpp</span><span class="op">(</span><span class="va">case_ps</span>, <span class="va">case_fu</span>, <span class="va">control_ps</span>, <span class="va">control_fu</span>, <span class="va">caliper_std</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matching Complete \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="co"># replace failure to match code (-1) with NA</span>
-  <span class="va">pairs</span><span class="op">[</span><span class="va">pairs</span> <span class="op">==</span> <span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
-  
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>
-    case_id <span class="op">=</span> <span class="va">cases</span><span class="op">$</span><span class="va">enrolid</span>,
-    control_id <span class="op">=</span> <span class="va">controls</span><span class="op">$</span><span class="va">enrolid</span><span class="op">[</span><span class="va">pairs</span><span class="op">]</span>,
-    pair_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-  
-  <span class="co"># remove failure to match</span>
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="va">matches</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">case_id</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">control_id</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="va">pct_matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">matches</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Matched {nrow(matches)} ({pct_matched}%) \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-
-  <span class="va">matches</span> <span class="op">&lt;-</span> <span class="va">matches</span> <span class="op">%&gt;%</span>
-    <span class="fu">gather</span><span class="op">(</span><span class="va">status</span>, <span class="va">enrolid</span>, <span class="op">-</span><span class="va">pair_id</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">status</span> <span class="op">==</span> <span class="st">&quot;case_id&quot;</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">treatment</span>, <span class="va">pair_id</span><span class="op">)</span>
-  
-  <span class="fu">write_rds</span><span class="op">(</span>
-    <span class="va">matches</span>,
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matches/{treatment}_{control}.rds&quot;</span><span class="op">)</span>
-  <span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span>
-    <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">&quot;{lubridate::now()} | Complete \n&quot;</span><span class="op">)</span>, 
-    file <span class="op">=</span> <span class="va">log_path</span>,
-    append <span class="op">=</span> <span class="cn">TRUE</span>,
-    sep <span class="op">=</span> <span class="st">&quot;\n&quot;</span>
-  <span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
-<span class="op">}</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">exclusive_users</span> <span class="op">&lt;-</span> <span class="va">ever_users</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<h2 id="parallelization">Parallelization</h2>
-<h3 id="wrapper">Wrapper</h3>
-<p>This function needs a wrapper to embed all the arguments we want to pass to it in a single list:</p>
+<p>We have a total of 2949144 who are potentially newly started on only one of the study drugs.</p>
+<p>The breakdown by drug is:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">par_match</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">args</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">treatment</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-  <span class="va">control</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
-  <span class="va">seed</span> <span class="op">&lt;-</span> <span class="va">args</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>
-  <span class="fu">ps_match</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">control</span>, <span class="va">seed</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
-<span class="op">}</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">exclusive_users</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
 </code></pre>
 </div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">341724</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">1887227</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">720193</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>And the list we want to iterate over</p>
+<h2 id="remove-any-female-users">Remove Any Female Users</h2>
+<p>Next, we want to remove any female users leaving only male users.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">seeds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span>, <span class="fl">3</span><span class="op">)</span>
-
-<span class="va">args_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;tam&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tz&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">&quot;tam&quot;</span>, <span class="st">&quot;5ari&quot;</span>, <span class="va">seeds</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">male_users</span> <span class="op">&lt;-</span> <span class="va">exclusive_users</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">demos</span>, by <span class="op">=</span> <span class="st">&quot;enrolid&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
-<h3 id="define-cluster">Define Cluster</h3>
-<p>Start the cluster and initalize it with the required functions and packages:</p>
+<p>This leaves us with 2468599 participants with the breakdown:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">cl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">args_list</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">male_users</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>[[1]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     
-
-[[2]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     
-
-[[3]]
- [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
- [6] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;stats&quot;    
-[11] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-[16] &quot;base&quot;     </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rcpp.org">Rcpp</a></span><span class="op">)</span><span class="op">)</span>
-</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">328194</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">1573344</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">567061</td>
+</tr>
+</tbody>
+</table>
 </div>
-<pre><code>[[1]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     
-
-[[2]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     
-
-[[3]]
- [1] &quot;Rcpp&quot;      &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
- [6] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot;
-[11] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
-[16] &quot;methods&quot;   &quot;base&quot;     </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kforner/rcpp_progress">RcppProgress</a></span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        
-
-[[2]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        
-
-[[3]]
- [1] &quot;RcppProgress&quot; &quot;Rcpp&quot;         &quot;forcats&quot;      &quot;stringr&quot;     
- [5] &quot;dplyr&quot;        &quot;purrr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
- [9] &quot;tibble&quot;       &quot;ggplot2&quot;      &quot;tidyverse&quot;    &quot;stats&quot;       
-[13] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
-[17] &quot;methods&quot;      &quot;base&quot;        </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterEvalQ</a></span><span class="op">(</span><span class="va">cl</span>, <span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">sourceCpp</a></span><span class="op">(</span><span class="st">&quot;~/projects/tz-5ari-final/match.cpp&quot;</span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-<pre><code>[[1]]
-[[1]]$functions
-[1] &quot;matchCpp&quot;
-
-[[1]]$modules
-character(0)
-
-[[1]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[1]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpP6Hq28/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5824d5a4e5&quot;
-
-
-[[2]]
-[[2]]$functions
-[1] &quot;matchCpp&quot;
-
-[[2]]$modules
-character(0)
-
-[[2]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[2]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmppDu3ag/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e592e1b27f2&quot;
-
-
-[[3]]
-[[3]]$functions
-[1] &quot;matchCpp&quot;
-
-[[3]]$modules
-character(0)
-
-[[3]]$cppSourcePath
-[1] &quot;/Users/jsimmeri/projects/tz-5ari-final/match.cpp&quot;
-
-[[3]]$buildDirectory
-[1] &quot;/localscratch/8196067.1.UI/RtmpDio1al/sourceCpp-x86_64-pc-linux-gnu-1.0.6/sourcecpp_31e5a427aeaee&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">clusterExport</a></span><span class="op">(</span><span class="va">cl</span>, <span class="st">&quot;ps_match&quot;</span><span class="op">)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="generate-matches">Generate Matches</h3>
-<p>Then do that <code>parLapply()</code> magic:</p>
+<h2 id="remove-anyone-under-the-age-of-40">Remove Anyone Under the Age of 40</h2>
+<p>In our next step, we want to apply the age 40+ requirement. BPH and PD are both exceedingly uncommon under this age and inclusion of people under 40 who have treatment for BPH or a diagnosis of PD are likely to be “weird” and not representative of the typical person at risk.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">parLapply</a></span><span class="op">(</span>
-  <span class="va">cl</span>,
-  <span class="va">args_list</span>,
-  <span class="va">par_match</span>
-<span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">age_40_plus</span> <span class="op">&lt;-</span> <span class="va">male_users</span> <span class="op">%&gt;%</span>
+  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a></span><span class="op">(</span><span class="va">first_rx_date</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="va">dobyr</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">40</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
+<p>This leaves us with 2227751 participants:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">stopCluster</a></span><span class="op">(</span><span class="va">cl</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">age_40_plus</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">266442</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">1415738</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">545571</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="add-enrollment-and-impose-lookbackfollow-up-requirements">Add Enrollment and Impose Lookback/Follow-Up Requirements</h2>
+<h3 id="adding-enrollment">Adding Enrollment</h3>
+<p>The enrollment tibble is one row per enrollment period. We want to join that to the index dates in <code>age_40_plus</code> and then narrow down to the rows where the index date happens after the enrollment start date and before the enrollment end date.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_enrollments</span> <span class="op">&lt;-</span> <span class="va">age_40_plus</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>enrolid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">study_enrollments</span>, by <span class="op">=</span> <span class="st">&quot;enrolid&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>And then restricting to the correct enrollment:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_enrollments</span> <span class="op">&lt;-</span> <span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">first_rx_date</span> <span class="op">&gt;=</span> <span class="va">start_date</span>, <span class="va">first_rx_date</span> <span class="op">&lt;=</span> <span class="va">end_date</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>We want to restrict this one time further to be sure and eliminate any <code>enrolid</code> with the index date following in more than 1 enrollment period.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_enrollments</span> <span class="op">&lt;-</span> <span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>We are left with 2214726 users with an identifiable enrollment window. Some people start outside of this for weird, administrative reasons (back dated coverage or what not) and we just want to avoid that.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">264806</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">1408208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">541712</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="lookback-requirement">Lookback Requirement</h3>
+<p>We want at least 365 days of enrollment before the first start date. This is how we are defining new users.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_lookback</span> <span class="op">&lt;-</span> <span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">first_rx_date</span> <span class="op">&gt;</span> <span class="op">(</span><span class="va">start_date</span> <span class="op">+</span> <span class="fl">365</span><span class="op">)</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>We have 1107613 users:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_lookback</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">104656</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">821006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">181951</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="follow-up-requirement">Follow-Up Requirement</h3>
+<p>People are no good to us if they leave the data on the date of medication start. We want to impose at least 1 day of follow-up.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_follow_up</span> <span class="op">&lt;-</span> <span class="va">with_lookback</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">end_date</span> <span class="op">&gt;</span> <span class="va">first_rx_date</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>We have 1106862 users:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">104565</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">820451</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">181846</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="remove-anyone-with-pd-on-or-before-the-index-date">Remove Anyone with PD On or Before the Index Date</h2>
+<p>We want to remove anyone who has developed PD on or before the index date. Obviously, survival time cannot be negative.</p>
+<p>Load the PD dates computed by <code>find_pd_dates.Rmd</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">pd_dates</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/first_pd_date_dx_only.rds&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>and combine with <code>left_join()</code> with the enrollments in <code>with_lookback</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_follow_up</span> <span class="op">&lt;-</span> <span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+  <span class="fu">left_join</span><span class="op">(</span><span class="va">pd_dates</span> <span class="op">%&gt;%</span>
+              <span class="fu">mutate</span><span class="op">(</span>enrolid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span><span class="op">)</span>, 
+            by <span class="op">=</span> <span class="st">&quot;enrolid&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>With the following rates of PD during the lookback period.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>
+    pd_before_drug <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pd_date</span><span class="op">)</span>, <span class="cn">FALSE</span>, <span class="va">pd_date</span> <span class="op">&lt;=</span> <span class="va">first_rx_date</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>
+    cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">pd_before_drug</span><span class="op">)</span>,
+    n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
+    py <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">first_rx_date</span> <span class="op">-</span> <span class="va">start_date</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>
+    rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">n</span> <span class="op">*</span> <span class="fl">100</span>,
+    incidence_10k <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">py</span> <span class="op">*</span> <span class="fl">10000</span>
+  <span class="op">)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 3 x 6
+  drug       cases      n       py  rate incidence_10k
+* &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+1 5ari        1074 104565  426985. 1.03           25.2
+2 tamsulosin  8287 820451 3809563. 1.01           21.8
+3 tz/dz/az    1295 181846  706834. 0.712          18.3</code></pre>
+</div>
+<p>We remove the cases where PD occurred before the index date:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">without_pd</span> <span class="op">&lt;-</span> <span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pd_date</span><span class="op">)</span> <span class="op">|</span> <span class="va">pd_date</span> <span class="op">&gt;</span> <span class="va">first_rx_date</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>Leaving us with 1096206 enrollees:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">without_pd</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">103491</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">812164</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">180551</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="remove-anyone-with-fewer-than-2-rx-events-in-the-first-year">Remove Anyone With Fewer Than 2 RX Events in the First Year</h2>
+<p>An additional requirement is that the men have at least 2 dispensing claims for the study drug within the first year of use. This is an attempt to narrow our sample to a cohort of true users, as opposed to people who immediately d/c’ed the drug.</p>
+<p>We load the entire set of rx events:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">rx_events</span> <span class="op">&lt;-</span> <span class="fu">read_rds</span><span class="op">(</span><span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_rx_events.rds&quot;</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>We can quickly reduce this to only the RX events that occur in one of our candidate men:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">rx_events_in_first_year</span> <span class="op">&lt;-</span> <span class="va">rx_events</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>enrolid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">without_pd</span> <span class="op">%&gt;%</span>
+               <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">first_rx_date</span><span class="op">)</span>,
+             by <span class="op">=</span> <span class="st">&quot;enrolid&quot;</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">svcdate</span> <span class="op">&lt;=</span> <span class="op">(</span><span class="va">first_rx_date</span> <span class="op">+</span> <span class="fl">365</span><span class="op">)</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>And then get a count of RX events in the first year:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">rx_count</span> <span class="op">&lt;-</span> <span class="va">rx_events_in_first_year</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">svcdate</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">enrolid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>n_rx <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<p>Then use this to filter <code>without_pd</code> to those with <code>n_rx &gt;= 2</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">two_or_more</span> <span class="op">&lt;-</span> <span class="va">without_pd</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">rx_count</span>, by <span class="op">=</span> <span class="st">&quot;enrolid&quot;</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">n_rx</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="sample-size-by-exclusion-step">Sample Size by Exclusion Step</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu">bind_rows</span><span class="op">(</span>
+  <span class="va">exclusive_users</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Exclusive Users&quot;</span>, row <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+  <span class="va">male_users</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Male Users&quot;</span>, row <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
+  <span class="va">age_40_plus</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Aged 40 or Older&quot;</span>, row <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  <span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With Identified Enrollment&quot;</span>, row <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,
+  <span class="va">with_lookback</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With &gt;365 Days of Lookback&quot;</span>, row <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+  <span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With &gt;= 1 Days of Follow-Up&quot;</span>, row <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>,
+  <span class="va">without_pd</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Without PD at Index date&quot;</span>, row <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>,
+  <span class="va">two_or_more</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Two or More RX Events in First Year&quot;</span>, row <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">row</span>, <span class="va">label</span>, <span class="va">`tz/dz/az`</span>, <span class="va">`tamsulosin`</span>, <span class="va">`5ari`</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">row</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">tz/dz/az</th>
+<th style="text-align: right;">tamsulosin</th>
+<th style="text-align: right;">5ari</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Exclusive Users</td>
+<td style="text-align: right;">720193</td>
+<td style="text-align: right;">1887227</td>
+<td style="text-align: right;">341724</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Male Users</td>
+<td style="text-align: right;">567061</td>
+<td style="text-align: right;">1573344</td>
+<td style="text-align: right;">328194</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Aged 40 or Older</td>
+<td style="text-align: right;">545571</td>
+<td style="text-align: right;">1415738</td>
+<td style="text-align: right;">266442</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">With Identified Enrollment</td>
+<td style="text-align: right;">541712</td>
+<td style="text-align: right;">1408208</td>
+<td style="text-align: right;">264806</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">With &gt;365 Days of Lookback</td>
+<td style="text-align: right;">181951</td>
+<td style="text-align: right;">821006</td>
+<td style="text-align: right;">104656</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">With &gt;= 1 Days of Follow-Up</td>
+<td style="text-align: right;">181846</td>
+<td style="text-align: right;">820451</td>
+<td style="text-align: right;">104565</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Without PD at Index date</td>
+<td style="text-align: right;">180551</td>
+<td style="text-align: right;">812164</td>
+<td style="text-align: right;">103491</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Two or More RX Events in First Year</td>
+<td style="text-align: right;">125452</td>
+<td style="text-align: right;">431906</td>
+<td style="text-align: right;">79402</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu">bind_rows</span><span class="op">(</span>
+  <span class="va">exclusive_users</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Exclusive Users&quot;</span>, row <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+  <span class="va">male_users</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Male Users&quot;</span>, row <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
+  <span class="va">age_40_plus</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Aged 40 or Older&quot;</span>, row <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  <span class="va">with_enrollments</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With Identified Enrollment&quot;</span>, row <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,
+  <span class="va">with_lookback</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With &gt;365 Days of Lookback&quot;</span>, row <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+  <span class="va">with_follow_up</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;With &gt;= 1 Days of Follow-Up&quot;</span>, row <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>,
+  <span class="va">without_pd</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Without PD at Index date&quot;</span>, row <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>,
+  <span class="va">two_or_more</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>label <span class="op">=</span> <span class="st">&quot;Two or More RX Events in First Year&quot;</span>, row <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">gather</span><span class="op">(</span><span class="va">drug</span>, <span class="va">n</span>, <span class="op">-</span><span class="va">label</span>, <span class="op">-</span><span class="va">row</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>
+    pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">spread</span><span class="op">(</span><span class="va">drug</span>, <span class="va">pct</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">row</span>, <span class="va">label</span>, <span class="va">`tz/dz/az`</span>, <span class="va">`tamsulosin`</span>, <span class="va">`5ari`</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">arrange</span><span class="op">(</span><span class="va">row</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">row</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">tz/dz/az</th>
+<th style="text-align: right;">tamsulosin</th>
+<th style="text-align: right;">5ari</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Exclusive Users</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">100.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Male Users</td>
+<td style="text-align: right;">78.74</td>
+<td style="text-align: right;">83.37</td>
+<td style="text-align: right;">96.04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Aged 40 or Older</td>
+<td style="text-align: right;">75.75</td>
+<td style="text-align: right;">75.02</td>
+<td style="text-align: right;">77.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">With Identified Enrollment</td>
+<td style="text-align: right;">75.22</td>
+<td style="text-align: right;">74.62</td>
+<td style="text-align: right;">77.49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">With &gt;365 Days of Lookback</td>
+<td style="text-align: right;">25.26</td>
+<td style="text-align: right;">43.50</td>
+<td style="text-align: right;">30.63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">With &gt;= 1 Days of Follow-Up</td>
+<td style="text-align: right;">25.25</td>
+<td style="text-align: right;">43.47</td>
+<td style="text-align: right;">30.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Without PD at Index date</td>
+<td style="text-align: right;">25.07</td>
+<td style="text-align: right;">43.03</td>
+<td style="text-align: right;">30.28</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Two or More RX Events in First Year</td>
+<td style="text-align: right;">17.42</td>
+<td style="text-align: right;">22.89</td>
+<td style="text-align: right;">23.24</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="write-out">Write Out</h2>
+<p>We now have the required data for the candidate men treated with the study drugs. We have the following tibble that describes their assignment, index date, enrollment start, enrollment end dates, and their date of birth.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">two_or_more</span> <span class="op">&lt;-</span> <span class="va">two_or_more</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">enrolid</span>, <span class="va">drug</span>, index_date <span class="op">=</span> <span class="va">first_rx_date</span>, <span class="va">start_date</span>, <span class="va">end_date</span><span class="op">)</span>
+<span class="va">two_or_more</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 636,760 x 5
+     enrolid drug       index_date start_date end_date
+       &lt;dbl&gt; &lt;chr&gt;           &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+ 1 100003402 tamsulosin      15254      11688    17531
+ 2  10000701 tamsulosin      13455      11323    13513
+ 3 100008204 tamsulosin      17283      12509    17531
+ 4 100009001 tz/dz/az        13808      13118    13909
+ 5 100012401 tamsulosin      16799      12053    17531
+ 6 100018401 tz/dz/az        14491      11688    15033
+ 7 100018601 tamsulosin      12367      11688    16190
+ 8  10001901 tz/dz/az        13119      11323    13544
+ 9 100019601 tamsulosin      13656      11688    13817
+10 100022601 tamsulosin      14701      11688    16374
+# … with 636,750 more rows</code></pre>
+</div>
+<p>Broken down over the following treatment assignments:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">two_or_more</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">drug</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarize</span><span class="op">(</span>
+    n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
+    person_years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">end_date</span> <span class="op">-</span> <span class="va">start_date</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">drug</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">person_years</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">5ari</td>
+<td style="text-align: right;">79402</td>
+<td style="text-align: right;">570956.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tamsulosin</td>
+<td style="text-align: right;">431906</td>
+<td style="text-align: right;">3200724.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tz/dz/az</td>
+<td style="text-align: right;">125452</td>
+<td style="text-align: right;">858557.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We then write this out for use in building the model data sets and the propensity score matching.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu">write_rds</span><span class="op">(</span><span class="va">two_or_more</span>,
+          <span class="st">&quot;/Shared/lss_jsimmeri_backup/data/tz-5ari-final/candidate_treated_dx_only.rds&quot;</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>
@@ -1808,35 +2234,35 @@ locale:
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
-[1] parallel  stats     graphics  grDevices utils     datasets 
-[7] methods   base     
+[1] stats     graphics  grDevices utils     datasets  methods  
+[7] base     
 
 other attached packages:
- [1] RcppProgress_0.4.2 Rcpp_1.0.6         forcats_0.5.1     
- [4] stringr_1.4.0      dplyr_1.0.4        purrr_0.3.4       
- [7] readr_1.4.0        tidyr_1.1.2        tibble_3.0.6      
-[10] ggplot2_3.3.3      tidyverse_1.3.0   
+[1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.4     purrr_0.3.4    
+[5] readr_1.4.0     tidyr_1.1.2     tibble_3.0.6    ggplot2_3.3.3  
+[9] tidyverse_1.3.0
 
 loaded via a namespace (and not attached):
  [1] tidyselect_1.1.0  xfun_0.21         haven_2.3.1      
  [4] colorspace_2.0-0  vctrs_0.3.6       generics_0.1.0   
- [7] htmltools_0.5.1.1 yaml_2.2.1        rlang_0.4.10     
-[10] pillar_1.4.7      withr_2.4.1       glue_1.4.2       
-[13] DBI_1.1.1         dbplyr_2.1.0      modelr_0.1.8     
-[16] readxl_1.3.1      lifecycle_1.0.0   munsell_0.5.0    
-[19] gtable_0.3.0      cellranger_1.1.0  rvest_0.3.6      
-[22] evaluate_0.14     knitr_1.31        ps_1.5.0         
-[25] fansi_0.4.2       broom_0.7.4       backports_1.2.1  
-[28] scales_1.1.1      jsonlite_1.7.2    fs_1.5.0         
-[31] distill_1.2       hms_1.0.0         digest_0.6.27    
-[34] stringi_1.5.3     grid_4.0.4        cli_2.3.0        
-[37] tools_4.0.4       magrittr_2.0.1    crayon_1.4.1     
-[40] pkgconfig_2.0.3   downlit_0.2.1     ellipsis_0.3.1   
-[43] xml2_1.3.2        reprex_1.0.0      lubridate_1.7.9.2
-[46] assertthat_0.2.1  rmarkdown_2.6     httr_1.4.2       
-[49] rstudioapi_0.13   R6_2.5.0          compiler_4.0.4   </code></pre>
+ [7] htmltools_0.5.1.1 yaml_2.2.1        utf8_1.1.4       
+[10] rlang_0.4.10      pillar_1.4.7      withr_2.4.1      
+[13] glue_1.4.2        DBI_1.1.1         dbplyr_2.1.0     
+[16] modelr_0.1.8      readxl_1.3.1      lifecycle_1.0.0  
+[19] munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0 
+[22] rvest_0.3.6       evaluate_0.14     knitr_1.31       
+[25] ps_1.5.0          fansi_0.4.2       highr_0.8        
+[28] broom_0.7.4       Rcpp_1.0.6        backports_1.2.1  
+[31] scales_1.1.1      jsonlite_1.7.2    fs_1.5.0         
+[34] distill_1.2       hms_1.0.0         digest_0.6.27    
+[37] stringi_1.5.3     grid_4.0.4        cli_2.3.0        
+[40] tools_4.0.4       magrittr_2.0.1    crayon_1.4.1     
+[43] pkgconfig_2.0.3   downlit_0.2.1     ellipsis_0.3.1   
+[46] xml2_1.3.2        reprex_1.0.0      lubridate_1.7.9.2
+[49] assertthat_0.2.1  rmarkdown_2.6     httr_1.4.2       
+[52] rstudioapi_0.13   R6_2.5.0          compiler_4.0.4   </code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

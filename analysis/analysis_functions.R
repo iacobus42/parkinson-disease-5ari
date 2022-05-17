@@ -19,6 +19,27 @@ describe_cohort <- function(ptx_model_data) {
                    )
                  )
 
+  duration_table <- ptx_model_data %>%
+    mutate(lookback_time = index_date - start_date) %>%
+    select(drug, lookback_time, follow_up_time) %>%
+    mutate(
+      lookback_time = lookback_time / 365,
+      follow_up_time = follow_up_time / 365
+    ) %>%
+    tbl_summary(
+      by = "drug",
+      label = list(
+        lookback_time ~ "Lookback Time (Years)",
+        follow_up_time ~ "Follow Up Time (Years)"
+      )
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+               estimate_fun = list(
+                all_continuous() ~ function(x) style_number(x, digits = 3), 
+                all_categorical() ~ function(x) style_number(x, digits = 3)
+               )
+             )
+
   rates_table <- ptx_model_data %>%
     select(drug, in_rate, out_rate, mean_ndx, out_dx_rate) %>%
     mutate(mean_ndx_out_rate = mean_ndx * out_rate) %>%
@@ -144,7 +165,7 @@ describe_cohort <- function(ptx_model_data) {
       cm_slow_stream, uroflow, cystometrogram, cm_bph
     ) %>%
     tbl_summary(by = "drug",
-                label = list( # nolint
+                label = list(
                   cm_slow_stream ~ "Slow Urinary Stream Diagnosis",
                   uroflow ~ "Uroflow Study Performed",
                   cystometrogram ~ "Cystometrogram Performed",
@@ -160,21 +181,44 @@ describe_cohort <- function(ptx_model_data) {
                    )
                  )
 
+  other_table <- ptx_model_data %>%
+    mutate(cm_anxiety = as.numeric(cm_anxiety),
+           cm_ed = as.numeric(cm_ed)) %>%
+    select(drug, cm_anxiety, cm_ed) %>%
+    tbl_summary(by = "drug",
+                label = list(
+                  cm_anxiety ~ "Diagnosis of Anxiety",
+                  cm_ed ~ "Diagnosis of Erectile Dysfunction"
+                ),
+                statistic = list(all_dichotomous() ~ "{n} ({p}%)"),
+                digits = list(all_dichotomous() ~ c(0, 1))
+    ) %>%
+    add_difference(test = list(everything() ~ "cohens_d"),
+                   estimate_fun = list(
+                    all_continuous() ~ function(x) style_number(x, digits = 3), 
+                    all_categorical() ~ function(x) style_number(x, digits = 3)
+                   )
+                 )
+
   final_table <- tbl_stack(
       list(
         demo_table, 
+        duration_table,
         rates_table,
         elix_table,
         hypothension_table,
         psa_table,
-        luts_table), 
+        luts_table,
+        other_table), 
       group_header = c(
         "Age and Medication Start Time",
+        "Duration of Enrollment Time",
         "Rates of Inpatient and Outpatient Encounters",
         "Elixhauser/AHRQ Comorbidity Flags",
         "Hypotension",
         "Prostate Specific Antigen",
-        "Bladder Function and Urinary Flow"
+        "Bladder Function and Urinary Flow",
+        "Other Comorbidities"
       )
   ) %>%
     modify_footnote(all_stat_cols() ~ NA) %>%
@@ -184,20 +228,10 @@ describe_cohort <- function(ptx_model_data) {
 }
 
 # load the data and generate the model data set
+# no longer limit to 10 years
 if (Sys.info()["sysname"] == "Darwin") {
   root_dir <- "/Volumes/lss_jsimmeri_backup/data/tz-5ari-final"
 } else {
   root_dir <- "/Shared/lss_jsimmeri_backup/data/tz-5ari-final"
 }
-treated <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))
-# if survival time was greater then 10 * 365 days, set outcome to censored and
-# censor at 10 * 365 days
-model_data <- treated %>%
-  mutate(
-    st_10 = ifelse(survival_time > 365 * 10, 365 * 10, survival_time),
-    pd_10 = ifelse(develops_pd, survival_time <= 365 * 10, FALSE)
-  ) %>%
-  select(-survival_time, -develops_pd) %>%
-  rename(
-    develops_pd = pd_10, survival_time = st_10
-  )
+model_data <- read_rds(glue::glue("{root_dir}/treated_model_data.rds"))

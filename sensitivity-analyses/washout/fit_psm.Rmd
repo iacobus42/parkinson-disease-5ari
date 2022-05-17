@@ -48,8 +48,8 @@ ps_full <- treatment ~ s(age) +
   cm_elix_Valvular + cm_elix_WeightLoss +
   cm_bph + cm_slow_stream + cm_abnormal_psa +
   psa_measured + uroflow + cystometrogram +
-  cm_orthostatic + cm_other_hypo +
-  cm_anxiety + cm_ed
+  cm_orthostatic + cm_other_hypo + 
+  cm_ed + cm_anxiety
 ```
 
 ## Load Data and Make Data Sets for Model Estimation
@@ -63,7 +63,6 @@ treated <- read_rds("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/treated_mode
 And build the comparison data sets:
 
 - TZ/DZ/AZ vs tamsulosin
-
 
 ```{r tz-tam}
 tz_tam <- treated %>%
@@ -89,10 +88,14 @@ tam_5ari <- treated %>%
 
 ## Functions to Fit Propensity Score Models
 For ease, using a function to wrap around `bam()` to provide detail on the 
-PS model fitting process:
+PS model fitting process. Compared to the "base" version of this script, I 
+have added the argument `min_duration` which sets a minimum duration of follow
+up *before* censoring or event to be able to enter the data set. 
 
-```{r def-fit_xgboost_model}
-fit_gam_model <- function(data, ps_formula, k = 28) {
+```{r def-fit_gam_model}
+fit_gam_model <- function(data, ps_formula, min_duration, k = 28) {
+  data <- data %>%
+    filter(survival_time >= min_duration)
   obs_tx <- data$drug[data$treatment == 1][1]
   obs_ref <- data$drug[data$treatment == 0][1]
   n_tx <- sum(data$treatment)
@@ -123,36 +126,25 @@ fit_gam_model <- function(data, ps_formula, k = 28) {
 ```
 
 ## Fit Propensity Scores
-Then generate all the data needed for matching:
+Then generate all the data needed for matching with `min_duration` values of 1,
+2, and 3 years.
 
-### TZ/DZ/AZ vs...
-```{r reduced-tz-tam}
-tz_tam_full <- fit_gam_model(tz_tam, ps_full)
-```
+```{r}
+for (i in 1:3) {
+  tz_tam_full <- fit_gam_model(tz_tam, ps_full, i * 365)
+  tz_5ari_full <- fit_gam_model(tz_5ari, ps_full, i * 365)
+  tam_5ari_full <- fit_gam_model(tam_5ari, ps_full, i * 365)
 
-```{r fit-psm-tz-5ari}
-tz_5ari_full <- fit_gam_model(tz_5ari, ps_full)
-```
-
-### Tamsulosin vs...
-```{r fit-psm-tam-5ari}
-tam_5ari_full <- fit_gam_model(tam_5ari, ps_full)
-```
-
-## Save Data for Matching
-And save the results for use in the matching script: 
-
-```{r save-data}
-write_rds(
-  tz_tam_full,
-  "/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_tam.rds")
-write_rds(
-  tz_5ari_full,
-  "/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_5ari.rds")
-
-write_rds(
-  tam_5ari_full,
-  "/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tam_5ari.rds")
+  write_rds(
+    tz_tam_full,
+    glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_tam_{i}.rds"))
+  write_rds(
+    tz_5ari_full,
+    glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tz_5ari_{i}.rds"))
+  write_rds(
+    tam_5ari_full,
+    glue::glue("/Shared/lss_jsimmeri_backup/data/tz-5ari-final/matching_candidates/tam_5ari_{i}.rds"))
+}
 ```
 
 ## Session Info
