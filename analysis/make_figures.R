@@ -71,7 +71,7 @@ tz_5ari_km <- survfit(Surv(survival_time, develops_pd) ~ treatment, data = outco
 tam_5ari_km <- survfit(Surv(survival_time, develops_pd) ~ treatment, data = outcomes_tam_5ari) %>%
   broom::tidy() %>%
   mutate(
-    g = ifelse(strata == "treatment=1", "TZ/DZ/AZ", "Tamsulosin")
+    g = ifelse(strata == "treatment=1", "Tamsulosin", "5ARI")
   ) %>%
   ggplot(aes(x = time / 365, 
              y = estimate * 100, 
@@ -86,7 +86,7 @@ tam_5ari_km <- survfit(Surv(survival_time, develops_pd) ~ treatment, data = outc
   scale_fill_manual(values = c("#619CFF", "#00BA38")) + 
   annotate("text", x = 10, y = 98, label = "5ARI", size = 3,
            color = "#619CFF") + 
-  annotate("text", x = 8.5, y = 95.5, label = "5ARI", size = 3,
+  annotate("text", x = 8.5, y = 95.5, label = "Tamsulosin", size = 3,
            color = "#00BA38")
 
 tz_tam_km + tz_5ari_km + tam_5ari_km +
@@ -94,7 +94,7 @@ tz_tam_km + tz_5ari_km + tam_5ari_km +
   plot_annotation(tag_levels = "A")
 ggsave("~/projects/pd-preprint/km-plot.png", width = 4.5, height = 8)
 
-# figure S2
+# figure S1
 cph_tz_tam <- coxph(Surv(survival_time, develops_pd) ~ treatment, data = outcomes_tz_tam)
 zph_tz_tam <- cox.zph(cph_tz_tam)
 
@@ -139,7 +139,7 @@ tibble(
   mutate(
     label = forcats::fct_relevel(label, "TZ/DZ/AZ vs Tamsulosin", "TZ/DZ/AZ vs 5ARI")
   ) %>%
-  ggplot(aes(x = x, y = y)) + 
+  ggplot(aes(x = x / 365, y = y)) + 
   geom_smooth(method = "loess") + 
   geom_point(alpha = 0.25) + 
   geom_line(aes(y = true), linetype = 2) +
