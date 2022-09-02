@@ -1,5 +1,5 @@
 ---
-title: "Build Dataset for Propensity Score Matching for Treated Cohort"
+title: "Build Dataset for Propensity Score Matching for Treated "
 description: |
   Put together the dataset for estimating the propensity score model to 
   construct the matched cohorts. This includes removing combination users, 
